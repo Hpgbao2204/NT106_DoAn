@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DangKi_DangNhap", "DangKi_DangNhap\DangKi_DangNhap.csproj", "{66110505-A4EE-4D40-B3B2-C9F1CCEB6497}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{164029DE-9097-408E-B1EB-37C6C1E0EF68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{66110505-A4EE-4D40-B3B2-C9F1CCEB6497}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66110505-A4EE-4D40-B3B2-C9F1CCEB6497}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66110505-A4EE-4D40-B3B2-C9F1CCEB6497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{164029DE-9097-408E-B1EB-37C6C1E0EF68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{164029DE-9097-408E-B1EB-37C6C1E0EF68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{164029DE-9097-408E-B1EB-37C6C1E0EF68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{164029DE-9097-408E-B1EB-37C6C1E0EF68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
