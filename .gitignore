@@ -1,0 +1,16 @@
+# Visual Studio related
+.vs/
+*.user
+*.suo
+bin/
+obj/
+
+# Windows specific files
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# Firebase or other package-related files
+Packages/
