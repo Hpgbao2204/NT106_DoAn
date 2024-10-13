@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -7,8 +6,6 @@ using Firebase.Database;
 using Firebase.Database.Query;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Google.Apis.Auth.OAuth2;
-using FirebaseAdmin;
 
 namespace Server
 {
@@ -29,20 +26,18 @@ namespace Server
 
         private static void InitializeFirebase()
         {
-            // Đường dẫn đến file JSON tài khoản dịch vụ bạn đã tải về từ Firebase
-            string pathToServiceAccountKey = @"nt106-cce90-firebase-adminsdk-3urh7-e60be3591f.json";
-
-            // Khởi tạo Firebase Admin SDK bằng khóa riêng
-            FirebaseApp.Create(new AppOptions()
-            {
-                Credential = GoogleCredential.FromFile(pathToServiceAccountKey)
-            });
-
-            // URL của Firebase Realtime Database
             string firebaseUrl = "https://nt106-cce90-default-rtdb.firebaseio.com/";
 
-            // Khởi tạo Firebase Realtime Database client
-            firebaseClient = new FirebaseClient(firebaseUrl);
+            // Secret Key của Firebase Database (Legacy Key)
+            string secret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv"; 
+
+            firebaseClient = new FirebaseClient(
+                firebaseUrl,
+                new FirebaseOptions
+                {
+                    AuthTokenAsyncFactory = () => Task.FromResult(secret)
+                }
+            );
 
             MessageBox.Show("Firebase khởi tạo thành công.");
         }
