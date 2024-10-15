@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace DangKi_DangNhap
 {
-    public partial class login : Form
+    public partial class signup : Form
     {
-        public login()
+        public signup()
         {
             InitializeComponent();
-        }
-
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
