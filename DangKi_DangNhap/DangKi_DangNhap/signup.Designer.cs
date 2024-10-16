@@ -395,6 +395,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "signup";
             this.Text = "signup";
+            this.Load += new System.EventHandler(this.signup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
             this.ResumeLayout(false);
