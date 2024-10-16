@@ -16,5 +16,10 @@ namespace DangKi_DangNhap
         {
             InitializeComponent();
         }
+
+        private void txtConfirmPass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

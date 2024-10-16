@@ -47,6 +47,7 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.labelSignup = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +73,7 @@
             this.picUIT.FillColor = System.Drawing.Color.Transparent;
             this.picUIT.Image = ((System.Drawing.Image)(resources.GetObject("picUIT.Image")));
             this.picUIT.ImageRotate = 0F;
-            this.picUIT.Location = new System.Drawing.Point(138, 69);
+            this.picUIT.Location = new System.Drawing.Point(138, 43);
             this.picUIT.Name = "picUIT";
             this.picUIT.Size = new System.Drawing.Size(113, 108);
             this.picUIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -324,7 +325,7 @@
             this.btnCreateAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateAccount.Image")));
             this.btnCreateAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnCreateAccount.ImageOffset = new System.Drawing.Point(5, 0);
-            this.btnCreateAccount.Location = new System.Drawing.Point(92, 666);
+            this.btnCreateAccount.Location = new System.Drawing.Point(91, 657);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(188, 59);
             this.btnCreateAccount.TabIndex = 20;
@@ -358,11 +359,24 @@
             this.control_Minimize.Size = new System.Drawing.Size(35, 30);
             this.control_Minimize.TabIndex = 22;
             // 
+            // labelSignup
+            // 
+            this.labelSignup.AutoSize = true;
+            this.labelSignup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(227)))), ((int)(((byte)(171)))));
+            this.labelSignup.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSignup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(183)))));
+            this.labelSignup.Location = new System.Drawing.Point(144, 183);
+            this.labelSignup.Name = "labelSignup";
+            this.labelSignup.Size = new System.Drawing.Size(91, 30);
+            this.labelSignup.TabIndex = 23;
+            this.labelSignup.Text = "Sign Up";
+            // 
             // signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.labelSignup);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
             this.Controls.Add(this.btnCreateAccount);
@@ -407,5 +421,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
+        private System.Windows.Forms.Label labelSignup;
     }
 }
