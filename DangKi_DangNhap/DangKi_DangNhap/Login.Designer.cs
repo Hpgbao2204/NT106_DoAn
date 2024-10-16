@@ -43,6 +43,7 @@
             this.btn_Signup = new Guna.UI2.WinForms.Guna2Button();
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.labelLogin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +75,7 @@
             this.picUIT.FillColor = System.Drawing.Color.Transparent;
             this.picUIT.Image = ((System.Drawing.Image)(resources.GetObject("picUIT.Image")));
             this.picUIT.ImageRotate = 0F;
-            this.picUIT.Location = new System.Drawing.Point(138, 69);
+            this.picUIT.Location = new System.Drawing.Point(138, 43);
             this.picUIT.Name = "picUIT";
             this.picUIT.Size = new System.Drawing.Size(113, 108);
             this.picUIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -236,11 +237,24 @@
             this.control_Minimize.Size = new System.Drawing.Size(35, 30);
             this.control_Minimize.TabIndex = 9;
             // 
+            // labelLogin
+            // 
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(227)))), ((int)(((byte)(171)))));
+            this.labelLogin.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(111)))), ((int)(((byte)(183)))));
+            this.labelLogin.Location = new System.Drawing.Point(153, 183);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(69, 30);
+            this.labelLogin.TabIndex = 10;
+            this.labelLogin.Text = "Login";
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
             this.Controls.Add(this.btn_Signup);
@@ -277,5 +291,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_Signup;
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
+        private System.Windows.Forms.Label labelLogin;
     }
 }
