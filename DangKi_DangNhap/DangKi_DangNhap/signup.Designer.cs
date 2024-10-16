@@ -35,9 +35,7 @@
             this.picUIT = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtCreatePass = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtBirthday = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtConfirmPass = new Guna.UI2.WinForms.Guna2TextBox();
-            this.cmbGender = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.label_avatar = new System.Windows.Forms.Label();
             this.txtCodeEmail = new Guna.UI2.WinForms.Guna2TextBox();
@@ -48,6 +46,7 @@
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelSignup = new System.Windows.Forms.Label();
+            this.date_time_picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             this.SuspendLayout();
@@ -133,32 +132,6 @@
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 4;
             // 
-            // txtBirthday
-            // 
-            this.txtBirthday.Animated = true;
-            this.txtBirthday.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(108)))), ((int)(((byte)(178)))));
-            this.txtBirthday.BorderRadius = 6;
-            this.txtBirthday.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBirthday.DefaultText = "";
-            this.txtBirthday.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBirthday.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBirthday.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBirthday.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBirthday.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(237)))), ((int)(((byte)(206)))));
-            this.txtBirthday.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBirthday.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.txtBirthday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBirthday.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBirthday.Location = new System.Drawing.Point(43, 406);
-            this.txtBirthday.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.PasswordChar = '\0';
-            this.txtBirthday.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtBirthday.PlaceholderText = "Date of Birth";
-            this.txtBirthday.SelectedText = "";
-            this.txtBirthday.Size = new System.Drawing.Size(164, 40);
-            this.txtBirthday.TabIndex = 7;
-            // 
             // txtConfirmPass
             // 
             this.txtConfirmPass.Animated = true;
@@ -184,24 +157,6 @@
             this.txtConfirmPass.SelectedText = "";
             this.txtConfirmPass.Size = new System.Drawing.Size(292, 40);
             this.txtConfirmPass.TabIndex = 6;
-            // 
-            // cmbGender
-            // 
-            this.cmbGender.BackColor = System.Drawing.Color.Transparent;
-            this.cmbGender.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(108)))), ((int)(((byte)(178)))));
-            this.cmbGender.BorderRadius = 8;
-            this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGender.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(237)))), ((int)(((byte)(206)))));
-            this.cmbGender.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbGender.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.cmbGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.cmbGender.ItemHeight = 34;
-            this.cmbGender.Location = new System.Drawing.Point(222, 406);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(113, 40);
-            this.cmbGender.TabIndex = 8;
             // 
             // txtEmail
             // 
@@ -286,6 +241,7 @@
             this.btnAvatar.TabIndex = 18;
             this.btnAvatar.Text = "Choose file name (max 10MB)";
             this.btnAvatar.UseTransparentBackground = true;
+            this.btnAvatar.Click += new System.EventHandler(this.btnAvatar_Click);
             // 
             // btnVerify
             // 
@@ -307,6 +263,7 @@
             this.btnVerify.TabIndex = 19;
             this.btnVerify.Text = "Verify Email";
             this.btnVerify.UseTransparentBackground = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
             // btnCreateAccount
             // 
@@ -331,6 +288,7 @@
             this.btnCreateAccount.TabIndex = 20;
             this.btnCreateAccount.Text = "Create Account";
             this.btnCreateAccount.UseTransparentBackground = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // guna2DragControl1
             // 
@@ -371,11 +329,26 @@
             this.labelSignup.TabIndex = 23;
             this.labelSignup.Text = "Sign Up";
             // 
+            // date_time_picker
+            // 
+            this.date_time_picker.Checked = true;
+            this.date_time_picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(237)))), ((int)(((byte)(206)))));
+            this.date_time_picker.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.date_time_picker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.date_time_picker.Location = new System.Drawing.Point(43, 406);
+            this.date_time_picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.date_time_picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.date_time_picker.Name = "date_time_picker";
+            this.date_time_picker.Size = new System.Drawing.Size(292, 40);
+            this.date_time_picker.TabIndex = 24;
+            this.date_time_picker.Value = new System.DateTime(2024, 10, 16, 23, 25, 26, 647);
+            // 
             // signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.date_time_picker);
             this.Controls.Add(this.labelSignup);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
@@ -385,8 +358,6 @@
             this.Controls.Add(this.txtCodeEmail);
             this.Controls.Add(this.label_avatar);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.cmbGender);
-            this.Controls.Add(this.txtBirthday);
             this.Controls.Add(this.txtConfirmPass);
             this.Controls.Add(this.txtCreatePass);
             this.Controls.Add(this.txtUsername);
@@ -408,8 +379,6 @@
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2PictureBox pciBackground;
         private Guna.UI2.WinForms.Guna2PictureBox picUIT;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbGender;
-        private Guna.UI2.WinForms.Guna2TextBox txtBirthday;
         private Guna.UI2.WinForms.Guna2TextBox txtConfirmPass;
         private Guna.UI2.WinForms.Guna2TextBox txtCreatePass;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
@@ -423,5 +392,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private System.Windows.Forms.Label labelSignup;
+        private Guna.UI2.WinForms.Guna2DateTimePicker date_time_picker;
     }
 }
