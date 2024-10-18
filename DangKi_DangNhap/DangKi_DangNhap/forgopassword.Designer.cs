@@ -131,6 +131,7 @@
             this.txtNewPass.SelectedText = "";
             this.txtNewPass.Size = new System.Drawing.Size(292, 40);
             this.txtNewPass.TabIndex = 6;
+            this.txtNewPass.TextChanged += new System.EventHandler(this.txtNewPass_TextChanged);
             // 
             // txtRePass
             // 

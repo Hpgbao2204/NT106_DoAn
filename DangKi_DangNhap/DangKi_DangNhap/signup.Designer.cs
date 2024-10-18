@@ -189,7 +189,7 @@
             this.label_avatar.AutoSize = true;
             this.label_avatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(213)))));
             this.label_avatar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_avatar.Location = new System.Drawing.Point(54, 481);
+            this.label_avatar.Location = new System.Drawing.Point(40, 479);
             this.label_avatar.Name = "label_avatar";
             this.label_avatar.Size = new System.Drawing.Size(44, 15);
             this.label_avatar.TabIndex = 10;
@@ -235,11 +235,11 @@
             this.btnAvatar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnAvatar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAvatar.Location = new System.Drawing.Point(116, 468);
+            this.btnAvatar.Location = new System.Drawing.Point(104, 468);
             this.btnAvatar.Name = "btnAvatar";
-            this.btnAvatar.Size = new System.Drawing.Size(219, 40);
+            this.btnAvatar.Size = new System.Drawing.Size(231, 40);
             this.btnAvatar.TabIndex = 18;
-            this.btnAvatar.Text = "Choose file name (max 10MB)";
+            this.btnAvatar.Text = "Choose profile picture (max 10MB)";
             this.btnAvatar.UseTransparentBackground = true;
             this.btnAvatar.Click += new System.EventHandler(this.btnAvatar_Click);
             // 

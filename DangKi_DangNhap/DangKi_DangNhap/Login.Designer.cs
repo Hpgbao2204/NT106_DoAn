@@ -108,6 +108,7 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 2;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
@@ -134,6 +135,7 @@
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(292, 40);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // toggleSwitch
             // 
@@ -194,6 +196,7 @@
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseTransparentBackground = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btn_Signup
             // 
@@ -207,7 +210,7 @@
             this.btn_Signup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Signup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Signup.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(214)))));
-            this.btn_Signup.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btn_Signup.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btn_Signup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_Signup.Location = new System.Drawing.Point(203, 456);
             this.btn_Signup.Name = "btn_Signup";
@@ -215,6 +218,7 @@
             this.btn_Signup.TabIndex = 8;
             this.btn_Signup.Text = "Sign up";
             this.btn_Signup.UseTransparentBackground = true;
+            this.btn_Signup.Click += new System.EventHandler(this.btn_Signup_Click);
             // 
             // control_Close
             // 
