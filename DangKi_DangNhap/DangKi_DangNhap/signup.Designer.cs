@@ -47,8 +47,10 @@
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelSignup = new System.Windows.Forms.Label();
             this.date_time_picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.ptb_avatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -237,9 +239,9 @@
             this.btnAvatar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(186)))), ((int)(((byte)(230)))), ((int)(((byte)(255)))));
             this.btnAvatar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnAvatar.Location = new System.Drawing.Point(104, 468);
+            this.btnAvatar.Location = new System.Drawing.Point(113, 468);
             this.btnAvatar.Name = "btnAvatar";
-            this.btnAvatar.Size = new System.Drawing.Size(231, 40);
+            this.btnAvatar.Size = new System.Drawing.Size(222, 40);
             this.btnAvatar.TabIndex = 18;
             this.btnAvatar.Text = "Choose profile picture (max 10MB)";
             this.btnAvatar.UseTransparentBackground = true;
@@ -345,11 +347,25 @@
             this.date_time_picker.TabIndex = 24;
             this.date_time_picker.Value = new System.DateTime(2024, 10, 16, 23, 25, 26, 647);
             // 
+            // ptb_avatar
+            // 
+            this.ptb_avatar.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_avatar.ImageRotate = 0F;
+            this.ptb_avatar.Location = new System.Drawing.Point(43, 458);
+            this.ptb_avatar.Name = "ptb_avatar";
+            this.ptb_avatar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.ptb_avatar.Size = new System.Drawing.Size(64, 64);
+            this.ptb_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_avatar.TabIndex = 25;
+            this.ptb_avatar.TabStop = false;
+            this.ptb_avatar.UseTransparentBackground = true;
+            // 
             // signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_avatar);
             this.Controls.Add(this.date_time_picker);
             this.Controls.Add(this.labelSignup);
             this.Controls.Add(this.control_Minimize);
@@ -371,6 +387,7 @@
             this.Load += new System.EventHandler(this.signup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,5 +412,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private System.Windows.Forms.Label labelSignup;
         private Guna.UI2.WinForms.Guna2DateTimePicker date_time_picker;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox ptb_avatar;
     }
 }

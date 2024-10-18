@@ -35,6 +35,13 @@ namespace DangKi_DangNhap
 
         private void signup_Load(object sender, EventArgs e)
         {
+            // Giấu đi thành phần picture box (hiển thị avatar của người dùng) cho tới khi người dùng chọn ảnh thì hiện lên cùng với ảnh mà người dùng chọn
+            ptb_avatar.Hide();
+
+            // Khi form tải, đặt PasswordChar cho TextBox để hiện dấu hoa thị thay cho ký tự
+            txtCreatePass.PasswordChar = '*';
+            txtConfirmPass.PasswordChar = '*';
+
             try
             {
                 client = new FireSharp.FirebaseClient(Config);
@@ -135,6 +142,13 @@ namespace DangKi_DangNhap
                     return;
                 }
 
+                // Kiểm tra xem người dùng đã chọn ảnh Đại diện hay chưa
+                if (!choosePicture)
+                {
+                    MessageBox.Show("Please choose a profile picture before proceeding.", "Image Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; 
+                }
+
                 // Mã hóa mật khẩu bằng BCrypt
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtCreatePass.Text);
 
@@ -204,6 +218,7 @@ namespace DangKi_DangNhap
 
         private string selectedbase64ConvertedFromImage;
 
+        private bool choosePicture = false;
         private void btnAvatar_Click(object sender, EventArgs e)
         {
             selectedbase64ConvertedFromImage = "";
@@ -213,10 +228,15 @@ namespace DangKi_DangNhap
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    choosePicture = true;
                     // Gọi phương thức để tải hình ảnh lên Firebase
                     string ImagePath = openFileDialog.FileName;
                     selectedbase64ConvertedFromImage = ConvertImageToBase64(ImagePath);
                     //SaveUserWithImage(base64Image);
+
+                    label_avatar.Hide();
+                    ptb_avatar.Image = Image.FromFile(ImagePath);
+                    ptb_avatar.Show();
                 }
             }
         }
