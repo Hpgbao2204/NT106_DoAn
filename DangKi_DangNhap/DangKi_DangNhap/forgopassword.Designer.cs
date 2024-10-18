@@ -42,6 +42,8 @@
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnCreateAccount = new Guna.UI2.WinForms.Guna2Button();
             this.labelForgorpassword = new System.Windows.Forms.Label();
+            this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +107,8 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 5;
+            this.txtUsername.Visible = false;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtNewPass
             // 
@@ -180,6 +184,7 @@
             this.btnVerify.TabIndex = 23;
             this.btnVerify.Text = "Verify Email";
             this.btnVerify.UseTransparentBackground = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
             // txtCodeEmail
             // 
@@ -232,6 +237,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(292, 40);
             this.txtEmail.TabIndex = 21;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // btnCreateAccount
             // 
@@ -269,11 +275,35 @@
             this.labelForgorpassword.TabIndex = 25;
             this.labelForgorpassword.Text = "Forgot Password";
             // 
+            // control_Minimize
+            // 
+            this.control_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.control_Minimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Minimize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Minimize.Location = new System.Drawing.Point(1081, 12);
+            this.control_Minimize.Name = "control_Minimize";
+            this.control_Minimize.Size = new System.Drawing.Size(35, 30);
+            this.control_Minimize.TabIndex = 27;
+            // 
+            // control_Close
+            // 
+            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Close.Location = new System.Drawing.Point(1122, 12);
+            this.control_Close.Name = "control_Close";
+            this.control_Close.Size = new System.Drawing.Size(35, 30);
+            this.control_Close.TabIndex = 26;
+            this.control_Close.Click += new System.EventHandler(this.control_Close_Click);
+            // 
             // forgopassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.control_Minimize);
+            this.Controls.Add(this.control_Close);
             this.Controls.Add(this.labelForgorpassword);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.btnVerify);
@@ -308,5 +338,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2Button btnCreateAccount;
         private System.Windows.Forms.Label labelForgorpassword;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Close;
     }
 }
