@@ -105,6 +105,7 @@
             this.txtCreatePass.SelectedText = "";
             this.txtCreatePass.Size = new System.Drawing.Size(292, 40);
             this.txtCreatePass.TabIndex = 5;
+            this.txtCreatePass.TextChanged += new System.EventHandler(this.txtCreatePass_TextChanged);
             // 
             // txtUsername
             // 
@@ -157,6 +158,7 @@
             this.txtConfirmPass.SelectedText = "";
             this.txtConfirmPass.Size = new System.Drawing.Size(292, 40);
             this.txtConfirmPass.TabIndex = 6;
+            this.txtConfirmPass.TextChanged += new System.EventHandler(this.txtConfirmPass_TextChanged);
             // 
             // txtEmail
             // 

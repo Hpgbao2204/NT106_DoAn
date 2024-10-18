@@ -226,6 +226,61 @@ namespace DangKi_DangNhap
             byte[] imageBytes = File.ReadAllBytes(imagePath);
             return Convert.ToBase64String(imageBytes);
         }
+        private string newPassword = string.Empty;
 
+        private void txtCreatePass_TextChanged(object sender, EventArgs e)
+        {
+            // Check if the user pressed the Backspace key
+            if (Control.ModifierKeys == Keys.None & txtCreatePass.Text.Length < newPassword.Length)
+            {
+                // Remove the last character from newPassword if Backspace is pressed
+                newPassword = newPassword.Substring(0, newPassword.Length - 1);
+            }
+            else
+            {
+                // Otherwise, add the last entered character to newPassword
+                string newChar = txtCreatePass.Text.Length > newPassword.Length
+                                 ? txtCreatePass.Text.Substring(txtCreatePass.Text.Length - 1)
+                                 : string.Empty;
+
+                // Append the new character to newPassword
+                newPassword += newChar;
+            }
+
+            // Mask the TextBox input with asterisks
+            txtCreatePass.Text = new string('*', newPassword.Length);
+
+            // Set the cursor to the end of the TextBox
+            txtCreatePass.SelectionStart = txtCreatePass.Text.Length;
+
+        }
+        private string confirmPass = string.Empty;
+
+        private void txtConfirmPass_TextChanged(object sender, EventArgs e)
+        {
+            /// Check if the user pressed the Backspace key
+            if (txtConfirmPass.Text.Length < confirmPass.Length)
+            {
+                // Remove the last character from confirmPass if Backspace is pressed
+                confirmPass = confirmPass.Substring(0, confirmPass.Length - 1);
+            }
+            else
+            {
+                // Otherwise, add the last entered character to confirmPass
+                string newChar = txtConfirmPass.Text.Length > confirmPass.Length
+                                 ? txtConfirmPass.Text.Substring(txtConfirmPass.Text.Length - 1)
+                                 : string.Empty;
+
+                // Append the new character to confirmPass
+                confirmPass += newChar;
+            }
+
+            // Mask the TextBox input with asterisks
+            txtConfirmPass.Text = new string('*', confirmPass.Length);
+
+            // Set the cursor to the end of the TextBox
+            txtConfirmPass.SelectionStart = txtConfirmPass.Text.Length;
+
+        }
     }
 }
