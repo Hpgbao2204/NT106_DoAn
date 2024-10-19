@@ -33,6 +33,120 @@ namespace DangKi_DangNhap
 
         IFirebaseClient client;
 
+        private void LoadGifToPass()
+        {
+            if (!pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_pass.InvokeRequired)
+                    {
+                        ptb_eye_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_pass.InvokeRequired)
+                    {
+                        ptb_eye_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void LoadGifToConfirmPass()
+        {
+            if (!confirm__pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_confirm_pass.InvokeRequired)
+                    {
+                        ptb_eye_confirm_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_confirm_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_confirm_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_confirm_pass.InvokeRequired)
+                    {
+                        ptb_eye_confirm_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_confirm_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_confirm_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void signup_Load(object sender, EventArgs e)
         {
             // Giấu đi thành phần picture box (hiển thị avatar của người dùng) cho tới khi người dùng chọn ảnh thì hiện lên cùng với ảnh mà người dùng chọn
@@ -41,6 +155,16 @@ namespace DangKi_DangNhap
             // Khi form tải, đặt PasswordChar cho TextBox để hiện dấu hoa thị thay cho ký tự
             txtCreatePass.PasswordChar = '*';
             txtConfirmPass.PasswordChar = '*';
+
+            Task.Run(() =>
+            {
+                LoadGifToPass();
+            });
+
+            Task.Run(() =>
+            {
+                LoadGifToConfirmPass();
+            });
 
             try
             {
@@ -246,61 +370,46 @@ namespace DangKi_DangNhap
             byte[] imageBytes = File.ReadAllBytes(imagePath);
             return Convert.ToBase64String(imageBytes);
         }
-        private string newPassword = string.Empty;
 
-        private void txtCreatePass_TextChanged(object sender, EventArgs e)
+        private bool pass_show = false;
+        private bool confirm__pass_show = false;
+        private void ptb_eye_pass_Click(object sender, EventArgs e)
         {
-            // Check if the user pressed the Backspace key
-            if (Control.ModifierKeys == Keys.None & txtCreatePass.Text.Length < newPassword.Length)
+            pass_show = !pass_show;
+            Task.Run(() =>
             {
-                // Remove the last character from newPassword if Backspace is pressed
-                newPassword = newPassword.Substring(0, newPassword.Length - 1);
-            }
-            else
+                LoadGifToPass();
+            });
+
+            if (pass_show)
             {
-                // Otherwise, add the last entered character to newPassword
-                string newChar = txtCreatePass.Text.Length > newPassword.Length
-                                 ? txtCreatePass.Text.Substring(txtCreatePass.Text.Length - 1)
-                                 : string.Empty;
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtCreatePass.PasswordChar = '\0';
+            } else
+            {
+                txtCreatePass.PasswordChar = '*';
 
-                // Append the new character to newPassword
-                newPassword += newChar;
             }
-
-            // Mask the TextBox input with asterisks
-            txtCreatePass.Text = new string('*', newPassword.Length);
-
-            // Set the cursor to the end of the TextBox
-            txtCreatePass.SelectionStart = txtCreatePass.Text.Length;
-
         }
-        private string confirmPass = string.Empty;
 
-        private void txtConfirmPass_TextChanged(object sender, EventArgs e)
+        private void ptb_eye_confirm_pass_Click(object sender, EventArgs e)
         {
-            /// Check if the user pressed the Backspace key
-            if (txtConfirmPass.Text.Length < confirmPass.Length)
+            confirm__pass_show = !confirm__pass_show;
+
+            Task.Run(() =>
             {
-                // Remove the last character from confirmPass if Backspace is pressed
-                confirmPass = confirmPass.Substring(0, confirmPass.Length - 1);
+                LoadGifToConfirmPass();
+            });
+
+            if (confirm__pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtConfirmPass.PasswordChar = '\0';
             }
             else
             {
-                // Otherwise, add the last entered character to confirmPass
-                string newChar = txtConfirmPass.Text.Length > confirmPass.Length
-                                 ? txtConfirmPass.Text.Substring(txtConfirmPass.Text.Length - 1)
-                                 : string.Empty;
-
-                // Append the new character to confirmPass
-                confirmPass += newChar;
+                txtConfirmPass.PasswordChar = '*';
             }
-
-            // Mask the TextBox input with asterisks
-            txtConfirmPass.Text = new string('*', confirmPass.Length);
-
-            // Set the cursor to the end of the TextBox
-            txtConfirmPass.SelectionStart = txtConfirmPass.Text.Length;
-
         }
     }
 }
