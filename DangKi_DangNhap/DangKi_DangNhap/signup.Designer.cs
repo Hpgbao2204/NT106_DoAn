@@ -48,9 +48,13 @@
             this.labelSignup = new System.Windows.Forms.Label();
             this.date_time_picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.ptb_avatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.ptb_eye_pass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.ptb_eye_confirm_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_pass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_confirm_pass)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -107,7 +111,6 @@
             this.txtCreatePass.SelectedText = "";
             this.txtCreatePass.Size = new System.Drawing.Size(292, 40);
             this.txtCreatePass.TabIndex = 5;
-            this.txtCreatePass.TextChanged += new System.EventHandler(this.txtCreatePass_TextChanged);
             // 
             // txtUsername
             // 
@@ -160,7 +163,6 @@
             this.txtConfirmPass.SelectedText = "";
             this.txtConfirmPass.Size = new System.Drawing.Size(292, 40);
             this.txtConfirmPass.TabIndex = 6;
-            this.txtConfirmPass.TextChanged += new System.EventHandler(this.txtConfirmPass_TextChanged);
             // 
             // txtEmail
             // 
@@ -360,11 +362,41 @@
             this.ptb_avatar.TabStop = false;
             this.ptb_avatar.UseTransparentBackground = true;
             // 
+            // ptb_eye_pass
+            // 
+            this.ptb_eye_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_pass.ImageRotate = 0F;
+            this.ptb_eye_pass.Location = new System.Drawing.Point(302, 299);
+            this.ptb_eye_pass.Name = "ptb_eye_pass";
+            this.ptb_eye_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_pass.TabIndex = 26;
+            this.ptb_eye_pass.TabStop = false;
+            this.ptb_eye_pass.UseTransparentBackground = true;
+            this.ptb_eye_pass.Click += new System.EventHandler(this.ptb_eye_pass_Click);
+            // 
+            // ptb_eye_confirm_pass
+            // 
+            this.ptb_eye_confirm_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_confirm_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_confirm_pass.ImageRotate = 0F;
+            this.ptb_eye_confirm_pass.Location = new System.Drawing.Point(302, 357);
+            this.ptb_eye_confirm_pass.Name = "ptb_eye_confirm_pass";
+            this.ptb_eye_confirm_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_confirm_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_confirm_pass.TabIndex = 27;
+            this.ptb_eye_confirm_pass.TabStop = false;
+            this.ptb_eye_confirm_pass.UseTransparentBackground = true;
+            this.ptb_eye_confirm_pass.Click += new System.EventHandler(this.ptb_eye_confirm_pass_Click);
+            // 
             // signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_eye_confirm_pass);
+            this.Controls.Add(this.ptb_eye_pass);
             this.Controls.Add(this.ptb_avatar);
             this.Controls.Add(this.date_time_picker);
             this.Controls.Add(this.labelSignup);
@@ -388,6 +420,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_pass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_confirm_pass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +447,7 @@
         private System.Windows.Forms.Label labelSignup;
         private Guna.UI2.WinForms.Guna2DateTimePicker date_time_picker;
         private Guna.UI2.WinForms.Guna2CirclePictureBox ptb_avatar;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_pass;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_confirm_pass;
     }
 }
