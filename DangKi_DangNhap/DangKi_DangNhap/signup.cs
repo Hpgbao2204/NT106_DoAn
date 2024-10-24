@@ -17,6 +17,8 @@ using FireSharp;
 using System.Collections.Concurrent;
 using System.Net;
 using System.Threading;
+using static DangKi_DangNhap.signup.AccountValidator;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
 namespace DangKi_DangNhap
@@ -211,6 +213,28 @@ namespace DangKi_DangNhap
                 if (!txtEmail.Text.EndsWith("@gm.uit.edu.vn"))
                 {
                     MessageBox.Show("Email must end with '@gm.uit.edu.vn'.", "Input Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Kiểm tra email tồn tại
+                try
+                {
+                    var email = txtEmail.Text; // Lấy email từ TextBox
+                    var checkEmailResponse = await client.GetAsync($"Users?orderBy=\"email\"&equalTo=\"{email}\"");
+
+                    if (checkEmailResponse?.Body != "null")
+                    {
+                        // Email đã tồn tại
+                        MessageBox.Show("This email has already been registered! Please consider choosing a different one.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return; // Ngừng xử lý
+                    }
+                }
+                catch
+                {
+                    // Trường hợp không thể kiểm tra email (lỗi kết nối chẳng hạn)
+                    MessageBox.Show("Unable to verify email availability. Please try again later.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -420,7 +444,7 @@ namespace DangKi_DangNhap
             }
         }
 
-            // Sử dụng trong button click event
+        // Sử dụng trong button click event
         private async void btnCreateAccount_Click(object sender, EventArgs e)
         {
             try
