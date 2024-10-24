@@ -50,6 +50,9 @@
             this.ptb_avatar = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.ptb_eye_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             this.ptb_eye_confirm_pass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.lbl_create_acc_status = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
@@ -288,7 +291,7 @@
             this.btnCreateAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateAccount.Image")));
             this.btnCreateAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnCreateAccount.ImageOffset = new System.Drawing.Point(5, 0);
-            this.btnCreateAccount.Location = new System.Drawing.Point(91, 657);
+            this.btnCreateAccount.Location = new System.Drawing.Point(89, 657);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(188, 59);
             this.btnCreateAccount.TabIndex = 20;
@@ -390,11 +393,46 @@
             this.ptb_eye_confirm_pass.UseTransparentBackground = true;
             this.ptb_eye_confirm_pass.Click += new System.EventHandler(this.ptb_eye_confirm_pass_Click);
             // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(274, 183);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(3, 2);
+            this.guna2HtmlLabel1.TabIndex = 28;
+            // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(245)))), ((int)(((byte)(232)))));
+            this.lbl_status.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status.Location = new System.Drawing.Point(40, 600);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(38, 13);
+            this.lbl_status.TabIndex = 29;
+            this.lbl_status.Text = "Status";
+            // 
+            // lbl_create_acc_status
+            // 
+            this.lbl_create_acc_status.AutoSize = true;
+            this.lbl_create_acc_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(245)))), ((int)(((byte)(232)))));
+            this.lbl_create_acc_status.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_create_acc_status.Location = new System.Drawing.Point(29, 679);
+            this.lbl_create_acc_status.Name = "lbl_create_acc_status";
+            this.lbl_create_acc_status.Size = new System.Drawing.Size(137, 17);
+            this.lbl_create_acc_status.TabIndex = 30;
+            this.lbl_create_acc_status.Text = "Create account status";
+            // 
             // signup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.btnCreateAccount);
+            this.Controls.Add(this.lbl_create_acc_status);
+            this.Controls.Add(this.btnVerify);
+            this.Controls.Add(this.lbl_status);
+            this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.ptb_eye_confirm_pass);
             this.Controls.Add(this.ptb_eye_pass);
             this.Controls.Add(this.ptb_avatar);
@@ -402,8 +440,6 @@
             this.Controls.Add(this.labelSignup);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
-            this.Controls.Add(this.btnCreateAccount);
-            this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.btnAvatar);
             this.Controls.Add(this.txtCodeEmail);
             this.Controls.Add(this.label_avatar);
@@ -449,5 +485,8 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox ptb_avatar;
         private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_pass;
         private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_confirm_pass;
+        private System.Windows.Forms.Label lbl_status;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private System.Windows.Forms.Label lbl_create_acc_status;
     }
 }

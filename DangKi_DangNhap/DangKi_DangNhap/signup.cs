@@ -13,6 +13,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using FireSharp;
+using System.Collections.Concurrent;
+using System.Net;
+using System.Threading;
 
 
 namespace DangKi_DangNhap
@@ -152,6 +156,12 @@ namespace DangKi_DangNhap
             // Giấu đi thành phần picture box (hiển thị avatar của người dùng) cho tới khi người dùng chọn ảnh thì hiện lên cùng với ảnh mà người dùng chọn
             ptb_avatar.Hide();
 
+            // Ẩn đi dòng hiển thị trạng gửi mail có mã xác nhận
+            lbl_status.Visible = false;
+
+            // Ẩn đi dòng hiển thị trạng gửi mail có mã xác nhận
+            lbl_create_acc_status.Visible = false;
+
             // Khi form tải, đặt PasswordChar cho TextBox để hiện dấu hoa thị thay cho ký tự
             txtCreatePass.PasswordChar = '*';
             txtConfirmPass.PasswordChar = '*';
@@ -182,149 +192,299 @@ namespace DangKi_DangNhap
 
         // Khai báo biến cục bộ
         private string verificationCode;
-
         private async void btnVerify_Click(object sender, EventArgs e)
         {
             verificationCode = "";
             try
             {
-                // Kiểm tra xem email có được nhập không
+                btnVerify.Enabled = false;
+                btnVerify.Visible = false;
+
+                // Kiểm tra xem đã nhập trường Email hay chưa
                 if (string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
-                    MessageBox.Show("Please enter an email address.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Please enter an email address.", "Input Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Tạo mã xác nhận ngẫu nhiên gồm 4 chữ số
+                if (!txtEmail.Text.EndsWith("@gm.uit.edu.vn"))
+                {
+                    MessageBox.Show("Email must end with '@gm.uit.edu.vn'.", "Input Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Hiển thị thông báo đang gửi
+                lbl_status.Text = "Sending verification code...";
+                lbl_status.Visible = true;
+
+                // Tạo mã xác nhận
                 Random random = new Random();
-                verificationCode = random.Next(1000, 9999).ToString(); // Gán mã ngẫu nhiên cho biến cục bộ
+                verificationCode = random.Next(1000, 9999).ToString();
 
-                // Gọi phương thức gửi email bất đồng bộ
-                await SendVerificationEmailAsync(txtEmail.Text, verificationCode);
+                try
+                {
+                    await SendVerificationEmailAsync(txtEmail.Text, verificationCode);
 
-                // Thông báo khi email được gửi thành công
-                MessageBox.Show("The verification code has been sent to your email.", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Chỉ hiển thị thông báo thành công khi thực sự gửi được
+                    MessageBox.Show("The verification code has been sent to your email.",
+                        "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //lbl_status.Text = "Code sent successfully!";
+                }
+                catch (SmtpFailedRecipientException ex) when (ex.Message.Contains("5.1.1")) //Mã lỗi "5.1.1" là một mã trạng thái SMTP có nghĩa là
+                                                                                            //"Recipient address rejected: User unknown in virtual mailbox table".
+                                                                                            //Điều này thường xảy ra khi địa chỉ email người nhận không hợp lệ hoặc
+                                                                                            //không tồn tại.
+                {
+                    // Mail không tồn tại
+                    MessageBox.Show("The email address you entered appears to be invalid. Please check and try again.",
+                        "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lbl_status.Text = "Invalid email address";
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occurred: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbl_status.Text = "Sending failed";
+            }
+            finally
+            {
+                btnVerify.Enabled = true;
+                btnVerify.Visible = true;
+
+                lbl_status.Visible = false;
             }
         }
 
-        private async Task SendVerificationEmailAsync(string emailAddress, string verificationCode)
+        private async Task SendVerificationEmailAsync(string recipientEmailAddress, string verificationCode)
         {
-            try
+            var mailMessage = new MailMessage
             {
-                // Cấu hình thông tin email để gửi
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress("thomasspielberg5@gmail.com"); // Địa chỉ email của bạn
-                mail.To.Add(emailAddress); // Địa chỉ email người nhận
-                mail.Subject = "Your verification code";
-                mail.Body = $"Your verification code is: {verificationCode}";
+                From = new MailAddress("thomasspielberg5@gmail.com"),
+                Subject = "Your verification code",
+                Body = $@"
+                <html>
+                    <body>
+                        <h2>Verification Code</h2>
+                            <p>Your verification code is: <strong>{verificationCode}</strong></p>
+                            <p>If you didn't request this code, please ignore this email.</p>
+                    </body>
+                </html>",
+                IsBodyHtml = true
+            };
+            mailMessage.To.Add(recipientEmailAddress);
 
-                // Sử dụng SmtpClient để gửi email
-                SmtpClient smtpServer = new SmtpClient("smtp.gmail.com"); // SMTP server của bạn, ví dụ Gmail
-                smtpServer.Port = 587; // Cổng mặc định cho SMTP
-                smtpServer.Credentials = new System.Net.NetworkCredential("thomasspielberg5@gmail.com", "ekhs wtxd lvhk upfo"); // Thông tin xác thực
-                smtpServer.EnableSsl = true; // Kích hoạt SSL
+            var smtpServer = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("thomasspielberg5@gmail.com", "ekhs wtxd lvhk upfo"),
+                EnableSsl = true
+            };
 
-                // Sử dụng async để gửi email bất đồng bộ
-                await smtpServer.SendMailAsync(mail); // Gửi email
+            // Gửi email với timeout
+            await smtpServer.SendMailAsync(mailMessage);
+        }
+
+        public class AccountValidator
+        {
+            // Định nghĩa các mã lỗi validation
+            public enum ValidationError
+            {
+                None,
+                EmptyFields,
+                InvalidVerificationCode,
+                PasswordMismatch,
+                MissingProfilePicture,
+                InvalidImage,
+                UsernameTaken,
+                PasswordTooShort
             }
-            catch (Exception ex)
+
+            // Class chứa kết quả validation
+            public class ValidationResult
             {
-                MessageBox.Show("An error occurred while sending the email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                public bool IsValid { get; set; }
+                public ValidationError Error { get; set; }
+                public string Message { get; set; }
+            }
+
+            private readonly IFirebaseClient _client;
+
+            public AccountValidator(IFirebaseClient client)
+            {
+                _client = client;
+            }
+
+            // Phương thức validation chính
+            public async Task<ValidationResult> ValidateAccountCreation(
+                string username,
+                string password,
+                string confirmPassword,
+                string email,
+                string verificationCode,
+                string actualVerificationCode,
+                string base64Image,
+                bool hasChosenPicture)
+            {
+                // Sử dụng cache để tránh validate lại các giá trị không đổi
+                var cachedValidations = new ConcurrentDictionary<string, bool>();
+
+                // Kiểm tra fields trống
+                if (!cachedValidations.GetOrAdd("fieldsNotEmpty", _ =>
+                    !string.IsNullOrWhiteSpace(username) &&
+                    !string.IsNullOrWhiteSpace(password) &&
+                    !string.IsNullOrWhiteSpace(confirmPassword) &&
+                    !string.IsNullOrWhiteSpace(email) &&
+                    !string.IsNullOrWhiteSpace(verificationCode)))
+                {
+                    return new ValidationResult
+                    {
+                        IsValid = false,
+                        Error = ValidationError.EmptyFields,
+                        Message = "Please fill out all the fields."
+                    };
+                }
+
+                // Kiểm tra mã xác thực
+                if (verificationCode != actualVerificationCode)
+                {
+                    return new ValidationResult
+                    {
+                        IsValid = false,
+                        Error = ValidationError.InvalidVerificationCode,
+                        Message = "Verification code is incorrect."
+                    };
+                }
+
+                // Kiểm tra password match
+                if (!cachedValidations.GetOrAdd("passwordsMatch", _ =>
+                    password == confirmPassword))
+                {
+                    return new ValidationResult
+                    {
+                        IsValid = false,
+                        Error = ValidationError.PasswordMismatch,
+                        Message = "Passwords do not match."
+                    };
+                }
+
+                // Kiểm tra mật khẩu có ít nhất 8 ký tự
+                if (!cachedValidations.GetOrAdd("passwordLength", _ =>
+                    password.Length >= 8))
+                {
+                    return new ValidationResult
+                    {
+                        IsValid = false,
+                        Error = ValidationError.PasswordTooShort,
+                        Message = "Password must be at least 8 characters long."
+                    };
+                }
+
+                // Kiểm tra ảnh đại diện
+                if (!hasChosenPicture || string.IsNullOrEmpty(base64Image))
+                {
+                    return new ValidationResult
+                    {
+                        IsValid = false,
+                        Error = ValidationError.MissingProfilePicture,
+                        Message = "Please choose a profile picture."
+                    };
+                }
+
+                // Kiểm tra username tồn tại - thao tác async duy nhất
+                try
+                {
+                    var checkResponse = await _client.GetAsync($"Users/{username}");
+                    if (checkResponse?.Body != "null")
+                    {
+                        return new ValidationResult
+                        {
+                            IsValid = false,
+                            Error = ValidationError.UsernameTaken,
+                            Message = "Username already exists."
+                        };
+                    }
+                }
+                catch
+                {
+                    throw new Exception("Unable to verify username availability.");
+                }
+
+                return new ValidationResult
+                {
+                    IsValid = true,
+                    Error = ValidationError.None
+                };
             }
         }
 
+            // Sử dụng trong button click event
         private async void btnCreateAccount_Click(object sender, EventArgs e)
         {
             try
             {
-                // Kiểm tra các trường nhập liệu có được điền đầy đủ không
-                if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                    string.IsNullOrWhiteSpace(txtCreatePass.Text) ||
-                    string.IsNullOrWhiteSpace(txtConfirmPass.Text) ||
-                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                    string.IsNullOrWhiteSpace(txtCodeEmail.Text))
+                btnCreateAccount.Enabled = false; // vô hiệu nút này để tránh việc người dùng spam
+
+                var validator = new AccountValidator(client);
+                var validationResult = await validator.ValidateAccountCreation(
+                    txtUsername.Text,
+                    txtCreatePass.Text,
+                    txtConfirmPass.Text,
+                    txtEmail.Text,
+                    txtCodeEmail.Text,
+                    verificationCode,
+                    selectedbase64ConvertedFromImage,
+                    choosePicture
+                );
+
+                if (!validationResult.IsValid)
                 {
-                    MessageBox.Show("Please fill out all the fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(validationResult.Message, "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Kiểm tra mã xác nhận người dùng nhập có khớp với mã đã gửi không
-                if (txtCodeEmail.Text != verificationCode)
-                {
-                    MessageBox.Show("Verification code is incorrect. Please check your email and try again.", "Verification Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                // Tiến hành tạo tài khoản khi validation passed
+                btnCreateAccount.Visible = false; // ẩn nút tạo tài khoản để hiện lên trạng thái
 
-                // Kiểm tra mật khẩu và xác nhận mật khẩu có khớp không
-                if (txtCreatePass.Text != txtConfirmPass.Text)
-                {
-                    MessageBox.Show("Password and confirmation password do not match.", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                lbl_create_acc_status.Text = "Please wait a moment, we are processing your request...";
+                lbl_create_acc_status.Visible = true;
 
-                // Kiểm tra xem người dùng đã chọn ảnh Đại diện hay chưa
-                if (!choosePicture)
-                {
-                    MessageBox.Show("Please choose a profile picture before proceeding.", "Image Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; 
-                }
+                var hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtCreatePass.Text);
+                var birthday = date_time_picker.Value.ToString("yyyy-MM-dd");
 
-                // Mã hóa mật khẩu bằng BCrypt
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtCreatePass.Text);
-
-                // Lấy ngày sinh từ DateTimePicker
-                string birthday = date_time_picker.Value.ToString("yyyy-MM-dd"); // Chọn định dạng ngày tháng phù hợp
-
-                // Kiểm tra xem tên đăng nhập đã tồn tại trong Firebase hay chưa
-                FirebaseResponse checkResponse = await client.GetAsync("Users/" + txtUsername.Text);
-                if (checkResponse == null)
-                {
-                    MessageBox.Show("Unable to retrieve data from Firebase.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Nếu tên đăng nhập đã tồn tại
-                if (checkResponse.Body != "null")
-                {
-                    MessageBox.Show("Username already exists. Please choose a different username.", "Username Conflict", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    ClearInputFields();
-                    return;
-                }
-
-                // Kiểm tra nếu người dùng đã chọn ảnh
-                if (string.IsNullOrEmpty(selectedbase64ConvertedFromImage))
-                {
-                    MessageBox.Show("Please select an image to upload.", "Image Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Tạo đối tượng User để thêm vào Firebase
                 var newUser = new Users
                 {
                     Username = txtUsername.Text,
-                    Password = hashedPassword, // Lưu mật khẩu đã mã hóa
+                    Password = hashedPassword,
                     Email = txtEmail.Text,
                     Birthday = birthday,
                     Image = selectedbase64ConvertedFromImage
                 };
 
-                // Gửi yêu cầu lên Firebase và nhận phản hồi
-                SetResponse setResponse = await client.SetAsync("Users/" + txtUsername.Text, newUser);
-                Users result = setResponse.ResultAs<Users>();
+                var setResponse = await client.SetAsync($"Users/{txtUsername.Text}", newUser);
+                var result = setResponse.ResultAs<Users>();
 
-                // Thông báo khi người dùng mới đã được đăng ký thành công
-                MessageBox.Show("User with username: " + result.Username + " has been successfully registered!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"User with username: {result.Username} has been successfully registered!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Xóa các trường nhập liệu sau khi thành công
                 ClearInputFields();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // kích hoạt và hiện lại nút tạo tài khoản
+                btnCreateAccount.Enabled = true;
+                btnCreateAccount.Visible = true;
+
+                // Khi tạo xong rồi thì ẩn đi dòng trạng thái
+                lbl_create_acc_status.Visible = false;
             }
         }
 
