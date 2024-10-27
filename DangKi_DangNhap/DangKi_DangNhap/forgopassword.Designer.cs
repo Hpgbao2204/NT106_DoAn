@@ -44,6 +44,7 @@
             this.labelForgorpassword = new System.Windows.Forms.Label();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.errorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +108,6 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 5;
-            this.txtUsername.Visible = false;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtNewPass
@@ -211,6 +211,7 @@
             this.txtCodeEmail.SelectedText = "";
             this.txtCodeEmail.Size = new System.Drawing.Size(149, 40);
             this.txtCodeEmail.TabIndex = 22;
+            this.txtCodeEmail.TextChanged += new System.EventHandler(this.txtCodeEmail_TextChanged);
             // 
             // txtEmail
             // 
@@ -262,6 +263,7 @@
             this.btnCreateAccount.TabIndex = 24;
             this.btnCreateAccount.Text = "Confirm";
             this.btnCreateAccount.UseTransparentBackground = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnCreateAccount_Click);
             // 
             // labelForgorpassword
             // 
@@ -297,11 +299,22 @@
             this.control_Close.TabIndex = 26;
             this.control_Close.Click += new System.EventHandler(this.control_Close_Click);
             // 
+            // errorLabel
+            // 
+            this.errorLabel.AutoSize = true;
+            this.errorLabel.Location = new System.Drawing.Point(40, 517);
+            this.errorLabel.Name = "errorLabel";
+            this.errorLabel.Size = new System.Drawing.Size(54, 13);
+            this.errorLabel.TabIndex = 28;
+            this.errorLabel.Text = "errorLabel";
+            this.errorLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
             // forgopassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
             this.Controls.Add(this.labelForgorpassword);
@@ -340,5 +353,6 @@
         private System.Windows.Forms.Label labelForgorpassword;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
+        private System.Windows.Forms.Label errorLabel;
     }
 }

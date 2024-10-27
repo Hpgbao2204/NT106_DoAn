@@ -44,8 +44,10 @@
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelLogin = new System.Windows.Forms.Label();
+            this.ptb_eye_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_pass)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -152,6 +154,7 @@
             this.toggleSwitch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(195)))));
             this.toggleSwitch.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
             this.toggleSwitch.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.toggleSwitch.CheckedChanged += new System.EventHandler(this.toggleSwitch_CheckedChanged);
             // 
             // label1
             // 
@@ -255,11 +258,26 @@
             this.labelLogin.TabIndex = 10;
             this.labelLogin.Text = "Login";
             // 
+            // ptb_eye_pass
+            // 
+            this.ptb_eye_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_pass.ImageRotate = 0F;
+            this.ptb_eye_pass.Location = new System.Drawing.Point(314, 299);
+            this.ptb_eye_pass.Name = "ptb_eye_pass";
+            this.ptb_eye_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_pass.TabIndex = 27;
+            this.ptb_eye_pass.TabStop = false;
+            this.ptb_eye_pass.UseTransparentBackground = true;
+            this.ptb_eye_pass.Click += new System.EventHandler(this.ptb_eye_pass_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_eye_pass);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
@@ -277,6 +295,7 @@
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_pass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +317,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private System.Windows.Forms.Label labelLogin;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_pass;
     }
 }

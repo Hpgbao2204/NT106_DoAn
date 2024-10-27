@@ -103,7 +103,7 @@ namespace DangKi_DangNhap
 
             // Retrieve user data from Firebase
             FirebaseResponse response = client.Get("Users/" + username);
-            User user = response.ResultAs<User>(); // Deserialize the data to User object
+            Users user = response.ResultAs<Users>(); // Deserialize the data to User object
 
             if (user == null)
             {
@@ -123,11 +123,11 @@ namespace DangKi_DangNhap
                 MessageBox.Show("Mật khẩu không đúng.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public class User
+    /*    public class User
         {
             public string Username { get; set; }
             public string Password { get; set; }
-        }
+        }*/
 
         private void control_Close_Click(object sender, EventArgs e)
         {
@@ -137,6 +137,31 @@ namespace DangKi_DangNhap
         private void control_Minimize_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ptb_eye_pass_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggleSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (toggleSwitch.Checked)
+            {
+                // Nếu công tắc bật, lưu tên người dùng và mật khẩu vào cài đặt
+                Properties.Settings.Default.Username = txtUsername.Text;
+                Properties.Settings.Default.Password = originalPassword; // Lưu mật khẩu gốc mà không bị che
+                Properties.Settings.Default.RememberMe = true; // Đánh dấu Remember Me là true
+                Properties.Settings.Default.Save(); // Lưu cài đặt
+            }
+            else
+            {
+                // Nếu công tắc tắt, xóa tên người dùng và mật khẩu đã lưu
+                Properties.Settings.Default.Username = string.Empty;
+                Properties.Settings.Default.Password = string.Empty;
+                Properties.Settings.Default.RememberMe = false; // Đánh dấu Remember Me là false
+                Properties.Settings.Default.Save(); // Lưu cài đặt
+            }
         }
     }
 }
