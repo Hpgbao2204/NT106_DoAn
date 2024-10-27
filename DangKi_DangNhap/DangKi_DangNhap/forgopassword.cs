@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -16,62 +17,6 @@ namespace DangKi_DangNhap
         public forgopassword()
         {
             InitializeComponent();
-        }
-        private string confirmPassword = string.Empty;
-        
-        private void txtConfirmPass_TextChanged(object sender, EventArgs e)
-        {
-            // Check if the user pressed the Backspace key
-            if (Control.ModifierKeys == Keys.None && txtRePass.Text.Length < confirmPassword.Length)
-            {
-                // Remove the last character from the confirmPassword if Backspace is pressed
-                confirmPassword = confirmPassword.Substring(0, confirmPassword.Length - 1);
-            }
-            else
-            {
-                // Otherwise, add the last entered character to confirmPassword
-                string newChar = txtRePass.Text.Length > confirmPassword.Length
-                                 ? txtRePass.Text.Substring(txtRePass.Text.Length - 1)
-                                 : string.Empty;
-
-                // Append the new character to the confirmPassword
-                confirmPassword += newChar;
-            }
-
-            // Mask the TextBox input with asterisks
-            txtRePass.Text = new string('*', confirmPassword.Length);
-
-            // Set the cursor to the end of the TextBox
-            txtRePass.SelectionStart = txtRePass.Text.Length;
-
-        }
-        private string newPassword = string.Empty;
-
-        private void txtNewPass_TextChanged(object sender, EventArgs e)
-        {
-            // Check if the user pressed the Backspace key
-            if (Control.ModifierKeys == Keys.None && txtNewPass.Text.Length < newPassword.Length)
-            {
-                // Remove the last character from newPassword if Backspace is pressed
-                newPassword = newPassword.Substring(0, newPassword.Length - 1);
-            }
-            else
-            {
-                // Otherwise, add the last entered character to newPassword
-                string newChar = txtNewPass.Text.Length > newPassword.Length
-                                 ? txtNewPass.Text.Substring(txtNewPass.Text.Length - 1)
-                                 : string.Empty;
-
-                // Append the new character to newPassword
-                newPassword += newChar;
-            }
-
-            // Mask the TextBox input with asterisks
-            txtNewPass.Text = new string('*', newPassword.Length);
-
-            // Set the cursor to the end of the TextBox
-            txtNewPass.SelectionStart = txtNewPass.Text.Length;
-
         }
 
         private void control_Close_Click(object sender, EventArgs e)
@@ -154,6 +99,181 @@ namespace DangKi_DangNhap
             {
                 MessageBox.Show("An error occurred while sending the email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadGifToNewPass()
+        {
+            if (!pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void LoadGifToRePass()
+        {
+            if (!confirm__pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_re_pass.InvokeRequired)
+                    {
+                        ptb_eye_re_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_re_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_re_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_re_pass.InvokeRequired)
+                    {
+                        ptb_eye_re_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_re_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_re_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private bool pass_show = false;
+        private bool confirm__pass_show = false;
+        private void ptb_eye_new_pass_Click(object sender, EventArgs e)
+        {
+            pass_show = !pass_show;
+            Task.Run(() =>
+            {
+                LoadGifToNewPass();
+            });
+
+            if (pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtNewPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtNewPass.PasswordChar = '*';
+
+            }
+        }
+
+        private void ptb_eye_confirm_re_pass_Click(object sender, EventArgs e)
+        {
+            confirm__pass_show = !confirm__pass_show;
+
+            Task.Run(() =>
+            {
+                LoadGifToRePass();
+            });
+
+            if (confirm__pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtRePass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtRePass.PasswordChar = '*';
+            }
+        }
+
+        private void forgopassword_Load(object sender, EventArgs e)
+        {
+            // Khi form tải, đặt PasswordChar cho TextBox để hiện dấu hoa thị thay cho ký tự
+            txtNewPass.PasswordChar= '*';
+            txtRePass.PasswordChar = '*';
+
+            Task.Run(() =>
+            {
+                LoadGifToNewPass();
+            });
+
+            Task.Run(() =>
+            {
+                LoadGifToRePass();
+            });
         }
     }
 }
