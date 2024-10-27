@@ -19,6 +19,7 @@ using System.Net;
 using System.Threading;
 using static DangKi_DangNhap.signup.AccountValidator;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Newtonsoft.Json;
 
 
 namespace DangKi_DangNhap
@@ -28,6 +29,7 @@ namespace DangKi_DangNhap
         public signup()
         {
             InitializeComponent();
+            InitializeFirebase();
         }
 
         IFirebaseConfig Config = new FirebaseConfig
@@ -38,6 +40,18 @@ namespace DangKi_DangNhap
         };
 
         IFirebaseClient client;
+
+        private void InitializeFirebase()
+        {
+            try
+            {
+                client = new FirebaseClient(Config);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to Firebase: " + ex.Message);
+            }
+        }
 
         private void LoadGifToPass()
         {
@@ -177,23 +191,38 @@ namespace DangKi_DangNhap
             {
                 LoadGifToConfirmPass();
             });
-
-            try
-            {
-                client = new FireSharp.FirebaseClient(Config);
-                if (client == null)
-                {
-                    MessageBox.Show("Can not connect to Server. Please re-check your configuration and Internet connection.", "Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error trying to connect to Firebase" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         // Khai báo biến cục bộ
         private string verificationCode;
+
+        // Phương thức kiểm tra email riêng
+        private async Task<bool> IsEmailExistsAsync(string email)
+        {
+            try
+            {
+                var response = await client.GetAsync("Users");
+                if (response == null || string.IsNullOrEmpty(response.Body))
+                {
+                    // Không có dữ liệu Users hoặc database trống
+                    return false;
+                }
+
+                var users = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, object>>>(response.Body);
+                if (users == null) return false;
+
+                return users.Values.Any(user =>
+                    user.ContainsKey("Email") &&
+                    user["Email"].ToString().Equals(email, StringComparison.OrdinalIgnoreCase));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking email: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         private async void btnVerify_Click(object sender, EventArgs e)
         {
             verificationCode = "";
@@ -202,14 +231,13 @@ namespace DangKi_DangNhap
                 btnVerify.Enabled = false;
                 btnVerify.Visible = false;
 
-                // Kiểm tra xem đã nhập trường Email hay chưa
+                // Kiểm tra email format
                 if (string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
                     MessageBox.Show("Please enter an email address.", "Input Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
                 if (!txtEmail.Text.EndsWith("@gm.uit.edu.vn"))
                 {
                     MessageBox.Show("Email must end with '@gm.uit.edu.vn'.", "Input Error",
@@ -218,23 +246,9 @@ namespace DangKi_DangNhap
                 }
 
                 // Kiểm tra email tồn tại
-                try
+                if (await IsEmailExistsAsync(txtEmail.Text))
                 {
-                    var email = txtEmail.Text; // Lấy email từ TextBox
-                    var checkEmailResponse = await client.GetAsync($"Users?orderBy=\"email\"&equalTo=\"{email}\"");
-
-                    if (checkEmailResponse?.Body != "null")
-                    {
-                        // Email đã tồn tại
-                        MessageBox.Show("This email has already been registered! Please consider choosing a different one.", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Ngừng xử lý
-                    }
-                }
-                catch
-                {
-                    // Trường hợp không thể kiểm tra email (lỗi kết nối chẳng hạn)
-                    MessageBox.Show("Unable to verify email availability. Please try again later.", "Error",
+                    MessageBox.Show("This email has already been registered!", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -250,16 +264,11 @@ namespace DangKi_DangNhap
                 try
                 {
                     await SendVerificationEmailAsync(txtEmail.Text, verificationCode);
-
                     // Chỉ hiển thị thông báo thành công khi thực sự gửi được
                     MessageBox.Show("The verification code has been sent to your email.",
                         "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //lbl_status.Text = "Code sent successfully!";
                 }
-                catch (SmtpFailedRecipientException ex) when (ex.Message.Contains("5.1.1")) //Mã lỗi "5.1.1" là một mã trạng thái SMTP có nghĩa là
-                                                                                            //"Recipient address rejected: User unknown in virtual mailbox table".
-                                                                                            //Điều này thường xảy ra khi địa chỉ email người nhận không hợp lệ hoặc
-                                                                                            //không tồn tại.
+                catch (SmtpFailedRecipientException ex) when (ex.Message.Contains("5.1.1"))
                 {
                     // Mail không tồn tại
                     MessageBox.Show("The email address you entered appears to be invalid. Please check and try again.",
@@ -277,7 +286,6 @@ namespace DangKi_DangNhap
             {
                 btnVerify.Enabled = true;
                 btnVerify.Visible = true;
-
                 lbl_status.Visible = false;
             }
         }

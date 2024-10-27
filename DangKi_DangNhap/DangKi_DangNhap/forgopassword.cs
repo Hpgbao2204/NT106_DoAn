@@ -4,6 +4,7 @@
     using System.Data;
     using System.Drawing;
     using System.Linq;
+    using System.IO;
     using System.Net.Mail;
     using System.Text;
     using System.Threading.Tasks;
@@ -164,16 +165,191 @@
                     smtpServer.Credentials = new System.Net.NetworkCredential("thomasspielberg5@gmail.com", "ekhs wtxd lvhk upfo"); // Thông tin xác thực
                     smtpServer.EnableSsl = true; // Kích hoạt SSL
 
-                    // Sử dụng async để gửi email bất đồng bộ
-                    await smtpServer.SendMailAsync(mail); // Gửi email
+                // Sử dụng async để gửi email bất đồng bộ
+                await smtpServer.SendMailAsync(mail); // Gửi email
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while sending the email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void LoadGifToNewPass()
+        {
+            if (!new_pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while sending the email: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
 
-            private async void btnCreateAccount_Click(object sender, EventArgs e)
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void LoadGifToRePass()
+        {
+            if (!re_pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_re_pass.InvokeRequired)
+                    {
+                        ptb_eye_re_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_re_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_re_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_re_pass.InvokeRequired)
+                    {
+                        ptb_eye_re_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_re_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_re_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private bool new_pass_show = false;
+        private bool re_pass_show = false;
+        private void ptb_eye_new_pass_Click(object sender, EventArgs e)
+        {
+            new_pass_show = !new_pass_show;
+            Task.Run(() =>
+            {
+                LoadGifToNewPass();
+            });
+
+            if (new_pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtNewPass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtNewPass.PasswordChar = '*';
+
+            }
+        }
+
+        private void ptb_eye_confirm_re_pass_Click(object sender, EventArgs e)
+        {
+            re_pass_show = !re_pass_show;
+
+            Task.Run(() =>
+            {
+                LoadGifToRePass();
+            });
+
+            if (re_pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtRePass.PasswordChar = '\0';
+            }
+            else
+            {
+                txtRePass.PasswordChar = '*';
+            }
+        }
+
+        private void forgopassword_Load(object sender, EventArgs e)
+        {
+            // Khi form tải, đặt PasswordChar cho TextBox để hiện dấu hoa thị thay cho ký tự
+            txtNewPass.PasswordChar = '*';
+            txtRePass.PasswordChar = '*';
+
+            Task.Run(() =>
+            {
+                LoadGifToNewPass();
+            });
+
+            Task.Run(() =>
+            {
+                LoadGifToRePass();
+            });
+        }
+        private async void btnCreateAccount_Click(object sender, EventArgs e)
             {
 
                 string email = txtEmail.Text.Trim();
@@ -250,3 +426,5 @@
             }
         }
     }
+            
+    

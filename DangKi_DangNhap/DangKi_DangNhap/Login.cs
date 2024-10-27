@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,12 @@ namespace DangKi_DangNhap
         public login()
         {
             InitializeComponent();
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = '*';
+            LoadGifToPass();
         }
 
         private void guna2PictureBox1_Click(object sender, EventArgs e)
@@ -45,32 +52,6 @@ namespace DangKi_DangNhap
             string username = txtUsername.Text;
 
 
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-            // Check if the user pressed the Backspace key
-            if (Control.ModifierKeys == Keys.None && txtPassword.Text.Length < originalPassword.Length)
-            {
-                // Remove the last character from the originalPassword if Backspace is pressed
-                originalPassword = originalPassword.Substring(0, originalPassword.Length - 1);
-            }
-            else
-            {
-                // Otherwise, add the last entered character to originalPassword
-                string newChar = txtPassword.Text.Length > originalPassword.Length
-                                 ? txtPassword.Text.Substring(txtPassword.Text.Length - 1)
-                                 : string.Empty;
-
-                // Append the new character to the originalPassword
-                originalPassword += newChar;
-            }
-
-            // Mask the TextBox input with asterisks
-            txtPassword.Text = new string('*', originalPassword.Length);
-
-            // Set the cursor to the end of the TextBox
-            txtPassword.SelectionStart = txtPassword.Text.Length;
         }
 
         private void btn_Signup_Click(object sender, EventArgs e)
@@ -137,6 +118,86 @@ namespace DangKi_DangNhap
         private void control_Minimize_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private bool pass_show = false;
+        private void ptb_eye_new_pass_Click(object sender, EventArgs e)
+        {
+            pass_show = !pass_show;
+
+            Task.Run(() =>
+            {
+                LoadGifToPass();
+            });
+
+            if (pass_show)
+            {
+                // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+
+            }
+        }
+
+        private void LoadGifToPass()
+        {
+            if (!pass_show)
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye_closed;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    byte[] gifData = Properties.Resources.eye;
+
+                    // Tạo MemoryStream từ byte array
+                    MemoryStream ms = new MemoryStream(gifData);
+
+                    // Kiểm tra nếu cần Invoke
+                    if (ptb_eye_new_pass.InvokeRequired)
+                    {
+                        ptb_eye_new_pass.Invoke(new MethodInvoker(delegate
+                        {
+                            ptb_eye_new_pass.Image = Image.FromStream(ms);
+                        }));
+                    }
+                    else
+                    {
+                        ptb_eye_new_pass.Image = Image.FromStream(ms);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void ptb_eye_pass_Click(object sender, EventArgs e)
