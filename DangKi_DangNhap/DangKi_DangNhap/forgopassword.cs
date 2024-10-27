@@ -103,7 +103,7 @@ namespace DangKi_DangNhap
 
         private void LoadGifToNewPass()
         {
-            if (!pass_show)
+            if (!new_pass_show)
             {
                 try
                 {
@@ -161,7 +161,7 @@ namespace DangKi_DangNhap
 
         private void LoadGifToRePass()
         {
-            if (!confirm__pass_show)
+            if (!re_pass_show)
             {
                 try
                 {
@@ -217,17 +217,17 @@ namespace DangKi_DangNhap
             }
         }
 
-        private bool pass_show = false;
-        private bool confirm__pass_show = false;
+        private bool new_pass_show = false;
+        private bool re_pass_show = false;
         private void ptb_eye_new_pass_Click(object sender, EventArgs e)
         {
-            pass_show = !pass_show;
+            new_pass_show = !new_pass_show;
             Task.Run(() =>
             {
                 LoadGifToNewPass();
             });
 
-            if (pass_show)
+            if (new_pass_show)
             {
                 // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
                 txtNewPass.PasswordChar = '\0';
@@ -241,14 +241,14 @@ namespace DangKi_DangNhap
 
         private void ptb_eye_confirm_re_pass_Click(object sender, EventArgs e)
         {
-            confirm__pass_show = !confirm__pass_show;
+            re_pass_show = !re_pass_show;
 
             Task.Run(() =>
             {
                 LoadGifToRePass();
             });
 
-            if (confirm__pass_show)
+            if (re_pass_show)
             {
                 // Đặt PasswordChar là '\0' để bỏ ẩn ký tự, tức là hiển thị các ký tự thật
                 txtRePass.PasswordChar = '\0';

@@ -44,8 +44,10 @@
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelLogin = new System.Windows.Forms.Label();
+            this.ptb_eye_new_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -135,7 +137,6 @@
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(292, 40);
             this.txtPassword.TabIndex = 3;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // toggleSwitch
             // 
@@ -255,11 +256,26 @@
             this.labelLogin.TabIndex = 10;
             this.labelLogin.Text = "Login";
             // 
+            // ptb_eye_new_pass
+            // 
+            this.ptb_eye_new_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.ImageRotate = 0F;
+            this.ptb_eye_new_pass.Location = new System.Drawing.Point(302, 299);
+            this.ptb_eye_new_pass.Name = "ptb_eye_new_pass";
+            this.ptb_eye_new_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_new_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_new_pass.TabIndex = 29;
+            this.ptb_eye_new_pass.TabStop = false;
+            this.ptb_eye_new_pass.UseTransparentBackground = true;
+            this.ptb_eye_new_pass.Click += new System.EventHandler(this.ptb_eye_new_pass_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_eye_new_pass);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
@@ -275,8 +291,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "login";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,5 +316,6 @@
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private System.Windows.Forms.Label labelLogin;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_new_pass;
     }
 }
