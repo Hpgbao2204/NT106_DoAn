@@ -47,44 +47,44 @@
             this.pb03 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pb05 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panelBackgr2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnFind = new Guna.UI2.WinForms.Guna2Button();
-            this.lblMycourse = new System.Windows.Forms.Label();
-            this.lblInspired = new System.Windows.Forms.Label();
-            this.lblToday = new System.Windows.Forms.Label();
+            this.panelTopgay = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picTung = new System.Windows.Forms.PictureBox();
+            this.lblTung = new System.Windows.Forms.Label();
+            this.guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picBao = new System.Windows.Forms.PictureBox();
+            this.lblBao = new System.Windows.Forms.Label();
+            this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picHuy = new System.Windows.Forms.PictureBox();
+            this.lblHuy = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
+            this.picKhoi = new System.Windows.Forms.PictureBox();
+            this.lblKhoi = new System.Windows.Forms.Label();
+            this.panelMyProgress = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
+            this.pbLineGraph = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.progressbarMyProgress = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.lbl60 = new System.Windows.Forms.Label();
+            this.lblMyProgress = new System.Windows.Forms.Label();
+            this.panelMyCourse = new Guna.UI2.WinForms.Guna2Panel();
             this.panelNT106 = new Guna.UI2.WinForms.Guna2Panel();
-            this.progressbarNT106 = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.lblNT106 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panelIT007 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblIT007 = new System.Windows.Forms.Label();
-            this.progressbarIT007 = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.lblNT106 = new System.Windows.Forms.Label();
+            this.progressbarNT106 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.panelEng3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblEng = new System.Windows.Forms.Label();
             this.progressbarEng03 = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.panelMyCourse = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelMyProgress = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblMyProgress = new System.Windows.Forms.Label();
-            this.lbl60 = new System.Windows.Forms.Label();
-            this.progressbarMyProgress = new Guna.UI2.WinForms.Guna2ProgressBar();
-            this.pbLineGraph = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel8 = new Guna.UI2.WinForms.Guna2Panel();
-            this.panelTopgay = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel10 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblBao = new System.Windows.Forms.Label();
-            this.guna2Panel11 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblHuy = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.guna2Panel12 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblKhoi = new System.Windows.Forms.Label();
-            this.guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblTung = new System.Windows.Forms.Label();
-            this.picTung = new System.Windows.Forms.PictureBox();
-            this.picBao = new System.Windows.Forms.PictureBox();
-            this.picKhoi = new System.Windows.Forms.PictureBox();
-            this.picHuy = new System.Windows.Forms.PictureBox();
+            this.lblMycourse = new System.Windows.Forms.Label();
+            this.panelIT007 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblIT007 = new System.Windows.Forms.Label();
+            this.progressbarIT007 = new Guna.UI2.WinForms.Guna2ProgressBar();
+            this.lblInspired = new System.Windows.Forms.Label();
+            this.btnFind = new Guna.UI2.WinForms.Guna2Button();
+            this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtTrangChu = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb01)).BeginInit();
@@ -93,22 +93,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb03)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb05)).BeginInit();
             this.panelBackgr2.SuspendLayout();
-            this.panelNT106.SuspendLayout();
-            this.panelIT007.SuspendLayout();
-            this.panelEng3.SuspendLayout();
-            this.panelMyCourse.SuspendLayout();
-            this.panelMyProgress.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLineGraph)).BeginInit();
-            this.guna2Panel8.SuspendLayout();
             this.panelTopgay.SuspendLayout();
-            this.guna2Panel10.SuspendLayout();
-            this.guna2Panel11.SuspendLayout();
-            this.guna2Panel12.SuspendLayout();
             this.guna2Panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTung)).BeginInit();
+            this.guna2Panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picKhoi)).BeginInit();
+            this.guna2Panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHuy)).BeginInit();
+            this.guna2Panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picKhoi)).BeginInit();
+            this.panelMyProgress.SuspendLayout();
+            this.guna2Panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLineGraph)).BeginInit();
+            this.panelMyCourse.SuspendLayout();
+            this.panelNT106.SuspendLayout();
+            this.panelEng3.SuspendLayout();
+            this.panelIT007.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -425,11 +425,10 @@
             this.panelBackgr2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelBackgr2.BackgroundImage")));
             this.panelBackgr2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBackgr2.BorderColor = System.Drawing.Color.Black;
-            this.panelBackgr2.BorderThickness = 1;
+            this.panelBackgr2.Controls.Add(this.txtTrangChu);
             this.panelBackgr2.Controls.Add(this.panelTopgay);
             this.panelBackgr2.Controls.Add(this.panelMyProgress);
             this.panelBackgr2.Controls.Add(this.panelMyCourse);
-            this.panelBackgr2.Controls.Add(this.lblToday);
             this.panelBackgr2.Controls.Add(this.lblInspired);
             this.panelBackgr2.Controls.Add(this.btnFind);
             this.panelBackgr2.Controls.Add(this.txtSearch);
@@ -439,86 +438,259 @@
             this.panelBackgr2.TabIndex = 8;
             this.panelBackgr2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
-            // txtSearch
+            // panelTopgay
             // 
-            this.txtSearch.Animated = true;
-            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
-            this.txtSearch.BorderRadius = 8;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtSearch.DefaultText = "";
-            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txtSearch.ForeColor = System.Drawing.Color.Black;
-            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
-            this.txtSearch.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.txtSearch.Location = new System.Drawing.Point(542, 49);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PasswordChar = '\0';
-            this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.txtSearch.PlaceholderText = "Search";
-            this.txtSearch.SelectedText = "";
-            this.txtSearch.Size = new System.Drawing.Size(229, 41);
-            this.txtSearch.TabIndex = 0;
+            this.panelTopgay.BackColor = System.Drawing.Color.GhostWhite;
+            this.panelTopgay.BorderColor = System.Drawing.Color.Black;
+            this.panelTopgay.BorderThickness = 1;
+            this.panelTopgay.Controls.Add(this.guna2Panel13);
+            this.panelTopgay.Controls.Add(this.guna2Panel10);
+            this.panelTopgay.Controls.Add(this.guna2Panel11);
+            this.panelTopgay.Controls.Add(this.label16);
+            this.panelTopgay.Controls.Add(this.guna2Panel12);
+            this.panelTopgay.Location = new System.Drawing.Point(600, 537);
+            this.panelTopgay.Name = "panelTopgay";
+            this.panelTopgay.Size = new System.Drawing.Size(291, 195);
+            this.panelTopgay.TabIndex = 17;
             // 
-            // btnFind
+            // guna2Panel13
             // 
-            this.btnFind.Animated = true;
-            this.btnFind.BackColor = System.Drawing.Color.Transparent;
-            this.btnFind.BorderRadius = 6;
-            this.btnFind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFind.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(202)))), ((int)(((byte)(222)))));
-            this.btnFind.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnFind.ForeColor = System.Drawing.Color.Black;
-            this.btnFind.Location = new System.Drawing.Point(777, 49);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(104, 41);
-            this.btnFind.TabIndex = 10;
-            this.btnFind.Text = "Find";
+            this.guna2Panel13.AutoRoundedCorners = true;
+            this.guna2Panel13.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel13.BorderRadius = 13;
+            this.guna2Panel13.BorderThickness = 1;
+            this.guna2Panel13.Controls.Add(this.picTung);
+            this.guna2Panel13.Controls.Add(this.lblTung);
+            this.guna2Panel13.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel13.Location = new System.Drawing.Point(11, 37);
+            this.guna2Panel13.Name = "guna2Panel13";
+            this.guna2Panel13.Size = new System.Drawing.Size(270, 28);
+            this.guna2Panel13.TabIndex = 15;
             // 
-            // lblMycourse
+            // picTung
             // 
-            this.lblMycourse.AutoSize = true;
-            this.lblMycourse.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMycourse.Location = new System.Drawing.Point(9, 9);
-            this.lblMycourse.Name = "lblMycourse";
-            this.lblMycourse.Size = new System.Drawing.Size(80, 20);
-            this.lblMycourse.TabIndex = 11;
-            this.lblMycourse.Text = "My course";
+            this.picTung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picTung.Image = ((System.Drawing.Image)(resources.GetObject("picTung.Image")));
+            this.picTung.Location = new System.Drawing.Point(0, 0);
+            this.picTung.Name = "picTung";
+            this.picTung.Size = new System.Drawing.Size(35, 28);
+            this.picTung.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTung.TabIndex = 2;
+            this.picTung.TabStop = false;
             // 
-            // lblInspired
+            // lblTung
             // 
-            this.lblInspired.AutoSize = true;
-            this.lblInspired.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(198)))), ((int)(((byte)(255)))));
-            this.lblInspired.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInspired.Location = new System.Drawing.Point(31, 115);
-            this.lblInspired.Name = "lblInspired";
-            this.lblInspired.Size = new System.Drawing.Size(64, 20);
-            this.lblInspired.TabIndex = 12;
-            this.lblInspired.Text = "Inspired";
+            this.lblTung.AutoSize = true;
+            this.lblTung.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTung.Location = new System.Drawing.Point(49, 4);
+            this.lblTung.Name = "lblTung";
+            this.lblTung.Size = new System.Drawing.Size(135, 17);
+            this.lblTung.TabIndex = 1;
+            this.lblTung.Text = "Nguyễn Quang Tùng";
             // 
-            // lblToday
+            // guna2Panel10
             // 
-            this.lblToday.AutoSize = true;
-            this.lblToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(146)))), ((int)(((byte)(194)))), ((int)(((byte)(255)))));
-            this.lblToday.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblToday.Location = new System.Drawing.Point(30, 49);
-            this.lblToday.Name = "lblToday";
-            this.lblToday.Size = new System.Drawing.Size(65, 25);
-            this.lblToday.TabIndex = 13;
-            this.lblToday.Text = "Today";
+            this.guna2Panel10.AutoRoundedCorners = true;
+            this.guna2Panel10.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel10.BorderRadius = 13;
+            this.guna2Panel10.BorderThickness = 1;
+            this.guna2Panel10.Controls.Add(this.picBao);
+            this.guna2Panel10.Controls.Add(this.lblBao);
+            this.guna2Panel10.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel10.Location = new System.Drawing.Point(11, 74);
+            this.guna2Panel10.Name = "guna2Panel10";
+            this.guna2Panel10.Size = new System.Drawing.Size(270, 28);
+            this.guna2Panel10.TabIndex = 14;
+            // 
+            // picBao
+            // 
+            this.picBao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picBao.Image = ((System.Drawing.Image)(resources.GetObject("picBao.Image")));
+            this.picBao.Location = new System.Drawing.Point(0, 0);
+            this.picBao.Name = "picBao";
+            this.picBao.Size = new System.Drawing.Size(35, 27);
+            this.picBao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBao.TabIndex = 3;
+            this.picBao.TabStop = false;
+            // 
+            // lblBao
+            // 
+            this.lblBao.AutoSize = true;
+            this.lblBao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBao.Location = new System.Drawing.Point(49, 4);
+            this.lblBao.Name = "lblBao";
+            this.lblBao.Size = new System.Drawing.Size(134, 17);
+            this.lblBao.TabIndex = 1;
+            this.lblBao.Text = "Huỳnh Phan Gia Bảo";
+            this.lblBao.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // guna2Panel11
+            // 
+            this.guna2Panel11.AutoRoundedCorners = true;
+            this.guna2Panel11.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel11.BorderRadius = 13;
+            this.guna2Panel11.BorderThickness = 1;
+            this.guna2Panel11.Controls.Add(this.picHuy);
+            this.guna2Panel11.Controls.Add(this.lblHuy);
+            this.guna2Panel11.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel11.Location = new System.Drawing.Point(11, 148);
+            this.guna2Panel11.Name = "guna2Panel11";
+            this.guna2Panel11.Size = new System.Drawing.Size(270, 28);
+            this.guna2Panel11.TabIndex = 15;
+            // 
+            // picHuy
+            // 
+            this.picHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picHuy.Image = ((System.Drawing.Image)(resources.GetObject("picHuy.Image")));
+            this.picHuy.Location = new System.Drawing.Point(0, 0);
+            this.picHuy.Name = "picHuy";
+            this.picHuy.Size = new System.Drawing.Size(35, 28);
+            this.picHuy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHuy.TabIndex = 5;
+            this.picHuy.TabStop = false;
+            // 
+            // lblHuy
+            // 
+            this.lblHuy.AutoSize = true;
+            this.lblHuy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHuy.Location = new System.Drawing.Point(49, 6);
+            this.lblHuy.Name = "lblHuy";
+            this.lblHuy.Size = new System.Drawing.Size(132, 17);
+            this.lblHuy.TabIndex = 1;
+            this.lblHuy.Text = "Nguyễn Trường Huy";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(9, 9);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(63, 20);
+            this.label16.TabIndex = 11;
+            this.label16.Text = "Top gay";
+            // 
+            // guna2Panel12
+            // 
+            this.guna2Panel12.AutoRoundedCorners = true;
+            this.guna2Panel12.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel12.BorderRadius = 13;
+            this.guna2Panel12.BorderThickness = 1;
+            this.guna2Panel12.Controls.Add(this.picKhoi);
+            this.guna2Panel12.Controls.Add(this.lblKhoi);
+            this.guna2Panel12.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Panel12.Location = new System.Drawing.Point(11, 111);
+            this.guna2Panel12.Name = "guna2Panel12";
+            this.guna2Panel12.Size = new System.Drawing.Size(270, 28);
+            this.guna2Panel12.TabIndex = 15;
+            // 
+            // picKhoi
+            // 
+            this.picKhoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picKhoi.Image = ((System.Drawing.Image)(resources.GetObject("picKhoi.Image")));
+            this.picKhoi.Location = new System.Drawing.Point(0, 0);
+            this.picKhoi.Name = "picKhoi";
+            this.picKhoi.Size = new System.Drawing.Size(35, 28);
+            this.picKhoi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picKhoi.TabIndex = 4;
+            this.picKhoi.TabStop = false;
+            this.picKhoi.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // lblKhoi
+            // 
+            this.lblKhoi.AutoSize = true;
+            this.lblKhoi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKhoi.Location = new System.Drawing.Point(49, 5);
+            this.lblKhoi.Name = "lblKhoi";
+            this.lblKhoi.Size = new System.Drawing.Size(88, 17);
+            this.lblKhoi.TabIndex = 1;
+            this.lblKhoi.Text = "Lê Quốc Khôi";
+            // 
+            // panelMyProgress
+            // 
+            this.panelMyProgress.BackColor = System.Drawing.Color.GhostWhite;
+            this.panelMyProgress.BorderColor = System.Drawing.Color.Black;
+            this.panelMyProgress.BorderThickness = 1;
+            this.panelMyProgress.Controls.Add(this.guna2Panel8);
+            this.panelMyProgress.Controls.Add(this.progressbarMyProgress);
+            this.panelMyProgress.Controls.Add(this.lbl60);
+            this.panelMyProgress.Controls.Add(this.lblMyProgress);
+            this.panelMyProgress.Location = new System.Drawing.Point(413, 537);
+            this.panelMyProgress.Name = "panelMyProgress";
+            this.panelMyProgress.Size = new System.Drawing.Size(163, 195);
+            this.panelMyProgress.TabIndex = 17;
+            // 
+            // guna2Panel8
+            // 
+            this.guna2Panel8.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel8.BorderThickness = 1;
+            this.guna2Panel8.Controls.Add(this.pbLineGraph);
+            this.guna2Panel8.Location = new System.Drawing.Point(15, 101);
+            this.guna2Panel8.Name = "guna2Panel8";
+            this.guna2Panel8.Size = new System.Drawing.Size(133, 78);
+            this.guna2Panel8.TabIndex = 19;
+            // 
+            // pbLineGraph
+            // 
+            this.pbLineGraph.Image = ((System.Drawing.Image)(resources.GetObject("pbLineGraph.Image")));
+            this.pbLineGraph.ImageRotate = 0F;
+            this.pbLineGraph.Location = new System.Drawing.Point(7, 3);
+            this.pbLineGraph.Name = "pbLineGraph";
+            this.pbLineGraph.Size = new System.Drawing.Size(120, 71);
+            this.pbLineGraph.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLineGraph.TabIndex = 18;
+            this.pbLineGraph.TabStop = false;
+            // 
+            // progressbarMyProgress
+            // 
+            this.progressbarMyProgress.BorderRadius = 8;
+            this.progressbarMyProgress.Location = new System.Drawing.Point(9, 78);
+            this.progressbarMyProgress.Name = "progressbarMyProgress";
+            this.progressbarMyProgress.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(176)))));
+            this.progressbarMyProgress.Size = new System.Drawing.Size(141, 10);
+            this.progressbarMyProgress.TabIndex = 3;
+            this.progressbarMyProgress.Text = "guna2ProgressBar4";
+            this.progressbarMyProgress.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.progressbarMyProgress.Value = 60;
+            // 
+            // lbl60
+            // 
+            this.lbl60.AutoSize = true;
+            this.lbl60.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl60.Location = new System.Drawing.Point(13, 40);
+            this.lbl60.Name = "lbl60";
+            this.lbl60.Size = new System.Drawing.Size(55, 30);
+            this.lbl60.TabIndex = 17;
+            this.lbl60.Text = "60%";
+            // 
+            // lblMyProgress
+            // 
+            this.lblMyProgress.AutoSize = true;
+            this.lblMyProgress.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMyProgress.Location = new System.Drawing.Point(14, 13);
+            this.lblMyProgress.Name = "lblMyProgress";
+            this.lblMyProgress.Size = new System.Drawing.Size(94, 20);
+            this.lblMyProgress.TabIndex = 16;
+            this.lblMyProgress.Text = "My progress";
+            // 
+            // panelMyCourse
+            // 
+            this.panelMyCourse.BackColor = System.Drawing.Color.GhostWhite;
+            this.panelMyCourse.BorderColor = System.Drawing.Color.Black;
+            this.panelMyCourse.BorderThickness = 1;
+            this.panelMyCourse.Controls.Add(this.panelNT106);
+            this.panelMyCourse.Controls.Add(this.panelEng3);
+            this.panelMyCourse.Controls.Add(this.lblMycourse);
+            this.panelMyCourse.Controls.Add(this.panelIT007);
+            this.panelMyCourse.Location = new System.Drawing.Point(34, 537);
+            this.panelMyCourse.Name = "panelMyCourse";
+            this.panelMyCourse.Size = new System.Drawing.Size(357, 195);
+            this.panelMyCourse.TabIndex = 16;
             // 
             // panelNT106
             // 
             this.panelNT106.AutoRoundedCorners = true;
             this.panelNT106.BorderColor = System.Drawing.Color.Black;
+            this.panelNT106.BorderRadius = 22;
             this.panelNT106.BorderThickness = 1;
             this.panelNT106.Controls.Add(this.label5);
             this.panelNT106.Controls.Add(this.lblNT106);
@@ -528,6 +700,26 @@
             this.panelNT106.Name = "panelNT106";
             this.panelNT106.Size = new System.Drawing.Size(334, 47);
             this.panelNT106.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(84, 30);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(28, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "50%";
+            // 
+            // lblNT106
+            // 
+            this.lblNT106.AutoSize = true;
+            this.lblNT106.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNT106.Location = new System.Drawing.Point(10, 15);
+            this.lblNT106.Name = "lblNT106";
+            this.lblNT106.Size = new System.Drawing.Size(65, 17);
+            this.lblNT106.TabIndex = 1;
+            this.lblNT106.Text = "NT106.P11";
             // 
             // progressbarNT106
             // 
@@ -541,30 +733,68 @@
             this.progressbarNT106.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.progressbarNT106.Value = 50;
             // 
-            // lblNT106
+            // panelEng3
             // 
-            this.lblNT106.AutoSize = true;
-            this.lblNT106.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNT106.Location = new System.Drawing.Point(10, 15);
-            this.lblNT106.Name = "lblNT106";
-            this.lblNT106.Size = new System.Drawing.Size(65, 17);
-            this.lblNT106.TabIndex = 1;
-            this.lblNT106.Text = "NT106.P11";
+            this.panelEng3.AutoRoundedCorners = true;
+            this.panelEng3.BorderColor = System.Drawing.Color.Black;
+            this.panelEng3.BorderRadius = 22;
+            this.panelEng3.BorderThickness = 1;
+            this.panelEng3.Controls.Add(this.label8);
+            this.panelEng3.Controls.Add(this.lblEng);
+            this.panelEng3.Controls.Add(this.progressbarEng03);
+            this.panelEng3.FillColor = System.Drawing.Color.Transparent;
+            this.panelEng3.Location = new System.Drawing.Point(11, 132);
+            this.panelEng3.Name = "panelEng3";
+            this.panelEng3.Size = new System.Drawing.Size(334, 47);
+            this.panelEng3.TabIndex = 15;
             // 
-            // label5
+            // label8
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(84, 30);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "50%";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(84, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(28, 13);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "75%";
+            // 
+            // lblEng
+            // 
+            this.lblEng.AutoSize = true;
+            this.lblEng.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEng.Location = new System.Drawing.Point(10, 15);
+            this.lblEng.Name = "lblEng";
+            this.lblEng.Size = new System.Drawing.Size(45, 17);
+            this.lblEng.TabIndex = 1;
+            this.lblEng.Text = "Eng03";
+            // 
+            // progressbarEng03
+            // 
+            this.progressbarEng03.BorderRadius = 8;
+            this.progressbarEng03.Location = new System.Drawing.Point(87, 19);
+            this.progressbarEng03.Name = "progressbarEng03";
+            this.progressbarEng03.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(176)))));
+            this.progressbarEng03.Size = new System.Drawing.Size(232, 10);
+            this.progressbarEng03.TabIndex = 0;
+            this.progressbarEng03.Text = "guna2ProgressBar3";
+            this.progressbarEng03.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.progressbarEng03.Value = 75;
+            // 
+            // lblMycourse
+            // 
+            this.lblMycourse.AutoSize = true;
+            this.lblMycourse.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMycourse.Location = new System.Drawing.Point(9, 9);
+            this.lblMycourse.Name = "lblMycourse";
+            this.lblMycourse.Size = new System.Drawing.Size(80, 20);
+            this.lblMycourse.TabIndex = 11;
+            this.lblMycourse.Text = "My course";
             // 
             // panelIT007
             // 
             this.panelIT007.AutoRoundedCorners = true;
             this.panelIT007.BorderColor = System.Drawing.Color.Black;
+            this.panelIT007.BorderRadius = 22;
             this.panelIT007.BorderThickness = 1;
             this.panelIT007.Controls.Add(this.label6);
             this.panelIT007.Controls.Add(this.lblIT007);
@@ -608,295 +838,86 @@
             this.progressbarIT007.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             this.progressbarIT007.Value = 50;
             // 
-            // panelEng3
+            // lblInspired
             // 
-            this.panelEng3.AutoRoundedCorners = true;
-            this.panelEng3.BorderColor = System.Drawing.Color.Black;
-            this.panelEng3.BorderThickness = 1;
-            this.panelEng3.Controls.Add(this.label8);
-            this.panelEng3.Controls.Add(this.lblEng);
-            this.panelEng3.Controls.Add(this.progressbarEng03);
-            this.panelEng3.FillColor = System.Drawing.Color.Transparent;
-            this.panelEng3.Location = new System.Drawing.Point(11, 132);
-            this.panelEng3.Name = "panelEng3";
-            this.panelEng3.Size = new System.Drawing.Size(334, 47);
-            this.panelEng3.TabIndex = 15;
+            this.lblInspired.AutoSize = true;
+            this.lblInspired.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(198)))), ((int)(((byte)(255)))));
+            this.lblInspired.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInspired.ForeColor = System.Drawing.Color.White;
+            this.lblInspired.Location = new System.Drawing.Point(31, 115);
+            this.lblInspired.Name = "lblInspired";
+            this.lblInspired.Size = new System.Drawing.Size(64, 20);
+            this.lblInspired.TabIndex = 12;
+            this.lblInspired.Text = "Inspired";
             // 
-            // label8
+            // btnFind
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(84, 30);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(28, 13);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "75%";
+            this.btnFind.Animated = true;
+            this.btnFind.BackColor = System.Drawing.Color.Transparent;
+            this.btnFind.BorderRadius = 6;
+            this.btnFind.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFind.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFind.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFind.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(202)))), ((int)(((byte)(222)))));
+            this.btnFind.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnFind.ForeColor = System.Drawing.Color.Black;
+            this.btnFind.Location = new System.Drawing.Point(777, 49);
+            this.btnFind.Name = "btnFind";
+            this.btnFind.Size = new System.Drawing.Size(104, 41);
+            this.btnFind.TabIndex = 10;
+            this.btnFind.Text = "Find";
             // 
-            // lblEng
+            // txtSearch
             // 
-            this.lblEng.AutoSize = true;
-            this.lblEng.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEng.Location = new System.Drawing.Point(10, 15);
-            this.lblEng.Name = "lblEng";
-            this.lblEng.Size = new System.Drawing.Size(45, 17);
-            this.lblEng.TabIndex = 1;
-            this.lblEng.Text = "Eng03";
+            this.txtSearch.Animated = true;
+            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
+            this.txtSearch.BorderRadius = 8;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.DefaultText = "";
+            this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtSearch.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtSearch.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txtSearch.ForeColor = System.Drawing.Color.Black;
+            this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtSearch.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtSearch.IconLeft")));
+            this.txtSearch.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.txtSearch.Location = new System.Drawing.Point(542, 49);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.txtSearch.PlaceholderText = "Search";
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.Size = new System.Drawing.Size(229, 41);
+            this.txtSearch.TabIndex = 0;
             // 
-            // progressbarEng03
+            // txtTrangChu
             // 
-            this.progressbarEng03.BorderRadius = 8;
-            this.progressbarEng03.Location = new System.Drawing.Point(87, 19);
-            this.progressbarEng03.Name = "progressbarEng03";
-            this.progressbarEng03.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(176)))));
-            this.progressbarEng03.Size = new System.Drawing.Size(232, 10);
-            this.progressbarEng03.TabIndex = 0;
-            this.progressbarEng03.Text = "guna2ProgressBar3";
-            this.progressbarEng03.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.progressbarEng03.Value = 75;
-            // 
-            // panelMyCourse
-            // 
-            this.panelMyCourse.BackColor = System.Drawing.Color.GhostWhite;
-            this.panelMyCourse.BorderColor = System.Drawing.Color.Black;
-            this.panelMyCourse.BorderThickness = 1;
-            this.panelMyCourse.Controls.Add(this.panelNT106);
-            this.panelMyCourse.Controls.Add(this.panelEng3);
-            this.panelMyCourse.Controls.Add(this.lblMycourse);
-            this.panelMyCourse.Controls.Add(this.panelIT007);
-            this.panelMyCourse.Location = new System.Drawing.Point(34, 537);
-            this.panelMyCourse.Name = "panelMyCourse";
-            this.panelMyCourse.Size = new System.Drawing.Size(357, 195);
-            this.panelMyCourse.TabIndex = 16;
-            // 
-            // panelMyProgress
-            // 
-            this.panelMyProgress.BackColor = System.Drawing.Color.GhostWhite;
-            this.panelMyProgress.BorderColor = System.Drawing.Color.Black;
-            this.panelMyProgress.BorderThickness = 1;
-            this.panelMyProgress.Controls.Add(this.guna2Panel8);
-            this.panelMyProgress.Controls.Add(this.progressbarMyProgress);
-            this.panelMyProgress.Controls.Add(this.lbl60);
-            this.panelMyProgress.Controls.Add(this.lblMyProgress);
-            this.panelMyProgress.Location = new System.Drawing.Point(413, 537);
-            this.panelMyProgress.Name = "panelMyProgress";
-            this.panelMyProgress.Size = new System.Drawing.Size(163, 195);
-            this.panelMyProgress.TabIndex = 17;
-            // 
-            // lblMyProgress
-            // 
-            this.lblMyProgress.AutoSize = true;
-            this.lblMyProgress.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMyProgress.Location = new System.Drawing.Point(14, 13);
-            this.lblMyProgress.Name = "lblMyProgress";
-            this.lblMyProgress.Size = new System.Drawing.Size(94, 20);
-            this.lblMyProgress.TabIndex = 16;
-            this.lblMyProgress.Text = "My progress";
-            // 
-            // lbl60
-            // 
-            this.lbl60.AutoSize = true;
-            this.lbl60.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl60.Location = new System.Drawing.Point(13, 40);
-            this.lbl60.Name = "lbl60";
-            this.lbl60.Size = new System.Drawing.Size(55, 30);
-            this.lbl60.TabIndex = 17;
-            this.lbl60.Text = "60%";
-            // 
-            // progressbarMyProgress
-            // 
-            this.progressbarMyProgress.BorderRadius = 8;
-            this.progressbarMyProgress.Location = new System.Drawing.Point(9, 78);
-            this.progressbarMyProgress.Name = "progressbarMyProgress";
-            this.progressbarMyProgress.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(176)))));
-            this.progressbarMyProgress.Size = new System.Drawing.Size(141, 10);
-            this.progressbarMyProgress.TabIndex = 3;
-            this.progressbarMyProgress.Text = "guna2ProgressBar4";
-            this.progressbarMyProgress.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.progressbarMyProgress.Value = 60;
-            // 
-            // pbLineGraph
-            // 
-            this.pbLineGraph.Image = ((System.Drawing.Image)(resources.GetObject("pbLineGraph.Image")));
-            this.pbLineGraph.ImageRotate = 0F;
-            this.pbLineGraph.Location = new System.Drawing.Point(7, 3);
-            this.pbLineGraph.Name = "pbLineGraph";
-            this.pbLineGraph.Size = new System.Drawing.Size(120, 71);
-            this.pbLineGraph.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLineGraph.TabIndex = 18;
-            this.pbLineGraph.TabStop = false;
-            // 
-            // guna2Panel8
-            // 
-            this.guna2Panel8.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel8.BorderThickness = 1;
-            this.guna2Panel8.Controls.Add(this.pbLineGraph);
-            this.guna2Panel8.Location = new System.Drawing.Point(15, 101);
-            this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(133, 78);
-            this.guna2Panel8.TabIndex = 19;
-            // 
-            // panelTopgay
-            // 
-            this.panelTopgay.BackColor = System.Drawing.Color.GhostWhite;
-            this.panelTopgay.BorderColor = System.Drawing.Color.Black;
-            this.panelTopgay.BorderThickness = 1;
-            this.panelTopgay.Controls.Add(this.guna2Panel13);
-            this.panelTopgay.Controls.Add(this.guna2Panel10);
-            this.panelTopgay.Controls.Add(this.guna2Panel11);
-            this.panelTopgay.Controls.Add(this.label16);
-            this.panelTopgay.Controls.Add(this.guna2Panel12);
-            this.panelTopgay.Location = new System.Drawing.Point(600, 537);
-            this.panelTopgay.Name = "panelTopgay";
-            this.panelTopgay.Size = new System.Drawing.Size(291, 195);
-            this.panelTopgay.TabIndex = 17;
-            // 
-            // guna2Panel10
-            // 
-            this.guna2Panel10.AutoRoundedCorners = true;
-            this.guna2Panel10.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel10.BorderThickness = 1;
-            this.guna2Panel10.Controls.Add(this.picBao);
-            this.guna2Panel10.Controls.Add(this.lblBao);
-            this.guna2Panel10.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel10.Location = new System.Drawing.Point(11, 74);
-            this.guna2Panel10.Name = "guna2Panel10";
-            this.guna2Panel10.Size = new System.Drawing.Size(270, 28);
-            this.guna2Panel10.TabIndex = 14;
-            // 
-            // lblBao
-            // 
-            this.lblBao.AutoSize = true;
-            this.lblBao.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBao.Location = new System.Drawing.Point(49, 4);
-            this.lblBao.Name = "lblBao";
-            this.lblBao.Size = new System.Drawing.Size(134, 17);
-            this.lblBao.TabIndex = 1;
-            this.lblBao.Text = "Huỳnh Phan Gia Bảo";
-            this.lblBao.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // guna2Panel11
-            // 
-            this.guna2Panel11.AutoRoundedCorners = true;
-            this.guna2Panel11.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel11.BorderThickness = 1;
-            this.guna2Panel11.Controls.Add(this.picHuy);
-            this.guna2Panel11.Controls.Add(this.lblHuy);
-            this.guna2Panel11.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel11.Location = new System.Drawing.Point(11, 148);
-            this.guna2Panel11.Name = "guna2Panel11";
-            this.guna2Panel11.Size = new System.Drawing.Size(270, 28);
-            this.guna2Panel11.TabIndex = 15;
-            // 
-            // lblHuy
-            // 
-            this.lblHuy.AutoSize = true;
-            this.lblHuy.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHuy.Location = new System.Drawing.Point(49, 6);
-            this.lblHuy.Name = "lblHuy";
-            this.lblHuy.Size = new System.Drawing.Size(132, 17);
-            this.lblHuy.TabIndex = 1;
-            this.lblHuy.Text = "Nguyễn Trường Huy";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(9, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 20);
-            this.label16.TabIndex = 11;
-            this.label16.Text = "Top gay";
-            // 
-            // guna2Panel12
-            // 
-            this.guna2Panel12.AutoRoundedCorners = true;
-            this.guna2Panel12.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel12.BorderThickness = 1;
-            this.guna2Panel12.Controls.Add(this.picKhoi);
-            this.guna2Panel12.Controls.Add(this.lblKhoi);
-            this.guna2Panel12.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel12.Location = new System.Drawing.Point(11, 111);
-            this.guna2Panel12.Name = "guna2Panel12";
-            this.guna2Panel12.Size = new System.Drawing.Size(270, 28);
-            this.guna2Panel12.TabIndex = 15;
-            // 
-            // lblKhoi
-            // 
-            this.lblKhoi.AutoSize = true;
-            this.lblKhoi.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKhoi.Location = new System.Drawing.Point(49, 5);
-            this.lblKhoi.Name = "lblKhoi";
-            this.lblKhoi.Size = new System.Drawing.Size(88, 17);
-            this.lblKhoi.TabIndex = 1;
-            this.lblKhoi.Text = "Lê Quốc Khôi";
-            // 
-            // guna2Panel13
-            // 
-            this.guna2Panel13.AutoRoundedCorners = true;
-            this.guna2Panel13.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel13.BorderThickness = 1;
-            this.guna2Panel13.Controls.Add(this.picTung);
-            this.guna2Panel13.Controls.Add(this.lblTung);
-            this.guna2Panel13.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Panel13.Location = new System.Drawing.Point(11, 37);
-            this.guna2Panel13.Name = "guna2Panel13";
-            this.guna2Panel13.Size = new System.Drawing.Size(270, 28);
-            this.guna2Panel13.TabIndex = 15;
-            // 
-            // lblTung
-            // 
-            this.lblTung.AutoSize = true;
-            this.lblTung.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTung.Location = new System.Drawing.Point(49, 4);
-            this.lblTung.Name = "lblTung";
-            this.lblTung.Size = new System.Drawing.Size(135, 17);
-            this.lblTung.TabIndex = 1;
-            this.lblTung.Text = "Nguyễn Quang Tùng";
-            // 
-            // picTung
-            // 
-            this.picTung.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picTung.Image = ((System.Drawing.Image)(resources.GetObject("picTung.Image")));
-            this.picTung.Location = new System.Drawing.Point(0, 0);
-            this.picTung.Name = "picTung";
-            this.picTung.Size = new System.Drawing.Size(35, 28);
-            this.picTung.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picTung.TabIndex = 2;
-            this.picTung.TabStop = false;
-            // 
-            // picBao
-            // 
-            this.picBao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picBao.Image = ((System.Drawing.Image)(resources.GetObject("picBao.Image")));
-            this.picBao.Location = new System.Drawing.Point(0, 1);
-            this.picBao.Name = "picBao";
-            this.picBao.Size = new System.Drawing.Size(35, 28);
-            this.picBao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picBao.TabIndex = 3;
-            this.picBao.TabStop = false;
-            // 
-            // picKhoi
-            // 
-            this.picKhoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picKhoi.Image = ((System.Drawing.Image)(resources.GetObject("picKhoi.Image")));
-            this.picKhoi.Location = new System.Drawing.Point(0, 0);
-            this.picKhoi.Name = "picKhoi";
-            this.picKhoi.Size = new System.Drawing.Size(35, 28);
-            this.picKhoi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picKhoi.TabIndex = 4;
-            this.picKhoi.TabStop = false;
-            this.picKhoi.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // picHuy
-            // 
-            this.picHuy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picHuy.Image = ((System.Drawing.Image)(resources.GetObject("picHuy.Image")));
-            this.picHuy.Location = new System.Drawing.Point(0, 0);
-            this.picHuy.Name = "picHuy";
-            this.picHuy.Size = new System.Drawing.Size(35, 28);
-            this.picHuy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHuy.TabIndex = 5;
-            this.picHuy.TabStop = false;
+            this.txtTrangChu.Animated = true;
+            this.txtTrangChu.BorderThickness = 0;
+            this.txtTrangChu.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTrangChu.DefaultText = "Trang chủ";
+            this.txtTrangChu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtTrangChu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtTrangChu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTrangChu.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtTrangChu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(193)))), ((int)(((byte)(255)))));
+            this.txtTrangChu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTrangChu.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.txtTrangChu.ForeColor = System.Drawing.Color.White;
+            this.txtTrangChu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtTrangChu.Location = new System.Drawing.Point(3, 28);
+            this.txtTrangChu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTrangChu.Name = "txtTrangChu";
+            this.txtTrangChu.PasswordChar = '\0';
+            this.txtTrangChu.PlaceholderText = "";
+            this.txtTrangChu.SelectedText = "";
+            this.txtTrangChu.Size = new System.Drawing.Size(145, 40);
+            this.txtTrangChu.TabIndex = 16;
+            this.txtTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dashboard
             // 
@@ -925,32 +946,32 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb05)).EndInit();
             this.panelBackgr2.ResumeLayout(false);
             this.panelBackgr2.PerformLayout();
-            this.panelNT106.ResumeLayout(false);
-            this.panelNT106.PerformLayout();
-            this.panelIT007.ResumeLayout(false);
-            this.panelIT007.PerformLayout();
-            this.panelEng3.ResumeLayout(false);
-            this.panelEng3.PerformLayout();
-            this.panelMyCourse.ResumeLayout(false);
-            this.panelMyCourse.PerformLayout();
-            this.panelMyProgress.ResumeLayout(false);
-            this.panelMyProgress.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLineGraph)).EndInit();
-            this.guna2Panel8.ResumeLayout(false);
             this.panelTopgay.ResumeLayout(false);
             this.panelTopgay.PerformLayout();
-            this.guna2Panel10.ResumeLayout(false);
-            this.guna2Panel10.PerformLayout();
-            this.guna2Panel11.ResumeLayout(false);
-            this.guna2Panel11.PerformLayout();
-            this.guna2Panel12.ResumeLayout(false);
-            this.guna2Panel12.PerformLayout();
             this.guna2Panel13.ResumeLayout(false);
             this.guna2Panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picTung)).EndInit();
+            this.guna2Panel10.ResumeLayout(false);
+            this.guna2Panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picKhoi)).EndInit();
+            this.guna2Panel11.ResumeLayout(false);
+            this.guna2Panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picHuy)).EndInit();
+            this.guna2Panel12.ResumeLayout(false);
+            this.guna2Panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picKhoi)).EndInit();
+            this.panelMyProgress.ResumeLayout(false);
+            this.panelMyProgress.PerformLayout();
+            this.guna2Panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLineGraph)).EndInit();
+            this.panelMyCourse.ResumeLayout(false);
+            this.panelMyCourse.PerformLayout();
+            this.panelNT106.ResumeLayout(false);
+            this.panelNT106.PerformLayout();
+            this.panelEng3.ResumeLayout(false);
+            this.panelEng3.PerformLayout();
+            this.panelIT007.ResumeLayout(false);
+            this.panelIT007.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -977,7 +998,6 @@
         private Guna.UI2.WinForms.Guna2Button btnFind;
         private System.Windows.Forms.Label lblMycourse;
         private Guna.UI2.WinForms.Guna2Panel panelNT106;
-        private System.Windows.Forms.Label lblToday;
         private System.Windows.Forms.Label lblInspired;
         private System.Windows.Forms.Label lblNT106;
         private Guna.UI2.WinForms.Guna2ProgressBar progressbarNT106;
@@ -1011,5 +1031,6 @@
         private System.Windows.Forms.PictureBox picBao;
         private System.Windows.Forms.PictureBox picHuy;
         private System.Windows.Forms.PictureBox picKhoi;
+        private Guna.UI2.WinForms.Guna2TextBox txtTrangChu;
     }
 }

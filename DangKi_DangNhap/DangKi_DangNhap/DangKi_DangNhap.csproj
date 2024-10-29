@@ -142,6 +142,12 @@
     <Compile Include="signup.Designer.cs">
       <DependentUpon>signup.cs</DependentUpon>
     </Compile>
+    <Compile Include="thongbao_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongbao_form.Designer.cs">
+      <DependentUpon>thongbao_form.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="signup.resx">
       <DependentUpon>signup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thongbao_form.resx">
+      <DependentUpon>thongbao_form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
