@@ -44,8 +44,11 @@
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.labelLogin = new System.Windows.Forms.Label();
+            this.ptb_eye_new_pass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.ptb_eye_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -108,6 +111,7 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 2;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
@@ -150,6 +154,7 @@
             this.toggleSwitch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(195)))));
             this.toggleSwitch.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
             this.toggleSwitch.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.toggleSwitch.CheckedChanged += new System.EventHandler(this.toggleSwitch_CheckedChanged);
             // 
             // label1
             // 
@@ -194,6 +199,7 @@
             this.btnLogin.TabIndex = 7;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseTransparentBackground = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btn_Signup
             // 
@@ -207,7 +213,7 @@
             this.btn_Signup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btn_Signup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btn_Signup.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(240)))), ((int)(((byte)(214)))));
-            this.btn_Signup.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.btn_Signup.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btn_Signup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btn_Signup.Location = new System.Drawing.Point(203, 456);
             this.btn_Signup.Name = "btn_Signup";
@@ -215,6 +221,7 @@
             this.btn_Signup.TabIndex = 8;
             this.btn_Signup.Text = "Sign up";
             this.btn_Signup.UseTransparentBackground = true;
+            this.btn_Signup.Click += new System.EventHandler(this.btn_Signup_Click);
             // 
             // control_Close
             // 
@@ -225,6 +232,7 @@
             this.control_Close.Name = "control_Close";
             this.control_Close.Size = new System.Drawing.Size(35, 30);
             this.control_Close.TabIndex = 8;
+            this.control_Close.Click += new System.EventHandler(this.control_Close_Click);
             // 
             // control_Minimize
             // 
@@ -236,6 +244,7 @@
             this.control_Minimize.Name = "control_Minimize";
             this.control_Minimize.Size = new System.Drawing.Size(35, 30);
             this.control_Minimize.TabIndex = 9;
+            this.control_Minimize.Click += new System.EventHandler(this.control_Minimize_Click);
             // 
             // labelLogin
             // 
@@ -249,11 +258,27 @@
             this.labelLogin.TabIndex = 10;
             this.labelLogin.Text = "Login";
             // 
+            // ptb_eye_new_pass
+            // 
+            this.ptb_eye_new_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.ImageRotate = 0F;
+            this.ptb_eye_new_pass.Location = new System.Drawing.Point(302, 299);
+            this.ptb_eye_new_pass.Name = "ptb_eye_new_pass";
+            this.ptb_eye_new_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_new_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_new_pass.TabIndex = 29;
+            this.ptb_eye_new_pass.TabStop = false;
+            this.ptb_eye_new_pass.UseTransparentBackground = true;
+            this.ptb_eye_new_pass.Click += new System.EventHandler(this.ptb_eye_new_pass_Click);
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_eye_pass);
+            this.Controls.Add(this.ptb_eye_new_pass);
             this.Controls.Add(this.labelLogin);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
@@ -269,8 +294,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "login";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pciBackground)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_pass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,5 +320,7 @@
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private System.Windows.Forms.Label labelLogin;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_pass;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_new_pass;
     }
 }
