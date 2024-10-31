@@ -177,6 +177,7 @@
     <Compile Include="thongbao_form.Designer.cs">
       <DependentUpon>thongbao_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Users.cs" />
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>

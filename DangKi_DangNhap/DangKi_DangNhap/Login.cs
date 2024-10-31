@@ -80,7 +80,7 @@ namespace DangKi_DangNhap
             }
 
             string username = txtUsername.Text.Trim();
-            string password = originalPassword; // Use the original password entered by the user
+            string password = txtPassword.Text.Trim(); // Use the original password entered by the user
 
             // Retrieve user data from Firebase
             FirebaseResponse response = client.Get("Users/" + username);
