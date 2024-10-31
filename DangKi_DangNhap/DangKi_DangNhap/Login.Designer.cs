@@ -153,7 +153,6 @@
             this.toggleSwitch.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(234)))), ((int)(((byte)(195)))));
             this.toggleSwitch.UncheckedState.InnerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
             this.toggleSwitch.UncheckedState.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
-            this.toggleSwitch.CheckedChanged += new System.EventHandler(this.toggleSwitch_CheckedChanged);
             // 
             // label1
             // 
