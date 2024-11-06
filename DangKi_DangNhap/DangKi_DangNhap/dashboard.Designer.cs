@@ -84,7 +84,7 @@
             this.lblInspired = new System.Windows.Forms.Label();
             this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtTrangChu = new Guna.UI2.WinForms.Guna2TextBox();
+            this.lblNhomHoc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb01)).BeginInit();
@@ -425,7 +425,7 @@
             this.panelBackgr2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelBackgr2.BackgroundImage")));
             this.panelBackgr2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelBackgr2.BorderColor = System.Drawing.Color.Black;
-            this.panelBackgr2.Controls.Add(this.txtTrangChu);
+            this.panelBackgr2.Controls.Add(this.lblNhomHoc);
             this.panelBackgr2.Controls.Add(this.panelTopgay);
             this.panelBackgr2.Controls.Add(this.panelMyProgress);
             this.panelBackgr2.Controls.Add(this.panelMyCourse);
@@ -894,30 +894,17 @@
             this.txtSearch.Size = new System.Drawing.Size(229, 41);
             this.txtSearch.TabIndex = 0;
             // 
-            // txtTrangChu
+            // lblNhomHoc
             // 
-            this.txtTrangChu.Animated = true;
-            this.txtTrangChu.BorderThickness = 0;
-            this.txtTrangChu.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTrangChu.DefaultText = "Trang chủ";
-            this.txtTrangChu.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtTrangChu.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtTrangChu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrangChu.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtTrangChu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(193)))), ((int)(((byte)(255)))));
-            this.txtTrangChu.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrangChu.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.txtTrangChu.ForeColor = System.Drawing.Color.White;
-            this.txtTrangChu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrangChu.Location = new System.Drawing.Point(3, 28);
-            this.txtTrangChu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtTrangChu.Name = "txtTrangChu";
-            this.txtTrangChu.PasswordChar = '\0';
-            this.txtTrangChu.PlaceholderText = "";
-            this.txtTrangChu.SelectedText = "";
-            this.txtTrangChu.Size = new System.Drawing.Size(145, 40);
-            this.txtTrangChu.TabIndex = 16;
-            this.txtTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblNhomHoc.AutoSize = true;
+            this.lblNhomHoc.BackColor = System.Drawing.Color.Transparent;
+            this.lblNhomHoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
+            this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
+            this.lblNhomHoc.Name = "lblNhomHoc";
+            this.lblNhomHoc.Size = new System.Drawing.Size(107, 30);
+            this.lblNhomHoc.TabIndex = 16;
+            this.lblNhomHoc.Text = "Trang chủ";
             // 
             // dashboard
             // 
@@ -1031,6 +1018,6 @@
         private System.Windows.Forms.PictureBox picBao;
         private System.Windows.Forms.PictureBox picHuy;
         private System.Windows.Forms.PictureBox picKhoi;
-        private Guna.UI2.WinForms.Guna2TextBox txtTrangChu;
+        private System.Windows.Forms.Label lblNhomHoc;
     }
 }

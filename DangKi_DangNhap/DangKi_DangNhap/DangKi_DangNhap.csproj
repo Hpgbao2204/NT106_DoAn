@@ -116,6 +116,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NhomHoc_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhomHoc_form.Designer.cs">
+      <DependentUpon>NhomHoc_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +148,27 @@
     <Compile Include="signup.Designer.cs">
       <DependentUpon>signup.cs</DependentUpon>
     </Compile>
+    <Compile Include="taonhombtn_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="taonhombtn_form.Designer.cs">
+      <DependentUpon>taonhombtn_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="thamgiabtn_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thamgiabtn_form.Designer.cs">
+      <DependentUpon>thamgiabtn_form.cs</DependentUpon>
+    </Compile>
     <Compile Include="thongbao_form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="thongbao_form.Designer.cs">
       <DependentUpon>thongbao_form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="NhomHoc_form.resx">
+      <DependentUpon>NhomHoc_form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,6 +189,12 @@
     </Compile>
     <EmbeddedResource Include="signup.resx">
       <DependentUpon>signup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="taonhombtn_form.resx">
+      <DependentUpon>taonhombtn_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thamgiabtn_form.resx">
+      <DependentUpon>thamgiabtn_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="thongbao_form.resx">
       <DependentUpon>thongbao_form.cs</DependentUpon>
