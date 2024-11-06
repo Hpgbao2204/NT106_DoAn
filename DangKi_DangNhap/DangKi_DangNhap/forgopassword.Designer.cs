@@ -42,8 +42,14 @@
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnCreateAccount = new Guna.UI2.WinForms.Guna2Button();
             this.labelForgorpassword = new System.Windows.Forms.Label();
+            this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.ptb_eye_new_pass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.ptb_eye_re_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_re_pass)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -105,6 +111,8 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 5;
+            this.txtUsername.Visible = false;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtNewPass
             // 
@@ -157,7 +165,6 @@
             this.txtRePass.SelectedText = "";
             this.txtRePass.Size = new System.Drawing.Size(292, 40);
             this.txtRePass.TabIndex = 7;
-            this.txtRePass.TextChanged += new System.EventHandler(this.txtConfirmPass_TextChanged);
             // 
             // btnVerify
             // 
@@ -179,6 +186,7 @@
             this.btnVerify.TabIndex = 23;
             this.btnVerify.Text = "Verify Email";
             this.btnVerify.UseTransparentBackground = true;
+            this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
             // txtCodeEmail
             // 
@@ -231,6 +239,7 @@
             this.txtEmail.SelectedText = "";
             this.txtEmail.Size = new System.Drawing.Size(292, 40);
             this.txtEmail.TabIndex = 21;
+            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // btnCreateAccount
             // 
@@ -268,11 +277,65 @@
             this.labelForgorpassword.TabIndex = 25;
             this.labelForgorpassword.Text = "Forgot Password";
             // 
+            // control_Minimize
+            // 
+            this.control_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.control_Minimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Minimize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Minimize.Location = new System.Drawing.Point(1081, 12);
+            this.control_Minimize.Name = "control_Minimize";
+            this.control_Minimize.Size = new System.Drawing.Size(35, 30);
+            this.control_Minimize.TabIndex = 27;
+            // 
+            // control_Close
+            // 
+            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Close.Location = new System.Drawing.Point(1122, 12);
+            this.control_Close.Name = "control_Close";
+            this.control_Close.Size = new System.Drawing.Size(35, 30);
+            this.control_Close.TabIndex = 26;
+            this.control_Close.Click += new System.EventHandler(this.control_Close_Click);
+            // 
+            // ptb_eye_new_pass
+            // 
+            this.ptb_eye_new_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_new_pass.ImageRotate = 0F;
+            this.ptb_eye_new_pass.Location = new System.Drawing.Point(303, 299);
+            this.ptb_eye_new_pass.Name = "ptb_eye_new_pass";
+            this.ptb_eye_new_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_new_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_new_pass.TabIndex = 28;
+            this.ptb_eye_new_pass.TabStop = false;
+            this.ptb_eye_new_pass.UseTransparentBackground = true;
+            this.ptb_eye_new_pass.Click += new System.EventHandler(this.ptb_eye_new_pass_Click);
+            // 
+            // ptb_eye_re_pass
+            // 
+            this.ptb_eye_re_pass.BackColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_re_pass.FillColor = System.Drawing.Color.Transparent;
+            this.ptb_eye_re_pass.ImageRotate = 0F;
+            this.ptb_eye_re_pass.Location = new System.Drawing.Point(303, 358);
+            this.ptb_eye_re_pass.Name = "ptb_eye_re_pass";
+            this.ptb_eye_re_pass.Size = new System.Drawing.Size(21, 21);
+            this.ptb_eye_re_pass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_eye_re_pass.TabIndex = 29;
+            this.ptb_eye_re_pass.TabStop = false;
+            this.ptb_eye_re_pass.UseTransparentBackground = true;
+            this.ptb_eye_re_pass.Click += new System.EventHandler(this.ptb_eye_confirm_re_pass_Click);
+            // 
             // forgopassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.ptb_eye_re_pass);
+            this.Controls.Add(this.ptb_eye_new_pass);
+            this.Controls.Add(this.control_Minimize);
+            this.Controls.Add(this.control_Close);
             this.Controls.Add(this.labelForgorpassword);
             this.Controls.Add(this.btnCreateAccount);
             this.Controls.Add(this.btnVerify);
@@ -286,8 +349,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "forgopassword";
             this.Text = "forgopassword";
+            this.Load += new System.EventHandler(this.forgopassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_re_pass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +373,9 @@
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2Button btnCreateAccount;
         private System.Windows.Forms.Label labelForgorpassword;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Close;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_re_pass;
+        private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_new_pass;
     }
 }
