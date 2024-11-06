@@ -1,6 +1,6 @@
 ﻿namespace DangKi_DangNhap
 {
-    partial class thongbao_form
+    partial class NhomHoc_form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(thongbao_form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhomHoc_form));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.btnThamGia = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblDanhSachNhom = new System.Windows.Forms.Label();
             this.panelBackgr1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pbAvatar = new Guna.UI2.WinForms.Guna2PictureBox();
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,21 +48,109 @@
             this.btnNhomHoc = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnFileUpLoad = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTinNhan = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLichSapToi = new Guna.UI2.WinForms.Guna2Button();
-            this.btnTatCa = new Guna.UI2.WinForms.Guna2Button();
-            this.panelThongBao = new Guna.UI2.WinForms.Guna2Panel();
             this.lblNhomHoc = new System.Windows.Forms.Label();
+            this.guna2Panel1.SuspendLayout();
+            this.guna2Panel3.SuspendLayout();
+            this.guna2Panel2.SuspendLayout();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
             // 
             this.guna2Elipse1.TargetControl = this;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.Controls.Add(this.lblNhomHoc);
+            this.guna2Panel1.Controls.Add(this.guna2Panel3);
+            this.guna2Panel1.Controls.Add(this.flowLayoutPanel1);
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Location = new System.Drawing.Point(258, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(916, 764);
+            this.guna2Panel1.TabIndex = 6;
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel3.Controls.Add(this.btnThamGia);
+            this.guna2Panel3.Controls.Add(this.btnTaoNhom);
+            this.guna2Panel3.Location = new System.Drawing.Point(431, 67);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(355, 72);
+            this.guna2Panel3.TabIndex = 15;
+            // 
+            // btnThamGia
+            // 
+            this.btnThamGia.Animated = true;
+            this.btnThamGia.BackColor = System.Drawing.Color.Transparent;
+            this.btnThamGia.BorderRadius = 10;
+            this.btnThamGia.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThamGia.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThamGia.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThamGia.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThamGia.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.btnThamGia.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnThamGia.ForeColor = System.Drawing.Color.White;
+            this.btnThamGia.Location = new System.Drawing.Point(190, 14);
+            this.btnThamGia.Name = "btnThamGia";
+            this.btnThamGia.Size = new System.Drawing.Size(134, 45);
+            this.btnThamGia.TabIndex = 12;
+            this.btnThamGia.Text = "Tham gia";
+            // 
+            // btnTaoNhom
+            // 
+            this.btnTaoNhom.Animated = true;
+            this.btnTaoNhom.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaoNhom.BorderRadius = 10;
+            this.btnTaoNhom.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaoNhom.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaoNhom.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTaoNhom.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTaoNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.btnTaoNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnTaoNhom.ForeColor = System.Drawing.Color.White;
+            this.btnTaoNhom.Location = new System.Drawing.Point(33, 14);
+            this.btnTaoNhom.Name = "btnTaoNhom";
+            this.btnTaoNhom.Size = new System.Drawing.Size(134, 45);
+            this.btnTaoNhom.TabIndex = 11;
+            this.btnTaoNhom.Text = "Tạo nhóm";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(34, 141);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(303, 588);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel2.BorderThickness = 1;
+            this.guna2Panel2.Controls.Add(this.lblDanhSachNhom);
+            this.guna2Panel2.Location = new System.Drawing.Point(31, 75);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(309, 657);
+            this.guna2Panel2.TabIndex = 12;
+            // 
+            // lblDanhSachNhom
+            // 
+            this.lblDanhSachNhom.AutoSize = true;
+            this.lblDanhSachNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDanhSachNhom.ForeColor = System.Drawing.Color.White;
+            this.lblDanhSachNhom.Location = new System.Drawing.Point(59, 21);
+            this.lblDanhSachNhom.Name = "lblDanhSachNhom";
+            this.lblDanhSachNhom.Size = new System.Drawing.Size(173, 30);
+            this.lblDanhSachNhom.TabIndex = 0;
+            this.lblDanhSachNhom.Text = "Danh sách nhóm";
+            this.lblDanhSachNhom.Click += new System.EventHandler(this.label1_Click);
             // 
             // panelBackgr1
             // 
@@ -78,7 +173,7 @@
             this.panelBackgr1.Location = new System.Drawing.Point(0, 0);
             this.panelBackgr1.Name = "panelBackgr1";
             this.panelBackgr1.Size = new System.Drawing.Size(259, 767);
-            this.panelBackgr1.TabIndex = 3;
+            this.panelBackgr1.TabIndex = 5;
             // 
             // pbAvatar
             // 
@@ -286,105 +381,6 @@
             this.btnTrangChu.TextOffset = new System.Drawing.Point(10, 0);
             this.btnTrangChu.UseTransparentBackground = true;
             // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
-            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel1.Controls.Add(this.lblNhomHoc);
-            this.guna2Panel1.Controls.Add(this.btnFileUpLoad);
-            this.guna2Panel1.Controls.Add(this.btnTinNhan);
-            this.guna2Panel1.Controls.Add(this.btnLichSapToi);
-            this.guna2Panel1.Controls.Add(this.btnTatCa);
-            this.guna2Panel1.Controls.Add(this.panelThongBao);
-            this.guna2Panel1.Location = new System.Drawing.Point(258, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(916, 764);
-            this.guna2Panel1.TabIndex = 4;
-            // 
-            // btnFileUpLoad
-            // 
-            this.btnFileUpLoad.BackColor = System.Drawing.Color.Transparent;
-            this.btnFileUpLoad.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFileUpLoad.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFileUpLoad.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFileUpLoad.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFileUpLoad.FillColor = System.Drawing.Color.Transparent;
-            this.btnFileUpLoad.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnFileUpLoad.ForeColor = System.Drawing.Color.White;
-            this.btnFileUpLoad.Location = new System.Drawing.Point(466, 85);
-            this.btnFileUpLoad.Name = "btnFileUpLoad";
-            this.btnFileUpLoad.PressedColor = System.Drawing.Color.Transparent;
-            this.btnFileUpLoad.ShadowDecoration.BorderRadius = 0;
-            this.btnFileUpLoad.ShadowDecoration.Color = System.Drawing.Color.Transparent;
-            this.btnFileUpLoad.Size = new System.Drawing.Size(141, 36);
-            this.btnFileUpLoad.TabIndex = 14;
-            this.btnFileUpLoad.Text = "File up load";
-            this.btnFileUpLoad.UseTransparentBackground = true;
-            // 
-            // btnTinNhan
-            // 
-            this.btnTinNhan.BackColor = System.Drawing.Color.Transparent;
-            this.btnTinNhan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTinNhan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTinNhan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTinNhan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTinNhan.FillColor = System.Drawing.Color.Transparent;
-            this.btnTinNhan.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnTinNhan.ForeColor = System.Drawing.Color.White;
-            this.btnTinNhan.Location = new System.Drawing.Point(319, 85);
-            this.btnTinNhan.Name = "btnTinNhan";
-            this.btnTinNhan.PressedColor = System.Drawing.Color.Transparent;
-            this.btnTinNhan.Size = new System.Drawing.Size(141, 36);
-            this.btnTinNhan.TabIndex = 13;
-            this.btnTinNhan.Text = "Tin nhắn";
-            this.btnTinNhan.UseTransparentBackground = true;
-            // 
-            // btnLichSapToi
-            // 
-            this.btnLichSapToi.BackColor = System.Drawing.Color.Transparent;
-            this.btnLichSapToi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLichSapToi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLichSapToi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLichSapToi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLichSapToi.FillColor = System.Drawing.Color.Transparent;
-            this.btnLichSapToi.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnLichSapToi.ForeColor = System.Drawing.Color.White;
-            this.btnLichSapToi.Location = new System.Drawing.Point(172, 85);
-            this.btnLichSapToi.Name = "btnLichSapToi";
-            this.btnLichSapToi.PressedColor = System.Drawing.Color.Transparent;
-            this.btnLichSapToi.Size = new System.Drawing.Size(141, 36);
-            this.btnLichSapToi.TabIndex = 12;
-            this.btnLichSapToi.Text = "Lịch sắp tới";
-            this.btnLichSapToi.UseTransparentBackground = true;
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.BackColor = System.Drawing.Color.Transparent;
-            this.btnTatCa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnTatCa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnTatCa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnTatCa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTatCa.FillColor = System.Drawing.Color.Transparent;
-            this.btnTatCa.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnTatCa.ForeColor = System.Drawing.Color.White;
-            this.btnTatCa.Location = new System.Drawing.Point(36, 85);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.PressedColor = System.Drawing.Color.Transparent;
-            this.btnTatCa.Size = new System.Drawing.Size(131, 36);
-            this.btnTatCa.TabIndex = 11;
-            this.btnTatCa.Text = "Tất cả";
-            this.btnTatCa.UseTransparentBackground = true;
-            // 
-            // panelThongBao
-            // 
-            this.panelThongBao.BorderColor = System.Drawing.Color.Black;
-            this.panelThongBao.CustomBorderThickness = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.panelThongBao.Location = new System.Drawing.Point(35, 122);
-            this.panelThongBao.Name = "panelThongBao";
-            this.panelThongBao.Size = new System.Drawing.Size(847, 642);
-            this.panelThongBao.TabIndex = 0;
-            // 
             // lblNhomHoc
             // 
             this.lblNhomHoc.AutoSize = true;
@@ -393,24 +389,28 @@
             this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
             this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
             this.lblNhomHoc.Name = "lblNhomHoc";
-            this.lblNhomHoc.Size = new System.Drawing.Size(118, 30);
-            this.lblNhomHoc.TabIndex = 5;
-            this.lblNhomHoc.Text = "Thông báo";
+            this.lblNhomHoc.Size = new System.Drawing.Size(114, 30);
+            this.lblNhomHoc.TabIndex = 1;
+            this.lblNhomHoc.Text = "Nhóm học";
             // 
-            // thongbao_form
+            // NhomHoc_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1171, 763);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.panelBackgr1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "thongbao_form";
-            this.Text = "thongbao_form";
-            this.panelBackgr1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
+            this.Name = "NhomHoc_form";
+            this.Text = "chat_form";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
+            this.panelBackgr1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -418,7 +418,9 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel panelBackgr1;
+        private Guna.UI2.WinForms.Guna2PictureBox pbAvatar;
         private Guna.UI2.WinForms.Guna2TextBox txtName;
         private Guna.UI2.WinForms.Guna2Button btnLogOut;
         private Guna.UI2.WinForms.Guna2Button btnDanhGia;
@@ -427,13 +429,12 @@
         private Guna.UI2.WinForms.Guna2Button btnNhomHoc;
         private Guna.UI2.WinForms.Guna2Button btnThongBao;
         private Guna.UI2.WinForms.Guna2Button btnTrangChu;
-        private Guna.UI2.WinForms.Guna2PictureBox pbAvatar;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel panelThongBao;
-        private Guna.UI2.WinForms.Guna2Button btnFileUpLoad;
-        private Guna.UI2.WinForms.Guna2Button btnTinNhan;
-        private Guna.UI2.WinForms.Guna2Button btnLichSapToi;
-        private Guna.UI2.WinForms.Guna2Button btnTatCa;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
+        private Guna.UI2.WinForms.Guna2Button btnThamGia;
+        private Guna.UI2.WinForms.Guna2Button btnTaoNhom;
+        private System.Windows.Forms.Label lblDanhSachNhom;
         private System.Windows.Forms.Label lblNhomHoc;
     }
 }

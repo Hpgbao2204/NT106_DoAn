@@ -14,10 +14,9 @@ namespace DangKi_DangNhap
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            Application.EnableVisualStyles(); 
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new thongbao_form());
-            Application.Run(new login());
+            Application.Run(new thamgiabtn_form());
         }
     }
 }
