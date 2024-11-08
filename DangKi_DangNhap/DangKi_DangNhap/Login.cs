@@ -47,7 +47,7 @@ namespace DangKi_DangNhap
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
-        {// Lấy giá trị người dùng nhập vào từ TextBox
+        {
          // Lấy giá trị người dùng nhập vào từ TextBox
             string username = txtUsername.Text;
 
@@ -84,7 +84,7 @@ namespace DangKi_DangNhap
 
             // Retrieve user data from Firebase
             FirebaseResponse response = client.Get("Users/" + username);
-            User user = response.ResultAs<User>(); // Deserialize the data to User object
+            Users user = response.ResultAs<Users>(); // Deserialize the data to User object
 
             if (user == null)
             {
@@ -103,11 +103,6 @@ namespace DangKi_DangNhap
             {
                 MessageBox.Show("Mật khẩu không đúng.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        public class User
-        {
-            public string Username { get; set; }
-            public string Password { get; set; }
         }
 
         private void control_Close_Click(object sender, EventArgs e)
