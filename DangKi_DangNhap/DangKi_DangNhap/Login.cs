@@ -48,7 +48,7 @@ namespace DangKi_DangNhap
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-         // Lấy giá trị người dùng nhập vào từ TextBox
+            // Lấy giá trị người dùng nhập vào từ TextBox
             string username = txtUsername.Text;
 
 
@@ -97,7 +97,12 @@ namespace DangKi_DangNhap
 
             if (isPasswordValid)
             {
+                this.Hide();
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dashboard db = new dashboard(user);
+                db.ShowDialog();
+                this.Show();
+
             }
             else
             {
@@ -192,6 +197,25 @@ namespace DangKi_DangNhap
                 {
                     MessageBox.Show("Error loading GIF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+        private void toggleSwitch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (toggleSwitch.Checked)
+            {
+                // Nếu công tắc bật, lưu tên người dùng và mật khẩu vào cài đặt
+                Properties.Settings.Default.Username = txtUsername.Text;
+                Properties.Settings.Default.Password = originalPassword; // Lưu mật khẩu gốc mà không bị che
+                Properties.Settings.Default.RememberMe = true; // Đánh dấu Remember Me là true
+                Properties.Settings.Default.Save(); // Lưu cài đặt
+            }
+            else
+            {
+                // Nếu công tắc tắt, xóa tên người dùng và mật khẩu đã lưu
+                Properties.Settings.Default.Username = string.Empty;
+                Properties.Settings.Default.Password = string.Empty;
+                Properties.Settings.Default.RememberMe = false; // Đánh dấu Remember Me là false
+                Properties.Settings.Default.Save(); // Lưu cài đặt
             }
         }
     }
