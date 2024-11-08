@@ -47,7 +47,9 @@
             this.pb03 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pb05 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panelBackgr2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.lblNhomHoc = new System.Windows.Forms.Label();
+            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panelTopgay = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel13 = new Guna.UI2.WinForms.Guna2Panel();
             this.picTung = new System.Windows.Forms.PictureBox();
@@ -85,8 +87,6 @@
             this.lblInspired = new System.Windows.Forms.Label();
             this.btnFind = new Guna.UI2.WinForms.Guna2Button();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
-            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb01)).BeginInit();
@@ -298,6 +298,7 @@
             this.btnNhomHoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnNhomHoc.TextOffset = new System.Drawing.Point(10, 0);
             this.btnNhomHoc.UseTransparentBackground = true;
+            this.btnNhomHoc.Click += new System.EventHandler(this.btnNhomHoc_Click);
             // 
             // btnThongBao
             // 
@@ -442,6 +443,17 @@
             this.panelBackgr2.TabIndex = 8;
             this.panelBackgr2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
+            // control_Minimize
+            // 
+            this.control_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
+            this.control_Minimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Minimize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Minimize.Location = new System.Drawing.Point(825, 3);
+            this.control_Minimize.Name = "control_Minimize";
+            this.control_Minimize.Size = new System.Drawing.Size(35, 30);
+            this.control_Minimize.TabIndex = 29;
+            // 
             // lblNhomHoc
             // 
             this.lblNhomHoc.AutoSize = true;
@@ -453,6 +465,16 @@
             this.lblNhomHoc.Size = new System.Drawing.Size(107, 30);
             this.lblNhomHoc.TabIndex = 16;
             this.lblNhomHoc.Text = "Trang chủ";
+            // 
+            // control_Close
+            // 
+            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Close.Location = new System.Drawing.Point(866, 3);
+            this.control_Close.Name = "control_Close";
+            this.control_Close.Size = new System.Drawing.Size(35, 30);
+            this.control_Close.TabIndex = 28;
             // 
             // panelTopgay
             // 
@@ -909,27 +931,6 @@
             this.txtSearch.SelectedText = "";
             this.txtSearch.Size = new System.Drawing.Size(229, 41);
             this.txtSearch.TabIndex = 0;
-            // 
-            // control_Minimize
-            // 
-            this.control_Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.control_Minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            this.control_Minimize.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
-            this.control_Minimize.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
-            this.control_Minimize.Location = new System.Drawing.Point(825, 3);
-            this.control_Minimize.Name = "control_Minimize";
-            this.control_Minimize.Size = new System.Drawing.Size(35, 30);
-            this.control_Minimize.TabIndex = 29;
-            // 
-            // control_Close
-            // 
-            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
-            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
-            this.control_Close.Location = new System.Drawing.Point(866, 3);
-            this.control_Close.Name = "control_Close";
-            this.control_Close.Size = new System.Drawing.Size(35, 30);
-            this.control_Close.TabIndex = 28;
             // 
             // dashboard
             // 

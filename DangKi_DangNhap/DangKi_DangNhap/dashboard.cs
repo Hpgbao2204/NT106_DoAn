@@ -45,7 +45,6 @@ namespace DangKi_DangNhap
                 // Truy xuất ảnh base64 từ Firebase
                 FirebaseResponse response = await firebaseClient.GetAsync($"Users/{currentUser.Username}/Image");
                 string imageBase64 = response.ResultAs<string>();
-
                 // Kiểm tra nếu chuỗi base64 không rỗng hoặc null
                 if (!string.IsNullOrEmpty(imageBase64))
                 {
@@ -161,6 +160,14 @@ namespace DangKi_DangNhap
             {
                 this.WindowState = FormWindowState.Normal; // Thu nhỏ lại cửa sổ về kích thước ban đầu
             }
+        }
+
+        private void btnNhomHoc_Click(object sender, EventArgs e)
+        {
+            NhomHoc_form tb = new NhomHoc_form();
+            this.Hide();
+            tb.ShowDialog();
+            this.ShowDialog();
         }
     }
 }
