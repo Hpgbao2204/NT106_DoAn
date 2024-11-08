@@ -145,6 +145,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chatnhom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chatnhom.Designer.cs">
+      <DependentUpon>chatnhom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="khotailieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="khotailieu.Designer.cs">
+      <DependentUpon>khotailieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="moivaonhombtn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="moivaonhombtn.Designer.cs">
+      <DependentUpon>moivaonhombtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhomHoc_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +213,15 @@
     <Compile Include="thongbao_form.Designer.cs">
       <DependentUpon>thongbao_form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="chatnhom.resx">
+      <DependentUpon>chatnhom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="khotailieu.resx">
+      <DependentUpon>khotailieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="moivaonhombtn.resx">
+      <DependentUpon>moivaonhombtn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhomHoc_form.resx">
       <DependentUpon>NhomHoc_form.cs</DependentUpon>
     </EmbeddedResource>
