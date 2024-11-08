@@ -42,9 +42,13 @@ namespace DangKi_DangNhap
         {
             try
             {
+                // Đặt pbAvatar không hiển thị cho đến khi ảnh được tải về
+                pbAvatar.Visible = false;
+
                 // Truy xuất ảnh base64 từ Firebase
                 FirebaseResponse response = await firebaseClient.GetAsync($"Users/{currentUser.Username}/Image");
                 string imageBase64 = response.ResultAs<string>();
+
                 // Kiểm tra nếu chuỗi base64 không rỗng hoặc null
                 if (!string.IsNullOrEmpty(imageBase64))
                 {
@@ -56,6 +60,7 @@ namespace DangKi_DangNhap
                     {
                         // Chuyển đổi MemoryStream thành Image và hiển thị trên PictureBox
                         pbAvatar.Image = Image.FromStream(ms);
+                        pbAvatar.Visible = true; // Hiển thị ảnh sau khi tải thành công
                     }
                 }
                 else
@@ -65,7 +70,7 @@ namespace DangKi_DangNhap
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi kết nối Firebase: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
