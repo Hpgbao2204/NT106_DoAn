@@ -151,7 +151,6 @@
             this.panelBackgr1.Name = "panelBackgr1";
             this.panelBackgr1.Size = new System.Drawing.Size(259, 767);
             this.panelBackgr1.TabIndex = 2;
-            this.panelBackgr1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint_1);
             // 
             // txtName
             // 
@@ -220,7 +219,6 @@
             this.btnDanhGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDanhGia.TextOffset = new System.Drawing.Point(10, 0);
             this.btnDanhGia.UseTransparentBackground = true;
-            this.btnDanhGia.Click += new System.EventHandler(this.guna2Button6_Click);
             // 
             // btnCaiDat
             // 
@@ -246,7 +244,6 @@
             this.btnCaiDat.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnCaiDat.TextOffset = new System.Drawing.Point(10, 0);
             this.btnCaiDat.UseTransparentBackground = true;
-            this.btnCaiDat.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // btnLapLich
             // 
@@ -272,7 +269,6 @@
             this.btnLapLich.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnLapLich.TextOffset = new System.Drawing.Point(10, 0);
             this.btnLapLich.UseTransparentBackground = true;
-            this.btnLapLich.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // btnNhomHoc
             // 
@@ -324,7 +320,6 @@
             this.btnThongBao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnThongBao.TextOffset = new System.Drawing.Point(10, 0);
             this.btnThongBao.UseTransparentBackground = true;
-            this.btnThongBao.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // btnTrangChu
             // 
@@ -350,7 +345,6 @@
             this.btnTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTrangChu.TextOffset = new System.Drawing.Point(10, 0);
             this.btnTrangChu.UseTransparentBackground = true;
-            this.btnTrangChu.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // pb01
             // 
@@ -407,7 +401,6 @@
             this.pb03.TabIndex = 6;
             this.pb03.TabStop = false;
             this.pb03.UseTransparentBackground = true;
-            this.pb03.Click += new System.EventHandler(this.guna2PictureBox6_Click);
             // 
             // pb05
             // 
@@ -441,7 +434,6 @@
             this.panelBackgr2.Name = "panelBackgr2";
             this.panelBackgr2.Size = new System.Drawing.Size(916, 764);
             this.panelBackgr2.TabIndex = 8;
-            this.panelBackgr2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel2_Paint);
             // 
             // control_Minimize
             // 
@@ -560,7 +552,6 @@
             this.lblBao.Size = new System.Drawing.Size(134, 17);
             this.lblBao.TabIndex = 1;
             this.lblBao.Text = "Huỳnh Phan Gia Bảo";
-            this.lblBao.Click += new System.EventHandler(this.label13_Click);
             // 
             // guna2Panel11
             // 
@@ -631,7 +622,6 @@
             this.picKhoi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picKhoi.TabIndex = 4;
             this.picKhoi.TabStop = false;
-            this.picKhoi.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // lblKhoi
             // 
@@ -862,7 +852,6 @@
             this.lblIT007.Size = new System.Drawing.Size(40, 17);
             this.lblIT007.TabIndex = 1;
             this.lblIT007.Text = "IT007";
-            this.lblIT007.Click += new System.EventHandler(this.label7_Click);
             // 
             // progressbarIT007
             // 
