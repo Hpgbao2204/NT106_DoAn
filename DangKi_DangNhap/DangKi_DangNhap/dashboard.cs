@@ -38,12 +38,12 @@ namespace DangKi_DangNhap
             currentUser = user;
         }
 
-        private async void pAvatar_Click(object sender, EventArgs e)
+        private async void loadBasicInfo()
         {
             try
             {
-                // Đặt pbAvatar không hiển thị cho đến khi ảnh được tải về
-                pbAvatar.Visible = false;
+                // Load tên người dùng vào label txtName
+                txtName.Text = currentUser.Username;
 
                 // Truy xuất ảnh base64 từ Firebase
                 FirebaseResponse response = await firebaseClient.GetAsync($"Users/{currentUser.Username}/Image");
@@ -73,19 +73,13 @@ namespace DangKi_DangNhap
                 MessageBox.Show($"Lỗi kết nối Firebase: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void dashboard_Load(object sender, EventArgs e)
         {
+            // Đặt pbAvatar không hiển thị cho đến khi ảnh được tải về
+            pbAvatar.Visible = false;
 
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-
+            loadBasicInfo();
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -94,54 +88,6 @@ namespace DangKi_DangNhap
             this.Hide();
             tb.ShowDialog();
             this.ShowDialog();
-        }
-        private void guna2Button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void guna2PictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbAvatar_Click(object sender, EventArgs e)
-        {
         }
 
         private void btn_Close_Click(object sender, EventArgs e)
