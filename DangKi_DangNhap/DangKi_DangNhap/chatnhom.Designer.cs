@@ -275,12 +275,13 @@
             // controlboxClose
             // 
             this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.OldLace;
             this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
             this.controlboxClose.IconColor = System.Drawing.Color.Black;
-            this.controlboxClose.Location = new System.Drawing.Point(1080, 4);
+            this.controlboxClose.Location = new System.Drawing.Point(1078, 4);
             this.controlboxClose.Name = "controlboxClose";
             this.controlboxClose.Size = new System.Drawing.Size(31, 29);
-            this.controlboxClose.TabIndex = 23;
+            this.controlboxClose.TabIndex = 24;
             // 
             // chatnhom
             // 

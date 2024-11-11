@@ -157,6 +157,12 @@
     <Compile Include="khotailieu.Designer.cs">
       <DependentUpon>khotailieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="mahoafile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mahoafile.Designer.cs">
+      <DependentUpon>mahoafile.cs</DependentUpon>
+    </Compile>
     <Compile Include="moivaonhombtn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,12 +225,27 @@
     <EmbeddedResource Include="khotailieu.resx">
       <DependentUpon>khotailieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="mahoafile.resx">
+      <DependentUpon>mahoafile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="moivaonhombtn.resx">
       <DependentUpon>moivaonhombtn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhomHoc_form.resx">
       <DependentUpon>NhomHoc_form.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="thongtinfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongtinfile.Designer.cs">
+      <DependentUpon>thongtinfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="thongtinfilebtn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongtinfilebtn.Designer.cs">
+      <DependentUpon>thongtinfilebtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
@@ -256,6 +277,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="thongbao_form.resx">
       <DependentUpon>thongbao_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thongtinfile.resx">
+      <DependentUpon>thongtinfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thongtinfilebtn.resx">
+      <DependentUpon>thongtinfilebtn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -221,12 +221,13 @@
             // controlboxClose
             // 
             this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.OldLace;
             this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
             this.controlboxClose.IconColor = System.Drawing.Color.Black;
-            this.controlboxClose.Location = new System.Drawing.Point(1088, 7);
+            this.controlboxClose.Location = new System.Drawing.Point(1085, 7);
             this.controlboxClose.Name = "controlboxClose";
             this.controlboxClose.Size = new System.Drawing.Size(31, 29);
-            this.controlboxClose.TabIndex = 22;
+            this.controlboxClose.TabIndex = 24;
             // 
             // khotailieu
             // 
@@ -234,7 +235,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1131, 725);
+            this.ClientSize = new System.Drawing.Size(1128, 725);
             this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.txtTenFile);
             this.Controls.Add(this.guna2Panel2);
