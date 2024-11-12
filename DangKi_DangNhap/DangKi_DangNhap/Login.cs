@@ -82,6 +82,13 @@ namespace DangKi_DangNhap
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim(); // Use the original password entered by the user
 
+            // Kiểm tra nếu tên đăng nhập hoặc mật khẩu còn trống
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ tên đăng nhập và mật khẩu.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             // Retrieve user data from Firebase
             FirebaseResponse response = client.Get("Users/" + username);
             Users user = response.ResultAs<Users>(); // Deserialize the data to User object
@@ -101,8 +108,6 @@ namespace DangKi_DangNhap
                 MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dashboard db = new dashboard(user);
                 db.ShowDialog();
-                this.Show();
-
             }
             else
             {
@@ -216,6 +221,20 @@ namespace DangKi_DangNhap
                 Properties.Settings.Default.Password = string.Empty;
                 Properties.Settings.Default.RememberMe = false; // Đánh dấu Remember Me là false
                 Properties.Settings.Default.Save(); // Lưu cài đặt
+            }
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Kiểm tra nếu phím Enter được nhấn
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Gọi phương thức xử lý đăng nhập
+                btnLogin_Click(sender, e);
+
+                // Đánh dấu sự kiện là đã xử lý để ngăn các điều khiển khác xử lý lại
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }
