@@ -44,6 +44,7 @@
             this.lblTenNguoiTao = new System.Windows.Forms.Label();
             this.btnThamGiaNhom = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
+            this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -95,6 +96,7 @@
             this.btnTimKiem.TabIndex = 14;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseTransparentBackground = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // cmbNhom
             // 
@@ -110,6 +112,7 @@
             this.cmbNhom.Name = "cmbNhom";
             this.cmbNhom.Size = new System.Drawing.Size(258, 36);
             this.cmbNhom.TabIndex = 7;
+            this.cmbNhom.SelectedIndexChanged += new System.EventHandler(this.cmbNhom_SelectedIndexChanged);
             // 
             // txtIDNhom
             // 
@@ -158,6 +161,7 @@
             // 
             // txtTenNguoiTao
             // 
+            this.txtTenNguoiTao.BackColor = System.Drawing.Color.Transparent;
             this.txtTenNguoiTao.BorderRadius = 10;
             this.txtTenNguoiTao.BorderThickness = 0;
             this.txtTenNguoiTao.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -177,6 +181,7 @@
             this.txtTenNguoiTao.SelectedText = "";
             this.txtTenNguoiTao.Size = new System.Drawing.Size(258, 38);
             this.txtTenNguoiTao.TabIndex = 4;
+            this.txtTenNguoiTao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTenNguoiTao_KeyDown);
             // 
             // guna2Panel3
             // 
@@ -236,16 +241,36 @@
             this.btnThamGiaNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnThamGiaNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnThamGiaNhom.ForeColor = System.Drawing.Color.White;
-            this.btnThamGiaNhom.Location = new System.Drawing.Point(254, 301);
+            this.btnThamGiaNhom.Location = new System.Drawing.Point(171, 299);
             this.btnThamGiaNhom.Name = "btnThamGiaNhom";
             this.btnThamGiaNhom.Size = new System.Drawing.Size(163, 47);
             this.btnThamGiaNhom.TabIndex = 13;
             this.btnThamGiaNhom.Text = "Tham gia nhóm";
+            this.btnThamGiaNhom.Click += new System.EventHandler(this.btnThamGiaNhom_Click);
             // 
             // guna2Elipse2
             // 
             this.guna2Elipse2.BorderRadius = 50;
             this.guna2Elipse2.TargetControl = this.guna2Panel1;
+            // 
+            // bt_esc
+            // 
+            this.bt_esc.Animated = true;
+            this.bt_esc.BackColor = System.Drawing.Color.Transparent;
+            this.bt_esc.BorderRadius = 10;
+            this.bt_esc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bt_esc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bt_esc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bt_esc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bt_esc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.bt_esc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.bt_esc.ForeColor = System.Drawing.Color.White;
+            this.bt_esc.Location = new System.Drawing.Point(349, 299);
+            this.bt_esc.Name = "bt_esc";
+            this.bt_esc.Size = new System.Drawing.Size(163, 47);
+            this.bt_esc.TabIndex = 14;
+            this.bt_esc.Text = "Thoát";
+            this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
             // 
             // thamgiabtn_form
             // 
@@ -254,6 +279,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(676, 372);
+            this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnThamGiaNhom);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -286,5 +312,6 @@
         private Guna.UI2.WinForms.Guna2Button btnThamGiaNhom;
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
+        private Guna.UI2.WinForms.Guna2Button bt_esc;
     }
 }

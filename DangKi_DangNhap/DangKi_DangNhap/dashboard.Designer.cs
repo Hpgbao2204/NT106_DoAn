@@ -320,6 +320,7 @@
             this.btnThongBao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnThongBao.TextOffset = new System.Drawing.Point(10, 0);
             this.btnThongBao.UseTransparentBackground = true;
+            this.btnThongBao.Click += new System.EventHandler(this.btnThongBao_Click);
             // 
             // btnTrangChu
             // 

@@ -40,6 +40,7 @@
             this.lblTenNhom = new System.Windows.Forms.Label();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
+            this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -133,7 +134,6 @@
             this.lblD.Size = new System.Drawing.Size(30, 25);
             this.lblD.TabIndex = 0;
             this.lblD.Text = "ID";
-            this.lblD.Click += new System.EventHandler(this.label2_Click);
             // 
             // guna2Panel2
             // 
@@ -157,7 +157,6 @@
             this.lblTenNhom.Size = new System.Drawing.Size(95, 25);
             this.lblTenNhom.TabIndex = 0;
             this.lblTenNhom.Text = "Tên nhóm";
-            this.lblTenNhom.Click += new System.EventHandler(this.label1_Click);
             // 
             // guna2Elipse2
             // 
@@ -176,11 +175,31 @@
             this.btnTaoNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnTaoNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTaoNhom.ForeColor = System.Drawing.Color.White;
-            this.btnTaoNhom.Location = new System.Drawing.Point(205, 230);
+            this.btnTaoNhom.Location = new System.Drawing.Point(139, 228);
             this.btnTaoNhom.Name = "btnTaoNhom";
             this.btnTaoNhom.Size = new System.Drawing.Size(134, 47);
             this.btnTaoNhom.TabIndex = 12;
             this.btnTaoNhom.Text = "Tạo nhóm";
+            this.btnTaoNhom.Click += new System.EventHandler(this.btnTaoNhom_Click);
+            // 
+            // bt_esc
+            // 
+            this.bt_esc.Animated = true;
+            this.bt_esc.BackColor = System.Drawing.Color.Transparent;
+            this.bt_esc.BorderRadius = 10;
+            this.bt_esc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.bt_esc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.bt_esc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.bt_esc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.bt_esc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.bt_esc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.bt_esc.ForeColor = System.Drawing.Color.White;
+            this.bt_esc.Location = new System.Drawing.Point(292, 228);
+            this.bt_esc.Name = "bt_esc";
+            this.bt_esc.Size = new System.Drawing.Size(134, 47);
+            this.bt_esc.TabIndex = 13;
+            this.bt_esc.Text = "Thoát";
+            this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
             // 
             // taonhombtn_form
             // 
@@ -189,6 +208,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(551, 303);
+            this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnTaoNhom);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -215,5 +235,6 @@
         private System.Windows.Forms.Label lblD;
         private Guna.UI2.WinForms.Guna2TextBox txtTenNhom;
         private Guna.UI2.WinForms.Guna2TextBox txtID;
+        private Guna.UI2.WinForms.Guna2Button bt_esc;
     }
 }
