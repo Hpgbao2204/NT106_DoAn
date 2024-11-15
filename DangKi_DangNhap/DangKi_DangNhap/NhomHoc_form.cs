@@ -12,40 +12,163 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp.Response;
 using System.IO;
-
+using SocketIOClient; // Đảm bảo bạn đã thêm dòng này
+using Quobject.SocketIoClientDotNet.Client;
+using Newtonsoft.Json.Linq;
+using System.Linq.Expressions;
+using static Google.Apis.Requests.BatchRequest;
 namespace DangKi_DangNhap
 {
     public partial class NhomHoc_form : Form
     {
+        private Socket socket;
+        private IFirebaseConfig Config;
+        private IFirebaseClient client;
         private Users _currentUser;
+        private SocketIOClient.SocketIO clientSocket; // Đây là khai báo 
 
         public NhomHoc_form(Users currentUser)
         {
             InitializeComponent();
+            InitializeSocketIO();
             InitializeFirebase();
-
             _currentUser = currentUser;
         }
 
-
-        IFirebaseConfig Config = new FirebaseConfig
-        {
-            AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
-            BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
-
-        };
-
-        IFirebaseClient client;
-
         private void InitializeFirebase()
         {
-            try
+            Config = new FirebaseConfig
             {
-                client = new FirebaseClient(Config);
+                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
+                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
+            };
+
+            client = new FirebaseClient(Config); // Khởi tạo client Firebase
+        }
+
+        private void InitializeSocketIO()
+        {
+            clientSocket = new SocketIOClient.SocketIO("http://localhost:3000");
+            clientSocket.OnConnected += async (sender, e) =>
+            {
+                MessageBox.Show("Connected to Socket.IO server");
+            };
+            clientSocket.ConnectAsync();
+        }
+
+        private async Task LoadRooms()
+        {
+            if (clientSocket == null)
+            {
+                MessageBox.Show("Socket chưa được khởi tạo. Đang khởi tạo kết nối...");
+                clientSocket = new SocketIOClient.SocketIO("http://localhost:3000");
+
+                clientSocket.OnConnected += async (sender, e) =>
+                {
+                    MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
+                    await clientSocket.EmitAsync("get-rooms");
+                };
+
+                clientSocket.On("rooms-list", response =>
+                {
+                    try
+                    {
+                        MessageBox.Show("Đã nhận được danh sách phòng từ server.");
+                        var jsonResponse = response.GetValue<Newtonsoft.Json.Linq.JObject>();
+                        if (jsonResponse == null)
+                        {
+                            MessageBox.Show("Dữ liệu nhận được từ server là null.");
+                            return;
+                        }
+
+                        var rooms = response.GetValue<Dictionary<string, RoomDetail>>();
+
+                        if (rooms == null || rooms.Count == 0)
+                        {
+                            MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
+                            return;
+                        }
+
+                        flowLayoutPanel1.Controls.Clear();
+                        flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+                        flowLayoutPanel1.WrapContents = false;
+
+                        foreach (var room in rooms)
+                        {
+                            var roomLabel = new Label
+                            {
+                                Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
+                                Font = new Font("Segoe UI", 10),
+                                AutoSize = true,
+                                Padding = new Padding(10),
+                                Margin = new Padding(5),
+                                TextAlign = ContentAlignment.MiddleLeft
+                            };
+                            flowLayoutPanel1.Controls.Add(roomLabel);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
+                    }
+                });
+                await clientSocket.ConnectAsync();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("Error connecting to Firebase: " + ex.Message);
+                MessageBox.Show("client Socket k null");
+                clientSocket.OnConnected += async (sender, e) =>
+                {
+                    MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
+                    await clientSocket.EmitAsync("getRooms");
+                };
+                MessageBox.Show("hehe1");
+                clientSocket.On("roomsData", response =>
+                {               
+                    try
+                    {
+                        MessageBox.Show("Đã nhận được danh sách phòng từ server.");
+                        var jsonResponse = response.GetValue<Newtonsoft.Json.Linq.JObject>();
+                        if (jsonResponse == null)
+                        {
+                            MessageBox.Show("Dữ liệu nhận được từ server là null.");
+                            return;
+                        }
+
+                        var rooms = response.GetValue<Dictionary<string, RoomDetail>>();
+
+                        if (rooms == null || rooms.Count == 0)
+                        {
+                            MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
+                            return;
+                        }
+
+                        flowLayoutPanel1.Controls.Clear();
+                        flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+                        flowLayoutPanel1.WrapContents = false;
+
+                        foreach (var room in rooms)
+                        {
+                            var roomLabel = new Label
+                            {
+                                Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
+                                Font = new Font("Segoe UI", 10),
+                                AutoSize = true,
+                                Padding = new Padding(10),
+                                Margin = new Padding(5),
+                                TextAlign = ContentAlignment.MiddleLeft
+                            };
+                            flowLayoutPanel1.Controls.Add(roomLabel);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
+                    }
+                });
+                MessageBox.Show("hehe2");
+                await clientSocket.ConnectAsync();
+                MessageBox.Show("hehe3");
             }
         }
 
@@ -85,79 +208,27 @@ namespace DangKi_DangNhap
             }
         }
 
-        private void btnTaoNhom_Click(object sender, EventArgs e)
-        {
-            taonhombtn_form TaoNhom = new taonhombtn_form(_currentUser);
-            TaoNhom.ShowDialog();
-        }
-
-        private void btnThamGia_Click(object sender, EventArgs e)
-        {
-            thamgiabtn_form ThamGiaNhom = new thamgiabtn_form(_currentUser);
-            ThamGiaNhom.ShowDialog();
-        }
-
         private async void NhomHoc_form_Load(object sender, EventArgs e)
         {
-            // Đặt pbAvatar không hiển thị cho đến khi ảnh được tải về
             pbAvatar.Visible = false;
-
             loadBasicInfo();
-
-            try
-            {
-                // Lấy tất cả các nhóm từ Firebase
-                FirebaseResponse response = await client.GetAsync("Rooms");
-
-                if (response == null || response.Body == "null")
-                {
-                    MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                // Lấy dữ liệu từ phản hồi Firebase
-                Dictionary<string, RoomDetail> allRooms = response.ResultAs<Dictionary<string, RoomDetail>>();
-
-                // Xóa tất cả các điều khiển hiện tại trong FlowLayoutPanel để làm mới
-                flowLayoutPanel1.Controls.Clear();
-
-                // Thiết lập FlowLayoutPanel để sắp xếp theo chiều dọc
-                flowLayoutPanel1.FlowDirection = FlowDirection.TopDown; // Sắp xếp theo chiều dọc
-                flowLayoutPanel1.WrapContents = false; // Không cho phép xuống hàng khi không còn không gian
-
-                // Lọc và lấy tối đa 10 phòng đầu tiên
-                var limitedRooms = allRooms.Take(10).ToList();
-
-                // Duyệt qua tất cả các phòng và thêm vào FlowLayoutPanel
-                foreach (var room in limitedRooms)
-                {
-                    // Tạo Label để hiển thị ID và tên phòng
-                    Label roomLabel = new Label
-                    {
-                        Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
-                        Font = new Font("Segoe UI", 10), // Font Segoe UI, kiểu thường
-                        AutoSize = true,
-                        Padding = new Padding(10),
-                        Margin = new Padding(5),
-                        TextAlign = ContentAlignment.MiddleLeft
-                    };
-
-                    // Thêm Label vào FlowLayoutPanel
-                    flowLayoutPanel1.Controls.Add(roomLabel);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải danh sách phòng: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            await LoadRooms();
         }
-
+        private void btnTaoNhom_Click(object sender, EventArgs e)
+        {
+            taonhombtn_form TaoNhom = new taonhombtn_form(_currentUser, clientSocket);
+            TaoNhom.ShowDialog();
+        }
+        private void btnThamGia_Click(object sender, EventArgs e)
+        {
+            thamgiabtn_form ThamGiaNhom = new thamgiabtn_form(_currentUser, clientSocket);
+            ThamGiaNhom.ShowDialog();
+        }
         private void btnNhomHoc_Click(object sender, EventArgs e)
         {
             // Gọi lại phương thức load form để tải lại dữ liệu
             NhomHoc_form_Load(sender, e);
         }
-
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
             this.Hide();

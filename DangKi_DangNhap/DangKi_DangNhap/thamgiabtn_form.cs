@@ -11,40 +11,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp.Response;
+using System.Net.Sockets;
+using SocketIOClient; 
 
 namespace DangKi_DangNhap
 {
     public partial class thamgiabtn_form : Form
     {
+        private IFirebaseConfig Config;
+        private IFirebaseClient client;
         private Users _currentUser;
-
-        public thamgiabtn_form(Users currentUser)
+        private SocketIOClient.SocketIO _clientSocket;
+        public thamgiabtn_form(Users currentUser, SocketIOClient.SocketIO socket)
         {
             InitializeComponent(); 
             InitializeFirebase();
 
             _currentUser = currentUser;
+            _clientSocket = socket;
         }
-
-        IFirebaseConfig Config = new FirebaseConfig
-        {
-            AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
-            BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
-
-        };
-
-        IFirebaseClient client;
 
         private void InitializeFirebase()
         {
-            try
+            Config = new FirebaseConfig
             {
-                client = new FirebaseClient(Config);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to Firebase: " + ex.Message);
-            }
+                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
+                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
+            };
+
+            client = new FirebaseClient(Config); // Khởi tạo client Firebase
         }
 
         private void bt_esc_Click(object sender, EventArgs e)
@@ -168,23 +163,26 @@ namespace DangKi_DangNhap
                 RoomDetail room = response.ResultAs<RoomDetail>();
 
                 // Kiểm tra xem người dùng đã là thành viên của phòng chưa
-                if (!string.IsNullOrEmpty(room.Members))
-                {
-                    var members = room.Members.Split(',');
-                    if (members.Contains(_currentUser.Username))
-                    {
-                        MessageBox.Show("Bạn đã tham gia nhóm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Hide();
+                //if (!string.IsNullOrEmpty(room.Members))
+                //{
+                //    var members = room.Members.Split(',');
+                //    if (members.Contains(_currentUser.Username))
+                //    {
+                //        MessageBox.Show("Bạn đã tham gia nhóm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //        // Gửi sự kiện qua Socket.IO
+                //        await _clientSocket.EmitAsync("join-room", roomId, _currentUser.Username);
 
-                        chatnhom GroupChat = new chatnhom();
-                        GroupChat.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Bạn chưa được người tạo nhóm thêm vào danh sách thành viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return; // Người dùng chưa được thêm vào nhóm
-                    }
-                }
+                //        this.Hide();
+
+                //        chatnhom GroupChat = new chatnhom();
+                //        GroupChat.ShowDialog();
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("Bạn chưa được người tạo nhóm thêm vào danh sách thành viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //        return; // Người dùng chưa được thêm vào nhóm
+                //    }
+                //}
             }
             catch (Exception ex)
             {

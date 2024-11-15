@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Microsoft.VisualBasic.ApplicationServices;
+using Quobject.SocketIoClientDotNet.Client;
+using System.Net;
+
+
 
 namespace DangKi_DangNhap
 {
-
     public partial class login : Form
     {
+        private Socket socket;
         private string originalPassword = string.Empty;
 
         public login()
@@ -62,8 +62,9 @@ namespace DangKi_DangNhap
             this.Show();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
+            socket = IO.Socket("http://localhost:3000");
             // Firebase configuration
             IFirebaseConfig config = new FirebaseConfig
             {
@@ -90,29 +91,41 @@ namespace DangKi_DangNhap
             }
 
             // Retrieve user data from Firebase
-            FirebaseResponse response = client.Get("Users/" + username);
-            Users user = response.ResultAs<Users>(); // Deserialize the data to User object
-
-            if (user == null)
+            try
             {
-                MessageBox.Show("Không tìm thấy username.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                // Cấu hình SSL cho kết nối Firebase hoặc bất kỳ dịch vụ nào yêu cầu SSL
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            // Check if the password matches using BCrypt
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.Password);
+                // Thực hiện kết nối đến Firebase hoặc một dịch vụ API
+                FirebaseResponse response = client.Get("Users/" + username);
+                Users user = response.ResultAs<Users>();
 
-            if (isPasswordValid)
-            {
-                this.Hide();
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dashboard db = new dashboard(user);
-                db.ShowDialog();
+                if (user == null)
+                {
+                    MessageBox.Show("Không tìm thấy username.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Check if the password matches using BCrypt
+                bool isPasswordValid = BCrypt.Net.BCrypt.Verify(password, user.Password);
+
+                if (isPasswordValid)
+                {
+                    this.Hide();
+
+                    MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dashboard db = new dashboard(user);
+                    db.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Mật khẩu không đúng.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Mật khẩu không đúng.", "Lỗi Đăng Nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show($"Lỗi kết nối SSL: {ex.Message}");
+            }           
         }
 
         private void control_Close_Click(object sender, EventArgs e)

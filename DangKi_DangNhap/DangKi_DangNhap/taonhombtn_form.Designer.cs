@@ -41,9 +41,13 @@
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
             this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
+            this.guna2Panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -57,15 +61,18 @@
             this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BorderRadius = 89;
+            this.guna2Panel1.BorderRadius = 174;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.txtUsername);
+            this.guna2Panel1.Controls.Add(this.guna2Panel4);
             this.guna2Panel1.Controls.Add(this.txtID);
             this.guna2Panel1.Controls.Add(this.txtTenNhom);
             this.guna2Panel1.Controls.Add(this.guna2Panel3);
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Location = new System.Drawing.Point(28, 28);
+            this.guna2Panel1.Location = new System.Drawing.Point(42, 43);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(495, 181);
+            this.guna2Panel1.Size = new System.Drawing.Size(873, 351);
             this.guna2Panel1.TabIndex = 0;
             // 
             // txtID
@@ -82,13 +89,15 @@
             this.txtID.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtID.ForeColor = System.Drawing.Color.Black;
             this.txtID.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtID.Location = new System.Drawing.Point(194, 104);
+            this.txtID.Location = new System.Drawing.Point(291, 160);
+            this.txtID.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtID.Name = "txtID";
             this.txtID.PasswordChar = '\0';
             this.txtID.PlaceholderText = "";
             this.txtID.SelectedText = "";
-            this.txtID.Size = new System.Drawing.Size(270, 38);
+            this.txtID.Size = new System.Drawing.Size(405, 58);
             this.txtID.TabIndex = 5;
+            this.txtID.TextChanged += new System.EventHandler(this.txtID_TextChanged);
             // 
             // txtTenNhom
             // 
@@ -104,12 +113,13 @@
             this.txtTenNhom.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTenNhom.ForeColor = System.Drawing.Color.Black;
             this.txtTenNhom.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTenNhom.Location = new System.Drawing.Point(194, 42);
+            this.txtTenNhom.Location = new System.Drawing.Point(291, 65);
+            this.txtTenNhom.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtTenNhom.Name = "txtTenNhom";
             this.txtTenNhom.PasswordChar = '\0';
             this.txtTenNhom.PlaceholderText = "";
             this.txtTenNhom.SelectedText = "";
-            this.txtTenNhom.Size = new System.Drawing.Size(270, 38);
+            this.txtTenNhom.Size = new System.Drawing.Size(405, 58);
             this.txtTenNhom.TabIndex = 4;
             // 
             // guna2Panel3
@@ -119,9 +129,10 @@
             this.guna2Panel3.BorderRadius = 20;
             this.guna2Panel3.BorderThickness = 1;
             this.guna2Panel3.Controls.Add(this.lblD);
-            this.guna2Panel3.Location = new System.Drawing.Point(42, 104);
+            this.guna2Panel3.Location = new System.Drawing.Point(63, 160);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(126, 38);
+            this.guna2Panel3.Size = new System.Drawing.Size(189, 58);
             this.guna2Panel3.TabIndex = 3;
             // 
             // lblD
@@ -129,9 +140,10 @@
             this.lblD.AutoSize = true;
             this.lblD.BackColor = System.Drawing.Color.Transparent;
             this.lblD.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblD.Location = new System.Drawing.Point(46, 7);
+            this.lblD.Location = new System.Drawing.Point(69, 11);
+            this.lblD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblD.Name = "lblD";
-            this.lblD.Size = new System.Drawing.Size(30, 25);
+            this.lblD.Size = new System.Drawing.Size(45, 40);
             this.lblD.TabIndex = 0;
             this.lblD.Text = "ID";
             // 
@@ -142,9 +154,10 @@
             this.guna2Panel2.BorderRadius = 20;
             this.guna2Panel2.BorderThickness = 1;
             this.guna2Panel2.Controls.Add(this.lblTenNhom);
-            this.guna2Panel2.Location = new System.Drawing.Point(42, 42);
+            this.guna2Panel2.Location = new System.Drawing.Point(63, 65);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(126, 38);
+            this.guna2Panel2.Size = new System.Drawing.Size(189, 58);
             this.guna2Panel2.TabIndex = 2;
             // 
             // lblTenNhom
@@ -152,11 +165,13 @@
             this.lblTenNhom.AutoSize = true;
             this.lblTenNhom.BackColor = System.Drawing.Color.Transparent;
             this.lblTenNhom.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenNhom.Location = new System.Drawing.Point(18, 6);
+            this.lblTenNhom.Location = new System.Drawing.Point(27, 9);
+            this.lblTenNhom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTenNhom.Name = "lblTenNhom";
-            this.lblTenNhom.Size = new System.Drawing.Size(95, 25);
+            this.lblTenNhom.Size = new System.Drawing.Size(142, 40);
             this.lblTenNhom.TabIndex = 0;
             this.lblTenNhom.Text = "Tên nhóm";
+            this.lblTenNhom.Click += new System.EventHandler(this.lblTenNhom_Click);
             // 
             // guna2Elipse2
             // 
@@ -175,9 +190,10 @@
             this.btnTaoNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnTaoNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTaoNhom.ForeColor = System.Drawing.Color.White;
-            this.btnTaoNhom.Location = new System.Drawing.Point(139, 228);
+            this.btnTaoNhom.Location = new System.Drawing.Point(214, 421);
+            this.btnTaoNhom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTaoNhom.Name = "btnTaoNhom";
-            this.btnTaoNhom.Size = new System.Drawing.Size(134, 47);
+            this.btnTaoNhom.Size = new System.Drawing.Size(201, 72);
             this.btnTaoNhom.TabIndex = 12;
             this.btnTaoNhom.Text = "Tạo nhóm";
             this.btnTaoNhom.Click += new System.EventHandler(this.btnTaoNhom_Click);
@@ -194,24 +210,74 @@
             this.bt_esc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.bt_esc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.bt_esc.ForeColor = System.Drawing.Color.White;
-            this.bt_esc.Location = new System.Drawing.Point(292, 228);
+            this.bt_esc.Location = new System.Drawing.Point(480, 421);
+            this.bt_esc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bt_esc.Name = "bt_esc";
-            this.bt_esc.Size = new System.Drawing.Size(134, 47);
+            this.bt_esc.Size = new System.Drawing.Size(201, 72);
             this.bt_esc.TabIndex = 13;
             this.bt_esc.Text = "Thoát";
             this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
             // 
+            // guna2Panel4
+            // 
+            this.guna2Panel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(197)))), ((int)(((byte)(255)))));
+            this.guna2Panel4.BorderRadius = 20;
+            this.guna2Panel4.BorderThickness = 1;
+            this.guna2Panel4.Controls.Add(this.label1);
+            this.guna2Panel4.Location = new System.Drawing.Point(63, 262);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2Panel4.Name = "guna2Panel4";
+            this.guna2Panel4.Size = new System.Drawing.Size(189, 58);
+            this.guna2Panel4.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 40);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Username";
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.BorderRadius = 10;
+            this.txtUsername.BorderThickness = 0;
+            this.txtUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtUsername.DefaultText = "";
+            this.txtUsername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtUsername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtUsername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtUsername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUsername.ForeColor = System.Drawing.Color.Black;
+            this.txtUsername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtUsername.Location = new System.Drawing.Point(291, 262);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.PasswordChar = '\0';
+            this.txtUsername.PlaceholderText = "";
+            this.txtUsername.SelectedText = "";
+            this.txtUsername.Size = new System.Drawing.Size(405, 58);
+            this.txtUsername.TabIndex = 7;
+            // 
             // taonhombtn_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(551, 303);
+            this.ClientSize = new System.Drawing.Size(995, 565);
             this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnTaoNhom);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "taonhombtn_form";
             this.Text = "taonhombtn_form";
             this.guna2Panel1.ResumeLayout(false);
@@ -219,6 +285,8 @@
             this.guna2Panel3.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            this.guna2Panel4.ResumeLayout(false);
+            this.guna2Panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -236,5 +304,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtTenNhom;
         private Guna.UI2.WinForms.Guna2TextBox txtID;
         private Guna.UI2.WinForms.Guna2Button bt_esc;
+        private Guna.UI2.WinForms.Guna2TextBox txtUsername;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
+        private System.Windows.Forms.Label label1;
     }
 }
