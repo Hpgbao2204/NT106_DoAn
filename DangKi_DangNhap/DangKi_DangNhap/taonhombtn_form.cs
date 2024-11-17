@@ -11,39 +11,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp.Response;
-
+using SocketIOClient;
 namespace DangKi_DangNhap
 {
     public partial class taonhombtn_form : Form
     {
+        private IFirebaseConfig Config;
+        private IFirebaseClient client;
         private Users _currentUser;
-        public taonhombtn_form(Users currentUser)
+        private SocketIOClient.SocketIO _clientSocket;
+
+        public taonhombtn_form(Users currentUser, SocketIOClient.SocketIO socket)
         {
             InitializeComponent();
             InitializeFirebase();
 
             _currentUser = currentUser;
+            _clientSocket = socket;
         }
-
-        IFirebaseConfig Config = new FirebaseConfig
-        {
-            AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
-            BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
-
-        };
-
-        IFirebaseClient client;
 
         private void InitializeFirebase()
         {
-            try
+            Config = new FirebaseConfig
             {
-                client = new FirebaseClient(Config);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error connecting to Firebase: " + ex.Message);
-            }
+                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
+                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
+            };
+
+            client = new FirebaseClient(Config); // Khởi tạo client Firebase
         }
 
         private async void btnTaoNhom_Click(object sender, EventArgs e)
@@ -51,7 +46,7 @@ namespace DangKi_DangNhap
             // Lấy ID phòng từ TextBox
             string groupId = txtID.Text.Trim();
             string groupName = txtTenNhom.Text;
-
+            string userName = txtUsername.Text;
             // Kiểm tra nếu Id hoặc tên nhóm rỗng
             if (string.IsNullOrEmpty(groupId) || string.IsNullOrEmpty(groupName))
             {
@@ -76,22 +71,15 @@ namespace DangKi_DangNhap
                     return;
                 }
 
-                // Chuẩn bị dữ liệu phòng mới
-                var roomData = new RoomDetail
-                {
-                    RoomId = groupId,
-                    RoomName = groupName,
-                    CreatorName = _currentUser.Username,
-                    CreatedAt = DateTime.UtcNow.ToString("o"),
-                    Members = _currentUser.Username // Người tạo sẽ là thành viên đầu tiên
-                };
-
-                // Đưa dữ liệu phòng lên Firebase
-                // Gửi yêu cầu lên Firebase và nhận phản hồi
-                SetResponse setResponse = await client.SetAsync("Rooms/" + txtID.Text, roomData);
-                RoomDetail result = setResponse.ResultAs<RoomDetail>();
+                await _clientSocket.EmitAsync("new-room-created", new { roomId = groupId, roomName = groupName, creator = userName });
 
                 MessageBox.Show($"Đã tạo phòng với ID: {groupId}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Optionally, you could trigger an event here to notify other users via Socket.io about the new room
+                
+
+                // Close the form after creating the room
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -103,6 +91,16 @@ namespace DangKi_DangNhap
         private void bt_esc_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lblTenNhom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
