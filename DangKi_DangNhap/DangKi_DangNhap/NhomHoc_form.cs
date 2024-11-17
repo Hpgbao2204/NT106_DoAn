@@ -15,8 +15,8 @@ using System.IO;
 using SocketIOClient; // Đảm bảo bạn đã thêm dòng này
 using Quobject.SocketIoClientDotNet.Client;
 using Newtonsoft.Json.Linq;
-using System.Linq.Expressions;
-using static Google.Apis.Requests.BatchRequest;
+using System.Text.Json;
+
 namespace DangKi_DangNhap
 {
     public partial class NhomHoc_form : Form
@@ -57,119 +57,53 @@ namespace DangKi_DangNhap
         }
 
         private async Task LoadRooms()
-        {
-            if (clientSocket == null)
+        {                       
+            MessageBox.Show("client Socket k null");
+
+            // Đăng ký sự kiện "roomsData" trước khi kết nối
+            clientSocket.On("roomsData", response =>
             {
-                MessageBox.Show("Socket chưa được khởi tạo. Đang khởi tạo kết nối...");
-                clientSocket = new SocketIOClient.SocketIO("http://localhost:3000");
-
-                clientSocket.OnConnected += async (sender, e) =>
+                try
                 {
-                    MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
-                    await clientSocket.EmitAsync("get-rooms");
-                };
+                    MessageBox.Show("Đã nhận được danh sách phòng từ server.");
+                    var jsonData = response.GetValue<string>();\
+                    MessageBox.Show($"Dữ liệu JSON nhận được: {jsonData}");
+                    var roomsDictionary = JsonSerializer.Deserialize<Dictionary<string, RoomDetail>>(jsonData);
 
-                clientSocket.On("rooms-list", response =>
+                    // Duyệt từng room trong JSON và chuyển đổi sang RoomDetail
+                    if (roomsDictionary == null || roomsDictionary.Count == 0)
+                    {
+                        MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
+                        return;
+                    }
+
+                    flowLayoutPanel1.Controls.Clear();
+
+                    foreach (var room in roomsDictionary)
+                    {
+                        MessageBox.Show($"Room: {room.Value.RoomId} - {room.Value.RoomName}");
+                        var roomLabel = new Label
+                        {
+                            Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
+                            Font = new Font("Segoe UI", 10),
+                            AutoSize = true
+                        };
+                        flowLayoutPanel1.Controls.Add(roomLabel);
+                    }
+                }
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        MessageBox.Show("Đã nhận được danh sách phòng từ server.");
-                        var jsonResponse = response.GetValue<Newtonsoft.Json.Linq.JObject>();
-                        if (jsonResponse == null)
-                        {
-                            MessageBox.Show("Dữ liệu nhận được từ server là null.");
-                            return;
-                        }
+                    MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
+                }
+            });
 
-                        var rooms = response.GetValue<Dictionary<string, RoomDetail>>();
-
-                        if (rooms == null || rooms.Count == 0)
-                        {
-                            MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
-                            return;
-                        }
-
-                        flowLayoutPanel1.Controls.Clear();
-                        flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-                        flowLayoutPanel1.WrapContents = false;
-
-                        foreach (var room in rooms)
-                        {
-                            var roomLabel = new Label
-                            {
-                                Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
-                                Font = new Font("Segoe UI", 10),
-                                AutoSize = true,
-                                Padding = new Padding(10),
-                                Margin = new Padding(5),
-                                TextAlign = ContentAlignment.MiddleLeft
-                            };
-                            flowLayoutPanel1.Controls.Add(roomLabel);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
-                    }
-                });
-                await clientSocket.ConnectAsync();
-            }
-            else
+            // Đăng ký sự kiện OnConnected trước khi ConnectAsync
+            clientSocket.OnConnected += async (sender, e) =>
             {
-                MessageBox.Show("client Socket k null");
-                clientSocket.OnConnected += async (sender, e) =>
-                {
-                    MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
-                    await clientSocket.EmitAsync("getRooms");
-                };
-                MessageBox.Show("hehe1");
-                clientSocket.On("roomsData", response =>
-                {               
-                    try
-                    {
-                        MessageBox.Show("Đã nhận được danh sách phòng từ server.");
-                        var jsonResponse = response.GetValue<Newtonsoft.Json.Linq.JObject>();
-                        if (jsonResponse == null)
-                        {
-                            MessageBox.Show("Dữ liệu nhận được từ server là null.");
-                            return;
-                        }
-
-                        var rooms = response.GetValue<Dictionary<string, RoomDetail>>();
-
-                        if (rooms == null || rooms.Count == 0)
-                        {
-                            MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
-                            return;
-                        }
-
-                        flowLayoutPanel1.Controls.Clear();
-                        flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
-                        flowLayoutPanel1.WrapContents = false;
-
-                        foreach (var room in rooms)
-                        {
-                            var roomLabel = new Label
-                            {
-                                Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
-                                Font = new Font("Segoe UI", 10),
-                                AutoSize = true,
-                                Padding = new Padding(10),
-                                Margin = new Padding(5),
-                                TextAlign = ContentAlignment.MiddleLeft
-                            };
-                            flowLayoutPanel1.Controls.Add(roomLabel);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
-                    }
-                });
-                MessageBox.Show("hehe2");
-                await clientSocket.ConnectAsync();
-                MessageBox.Show("hehe3");
-            }
+                MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
+                await clientSocket.EmitAsync("getRooms");
+            };
+            await clientSocket.ConnectAsync();            
         }
 
         private async void loadBasicInfo()

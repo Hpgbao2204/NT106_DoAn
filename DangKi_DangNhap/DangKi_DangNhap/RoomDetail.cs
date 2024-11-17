@@ -1,11 +1,42 @@
-﻿namespace DangKi_DangNhap
+﻿using Newtonsoft.Json;
+
+namespace DangKi_DangNhap
 {
     internal class RoomDetail
     {
-        public string RoomId { get; set; } = string.Empty;
-        public string RoomName { get; set; } = string.Empty;
-        public string CreatorName {  get; set; } = string.Empty;
-        //public string Members { get; set; } = string.Empty ;
-        public string CreatedAt { get; set; } = string.Empty;
+        public string _roomId;
+
+        [JsonProperty("RoomId")]
+        public string RoomId
+        {
+            get => _roomId;
+            set => _roomId = value;
+        }
+
+        public string _roomName;
+
+        [JsonProperty("RoomName")]
+        public string RoomName
+        {
+            get => _roomName;
+            set => _roomName = value;
+        }
+
+        public string CreatorName;
+
+        [JsonProperty("Creator")]
+        public string Creator
+        {
+            get => CreatorName;
+            set => CreatorName = value;
+        }
+
+        public string _createdAt;
+        [JsonProperty("CreatedAt")]
+        public string CreatedAt
+        {
+            get => _createdAt;
+            set => _createdAt = value;
+        }
     }
 }
