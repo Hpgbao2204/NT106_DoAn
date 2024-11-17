@@ -75,7 +75,7 @@ namespace DangKi_DangNhap
 
                 // Lọc các phòng do người dùng hiện tại tạo
                 var userRooms = allRooms
-                    .Where(room => room.Value.CreatorName == currUsername)
+                    .Where(room => room.Value.Creator == currUsername)
                     .Select(room => new { ID = room.Key, Name = room.Value.RoomName })
                     .ToList();
 

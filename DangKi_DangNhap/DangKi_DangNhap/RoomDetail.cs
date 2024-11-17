@@ -4,8 +4,7 @@ namespace DangKi_DangNhap
 {
     internal class RoomDetail
     {
-        public string _roomId;
-
+        private string _roomId;
         [JsonProperty("RoomId")]
         public string RoomId
         {
@@ -13,8 +12,7 @@ namespace DangKi_DangNhap
             set => _roomId = value;
         }
 
-        public string _roomName;
-
+        private string _roomName;
         [JsonProperty("RoomName")]
         public string RoomName
         {
@@ -22,18 +20,17 @@ namespace DangKi_DangNhap
             set => _roomName = value;
         }
 
-        public string CreatorName;
-
+        private string _creator;
         [JsonProperty("Creator")]
         public string Creator
         {
-            get => CreatorName;
-            set => CreatorName = value;
+            get => _creator;
+            set => _creator = value;
         }
 
-        public string _createdAt;
+        private long _createdAt;
         [JsonProperty("CreatedAt")]
-        public string CreatedAt
+        public long CreatedAt
         {
             get => _createdAt;
             set => _createdAt = value;

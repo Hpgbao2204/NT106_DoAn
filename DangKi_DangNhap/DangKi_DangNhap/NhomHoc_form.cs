@@ -57,54 +57,77 @@ namespace DangKi_DangNhap
         }
 
         private async Task LoadRooms()
-        {                       
-            MessageBox.Show("client Socket k null");
-
-            // Đăng ký sự kiện "roomsData" trước khi kết nối
-            clientSocket.On("roomsData", response =>
+        {
+            try
             {
-                try
+                clientSocket.On("roomsData", response =>
                 {
-                    MessageBox.Show("Đã nhận được danh sách phòng từ server.");
-                    var jsonData = response.GetValue<string>();\
-                    MessageBox.Show($"Dữ liệu JSON nhận được: {jsonData}");
-                    var roomsDictionary = JsonSerializer.Deserialize<Dictionary<string, RoomDetail>>(jsonData);
-
-                    // Duyệt từng room trong JSON và chuyển đổi sang RoomDetail
-                    if (roomsDictionary == null || roomsDictionary.Count == 0)
+                    try
                     {
-                        MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
-                        return;
-                    }
+                        MessageBox.Show("Đã nhận được danh sách phòng từ server.");
 
-                    flowLayoutPanel1.Controls.Clear();
+                        // Thay đổi cách lấy và deserialize dữ liệu
+                        var roomsDictionary = response.GetValue<Dictionary<string, RoomDetail>>();
 
-                    foreach (var room in roomsDictionary)
-                    {
-                        MessageBox.Show($"Room: {room.Value.RoomId} - {room.Value.RoomName}");
-                        var roomLabel = new Label
+                        if (roomsDictionary == null || roomsDictionary.Count == 0)
                         {
-                            Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
-                            Font = new Font("Segoe UI", 10),
-                            AutoSize = true
-                        };
-                        flowLayoutPanel1.Controls.Add(roomLabel);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
-                }
-            });
+                            MessageBox.Show("Không có phòng nào trong cơ sở dữ liệu.");
+                            return;
+                        }
 
-            // Đăng ký sự kiện OnConnected trước khi ConnectAsync
-            clientSocket.OnConnected += async (sender, e) =>
-            {
-                MessageBox.Show("Socket đã kết nối. Gọi get-rooms...");
+                        // Đảm bảo cập nhật UI trên thread chính
+                        if (flowLayoutPanel1.InvokeRequired)
+                        {
+                            flowLayoutPanel1.Invoke(new Action(() =>
+                            {
+                                UpdateRoomsList(roomsDictionary);
+                            }));
+                        }
+                        else
+                        {
+                            UpdateRoomsList(roomsDictionary);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Lỗi khi xử lý danh sách phòng: {ex.Message}");
+                    }
+                });
+
+                await clientSocket.ConnectAsync();
                 await clientSocket.EmitAsync("getRooms");
-            };
-            await clientSocket.ConnectAsync();            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi kết nối hoặc xử lý sự kiện: {ex.Message}");
+            }
         }
+
+        // Tách riêng phần cập nhật UI
+        private void UpdateRoomsList(Dictionary<string, RoomDetail> roomsDictionary)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var room in roomsDictionary)
+            {
+                var roomLabel = new Label
+                {
+                    Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
+                    Font = new Font("Segoe UI", 10),
+                    AutoSize = true
+                };
+                flowLayoutPanel1.Controls.Add(roomLabel);
+            }
+        }
+
+        // Đảm bảo class RoomDetail có đúng các properties
+        public class RoomDetail
+        {
+            public long CreatedAt { get; set; }
+            public string Creator { get; set; }
+            public string RoomId { get; set; }
+            public string RoomName { get; set; }
+        }
+
 
         private async void loadBasicInfo()
         {
