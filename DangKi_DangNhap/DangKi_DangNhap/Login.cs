@@ -18,12 +18,30 @@ namespace DangKi_DangNhap
 {
     public partial class login : Form
     {
-        private Socket socket;
-        private string originalPassword = string.Empty;
+        IFirebaseClient client;
 
         public login()
         {
             InitializeComponent();
+            InitializeFirebaseClient();
+        }
+
+        private void InitializeFirebaseClient()
+        {
+            // Firebase configuration
+            IFirebaseConfig config = new FirebaseConfig
+            {
+                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
+                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
+            };
+
+            client = new FireSharp.FirebaseClient(config);
+
+            if (client == null)
+            {
+                MessageBox.Show("Kết nối Firebase thất bại. Vui lòng kiểm tra lại cấu hình.", "Lỗi Kết Nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         private void login_Load(object sender, EventArgs e)
@@ -32,25 +50,12 @@ namespace DangKi_DangNhap
             LoadGifToPass();
         }
 
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
             forgopassword forgotpass = new forgopassword();
             this.Hide();
             forgotpass.ShowDialog();
             this.Show();
-
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-            // Lấy giá trị người dùng nhập vào từ TextBox
-            string username = txtUsername.Text;
-
 
         }
 
@@ -64,24 +69,8 @@ namespace DangKi_DangNhap
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
-            socket = IO.Socket("http://localhost:3000");
-            // Firebase configuration
-            IFirebaseConfig config = new FirebaseConfig
-            {
-                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
-                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
-            };
-
-            IFirebaseClient client = new FireSharp.FirebaseClient(config);
-
-            if (client == null)
-            {
-                MessageBox.Show("Kết nối Firebase thất bại. Vui lòng kiểm tra lại cấu hình.", "Lỗi Kết Nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             string username = txtUsername.Text.Trim();
-            string password = txtPassword.Text.Trim(); // Use the original password entered by the user
+            string password = txtPassword.Text.Trim();
 
             // Kiểm tra nếu tên đăng nhập hoặc mật khẩu còn trống
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -90,14 +79,10 @@ namespace DangKi_DangNhap
                 return;
             }
 
-            // Retrieve user data from Firebase
             try
             {
-                // Cấu hình SSL cho kết nối Firebase hoặc bất kỳ dịch vụ nào yêu cầu SSL
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-                // Thực hiện kết nối đến Firebase hoặc một dịch vụ API
-                FirebaseResponse response = client.Get("Users/" + username);
+                // Thực hiện kết nối bất đồng bộ đến Firebase
+                FirebaseResponse response = await client.GetAsync("Users/" + username);
                 Users user = response.ResultAs<Users>();
 
                 if (user == null)
@@ -112,7 +97,6 @@ namespace DangKi_DangNhap
                 if (isPasswordValid)
                 {
                     this.Hide();
-
                     MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dashboard db = new dashboard(user);
                     db.ShowDialog();
@@ -124,18 +108,8 @@ namespace DangKi_DangNhap
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi kết nối SSL: {ex.Message}");
-            }           
-        }
-
-        private void control_Close_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void control_Minimize_Click(object sender, EventArgs e)
-        {
-
+                MessageBox.Show($"Lỗi kết nối: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private bool pass_show = false;
@@ -223,7 +197,7 @@ namespace DangKi_DangNhap
             {
                 // Nếu công tắc bật, lưu tên người dùng và mật khẩu vào cài đặt
                 Properties.Settings.Default.Username = txtUsername.Text;
-                Properties.Settings.Default.Password = originalPassword; // Lưu mật khẩu gốc mà không bị che
+                //Properties.Settings.Default.Password = originalPassword; // Lưu mật khẩu gốc mà không bị che
                 Properties.Settings.Default.RememberMe = true; // Đánh dấu Remember Me là true
                 Properties.Settings.Default.Save(); // Lưu cài đặt
             }

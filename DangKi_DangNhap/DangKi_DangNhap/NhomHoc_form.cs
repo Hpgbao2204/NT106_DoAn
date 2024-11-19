@@ -113,21 +113,15 @@ namespace DangKi_DangNhap
                 {
                     Text = $"{room.Value.RoomId} - {room.Value.RoomName}",
                     Font = new Font("Segoe UI", 10),
-                    AutoSize = true
+                    AutoSize = true,
+                    Padding = new Padding(10),
+                    Margin = new Padding(5),
+                    TextAlign = ContentAlignment.MiddleLeft
                 };
+
                 flowLayoutPanel1.Controls.Add(roomLabel);
             }
         }
-
-        // Đảm bảo class RoomDetail có đúng các properties
-        public class RoomDetail
-        {
-            public long CreatedAt { get; set; }
-            public string Creator { get; set; }
-            public string RoomId { get; set; }
-            public string RoomName { get; set; }
-        }
-
 
         private async void loadBasicInfo()
         {

@@ -39,7 +39,7 @@
             this.lblDs = new System.Windows.Forms.Label();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.btnRoiNhom = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMoi = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.groupboxDs = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnKhoTaiLieu = new Guna.UI2.WinForms.Guna2Button();
@@ -129,7 +129,7 @@
             this.guna2Panel1.Controls.Add(this.lblDs);
             this.guna2Panel1.Controls.Add(this.btnXoa);
             this.guna2Panel1.Controls.Add(this.btnRoiNhom);
-            this.guna2Panel1.Controls.Add(this.btnMoi);
+            this.guna2Panel1.Controls.Add(this.btnThem);
             this.guna2Panel1.Controls.Add(this.groupboxDs);
             this.guna2Panel1.Location = new System.Drawing.Point(708, 36);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -183,23 +183,24 @@
             this.btnRoiNhom.TabIndex = 17;
             this.btnRoiNhom.Text = "Rời nhóm";
             // 
-            // btnMoi
+            // btnThem
             // 
-            this.btnMoi.Animated = true;
-            this.btnMoi.BackColor = System.Drawing.Color.Transparent;
-            this.btnMoi.BorderRadius = 10;
-            this.btnMoi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMoi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMoi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMoi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMoi.FillColor = System.Drawing.Color.LimeGreen;
-            this.btnMoi.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnMoi.ForeColor = System.Drawing.Color.White;
-            this.btnMoi.Location = new System.Drawing.Point(22, 393);
-            this.btnMoi.Name = "btnMoi";
-            this.btnMoi.Size = new System.Drawing.Size(101, 68);
-            this.btnMoi.TabIndex = 16;
-            this.btnMoi.Text = "Mời";
+            this.btnThem.Animated = true;
+            this.btnThem.BackColor = System.Drawing.Color.Transparent;
+            this.btnThem.BorderRadius = 10;
+            this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThem.FillColor = System.Drawing.Color.LimeGreen;
+            this.btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnThem.ForeColor = System.Drawing.Color.White;
+            this.btnThem.Location = new System.Drawing.Point(22, 393);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(101, 68);
+            this.btnThem.TabIndex = 16;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // groupboxDs
             // 
@@ -301,6 +302,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "chatnhom";
             this.Text = "chatnhom";
+            this.Load += new System.EventHandler(this.chatnhom_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -322,7 +324,7 @@
         private Guna.UI2.WinForms.Guna2Button btnKhoTaiLieu;
         private Guna.UI2.WinForms.Guna2Button btnXoa;
         private Guna.UI2.WinForms.Guna2Button btnRoiNhom;
-        private Guna.UI2.WinForms.Guna2Button btnMoi;
+        private Guna.UI2.WinForms.Guna2Button btnThem;
         private System.Windows.Forms.Label lblDs;
         private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
     }
