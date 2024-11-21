@@ -58,14 +58,12 @@
             this.rtbChat.BackColor = System.Drawing.Color.OldLace;
             this.rtbChat.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbChat.ForeColor = System.Drawing.Color.Black;
-            this.rtbChat.Location = new System.Drawing.Point(33, 55);
-            this.rtbChat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.rtbChat.Location = new System.Drawing.Point(22, 36);
             this.rtbChat.Name = "rtbChat";
             this.rtbChat.ReadOnly = true;
-            this.rtbChat.Size = new System.Drawing.Size(986, 873);
+            this.rtbChat.Size = new System.Drawing.Size(659, 569);
             this.rtbChat.TabIndex = 0;
             this.rtbChat.Text = "";
-            this.rtbChat.TextChanged += new System.EventHandler(this.rtbChat_TextChanged);
             // 
             // txtChatbox
             // 
@@ -81,13 +79,13 @@
             this.txtChatbox.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtChatbox.ForeColor = System.Drawing.Color.Black;
             this.txtChatbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtChatbox.Location = new System.Drawing.Point(134, 928);
-            this.txtChatbox.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.txtChatbox.Location = new System.Drawing.Point(79, 630);
+            this.txtChatbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtChatbox.Name = "txtChatbox";
             this.txtChatbox.PasswordChar = '\0';
             this.txtChatbox.PlaceholderText = "";
             this.txtChatbox.SelectedText = "";
-            this.txtChatbox.Size = new System.Drawing.Size(706, 72);
+            this.txtChatbox.Size = new System.Drawing.Size(471, 47);
             this.txtChatbox.TabIndex = 1;
             // 
             // btnDang
@@ -102,10 +100,9 @@
             this.btnDang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnDang.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDang.ForeColor = System.Drawing.Color.White;
-            this.btnDang.Location = new System.Drawing.Point(885, 928);
-            this.btnDang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDang.Location = new System.Drawing.Point(580, 630);
             this.btnDang.Name = "btnDang";
-            this.btnDang.Size = new System.Drawing.Size(152, 72);
+            this.btnDang.Size = new System.Drawing.Size(101, 47);
             this.btnDang.TabIndex = 13;
             this.btnDang.Text = "Đăng";
             this.btnDang.Click += new System.EventHandler(this.btnDang_Click);
@@ -123,10 +120,9 @@
             this.btnIcon.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnIcon.ForeColor = System.Drawing.Color.White;
             this.btnIcon.Image = ((System.Drawing.Image)(resources.GetObject("btnIcon.Image")));
-            this.btnIcon.Location = new System.Drawing.Point(33, 969);
-            this.btnIcon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnIcon.Location = new System.Drawing.Point(22, 630);
             this.btnIcon.Name = "btnIcon";
-            this.btnIcon.Size = new System.Drawing.Size(76, 72);
+            this.btnIcon.Size = new System.Drawing.Size(51, 47);
             this.btnIcon.TabIndex = 14;
             // 
             // guna2Panel1
@@ -137,10 +133,9 @@
             this.guna2Panel1.Controls.Add(this.btnRoiNhom);
             this.guna2Panel1.Controls.Add(this.btnThem);
             this.guna2Panel1.Controls.Add(this.groupboxDs);
-            this.guna2Panel1.Location = new System.Drawing.Point(1062, 55);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2Panel1.Location = new System.Drawing.Point(708, 36);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(576, 722);
+            this.guna2Panel1.Size = new System.Drawing.Size(384, 469);
             this.guna2Panel1.TabIndex = 15;
             // 
             // lblDs
@@ -148,10 +143,9 @@
             this.lblDs.AutoSize = true;
             this.lblDs.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDs.ForeColor = System.Drawing.Color.White;
-            this.lblDs.Location = new System.Drawing.Point(128, 60);
-            this.lblDs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDs.Location = new System.Drawing.Point(85, 39);
             this.lblDs.Name = "lblDs";
-            this.lblDs.Size = new System.Drawing.Size(336, 45);
+            this.lblDs.Size = new System.Drawing.Size(217, 30);
             this.lblDs.TabIndex = 19;
             this.lblDs.Text = "Danh sách thành viên";
             // 
@@ -167,10 +161,9 @@
             this.btnXoa.FillColor = System.Drawing.Color.Red;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(396, 605);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnXoa.Location = new System.Drawing.Point(264, 393);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(152, 105);
+            this.btnXoa.Size = new System.Drawing.Size(101, 68);
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "Xóa nhóm";
             // 
@@ -186,10 +179,9 @@
             this.btnRoiNhom.FillColor = System.Drawing.Color.Orange;
             this.btnRoiNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRoiNhom.ForeColor = System.Drawing.Color.White;
-            this.btnRoiNhom.Location = new System.Drawing.Point(214, 605);
-            this.btnRoiNhom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnRoiNhom.Location = new System.Drawing.Point(143, 393);
             this.btnRoiNhom.Name = "btnRoiNhom";
-            this.btnRoiNhom.Size = new System.Drawing.Size(152, 105);
+            this.btnRoiNhom.Size = new System.Drawing.Size(101, 68);
             this.btnRoiNhom.TabIndex = 17;
             this.btnRoiNhom.Text = "Rời nhóm";
             // 
@@ -205,13 +197,11 @@
             this.btnThem.FillColor = System.Drawing.Color.LimeGreen;
             this.btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(33, 605);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnThem.Location = new System.Drawing.Point(22, 393);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(152, 105);
+            this.btnThem.Size = new System.Drawing.Size(101, 68);
             this.btnThem.TabIndex = 16;
             this.btnThem.Text = "Thêm";
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // groupboxDs
             // 
@@ -219,10 +209,9 @@
             this.groupboxDs.FillColor = System.Drawing.Color.OldLace;
             this.groupboxDs.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupboxDs.ForeColor = System.Drawing.Color.Black;
-            this.groupboxDs.Location = new System.Drawing.Point(33, 129);
-            this.groupboxDs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupboxDs.Location = new System.Drawing.Point(22, 84);
             this.groupboxDs.Name = "groupboxDs";
-            this.groupboxDs.Size = new System.Drawing.Size(516, 460);
+            this.groupboxDs.Size = new System.Drawing.Size(344, 299);
             this.groupboxDs.TabIndex = 0;
             this.groupboxDs.Text = "Danh sách thành viên nhóm";
             // 
@@ -243,10 +232,9 @@
             this.btnKhoTaiLieu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnKhoTaiLieu.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnKhoTaiLieu.ForeColor = System.Drawing.Color.White;
-            this.btnKhoTaiLieu.Location = new System.Drawing.Point(1168, 802);
-            this.btnKhoTaiLieu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnKhoTaiLieu.Location = new System.Drawing.Point(779, 521);
             this.btnKhoTaiLieu.Name = "btnKhoTaiLieu";
-            this.btnKhoTaiLieu.Size = new System.Drawing.Size(390, 72);
+            this.btnKhoTaiLieu.Size = new System.Drawing.Size(260, 47);
             this.btnKhoTaiLieu.TabIndex = 16;
             this.btnKhoTaiLieu.Text = "Kho tài liệu";
             // 
@@ -262,10 +250,9 @@
             this.btnQuiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnQuiz.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnQuiz.ForeColor = System.Drawing.Color.White;
-            this.btnQuiz.Location = new System.Drawing.Point(1168, 895);
-            this.btnQuiz.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnQuiz.Location = new System.Drawing.Point(779, 582);
             this.btnQuiz.Name = "btnQuiz";
-            this.btnQuiz.Size = new System.Drawing.Size(390, 72);
+            this.btnQuiz.Size = new System.Drawing.Size(260, 47);
             this.btnQuiz.TabIndex = 17;
             this.btnQuiz.Text = "Quiz";
             // 
@@ -281,10 +268,9 @@
             this.btnLichNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnLichNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLichNhom.ForeColor = System.Drawing.Color.White;
-            this.btnLichNhom.Location = new System.Drawing.Point(1168, 989);
-            this.btnLichNhom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLichNhom.Location = new System.Drawing.Point(779, 643);
             this.btnLichNhom.Name = "btnLichNhom";
-            this.btnLichNhom.Size = new System.Drawing.Size(390, 72);
+            this.btnLichNhom.Size = new System.Drawing.Size(260, 47);
             this.btnLichNhom.TabIndex = 18;
             this.btnLichNhom.Text = "Lịch nhóm";
             // 
@@ -293,19 +279,18 @@
             this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
             this.controlboxClose.IconColor = System.Drawing.Color.Black;
-            this.controlboxClose.Location = new System.Drawing.Point(1620, 6);
-            this.controlboxClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.controlboxClose.Location = new System.Drawing.Point(1080, 4);
             this.controlboxClose.Name = "controlboxClose";
-            this.controlboxClose.Size = new System.Drawing.Size(46, 45);
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
             this.controlboxClose.TabIndex = 23;
             // 
             // chatnhom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1682, 1108);
+            this.ClientSize = new System.Drawing.Size(1121, 715);
             this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.btnLichNhom);
             this.Controls.Add(this.btnQuiz);
@@ -316,7 +301,6 @@
             this.Controls.Add(this.txtChatbox);
             this.Controls.Add(this.rtbChat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "chatnhom";
             this.Text = "chatnhom";
             this.Load += new System.EventHandler(this.chatnhom_Load);
