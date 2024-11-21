@@ -167,8 +167,8 @@ io.on("connection", (socket) => {
     
             console.log(`Message saved in room ${RoomID}:`, newMessage);
             console.log(`Phát sự kiện new-message đến phòng ${RoomID}:`, newMessage);
-            // Phát tin nhắn đến tất cả các client trong phòng
-            io.to(RoomID).emit("new-message", { id: messageId, ...newMessage });
+            // Phát tin nhắn đến tất cả các client
+            io.emit("new-message", { RoomID, ...newMessage });
         } catch (error) {
             console.error("Error while sending message:", error);
             socket.emit("error", "Error while sending message");
