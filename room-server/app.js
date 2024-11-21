@@ -1,14 +1,18 @@
 // Config private key
+require('dotenv').config();
 const os = require("os");
 const io = require("socket.io")(3000, {
     cors: { origin: "*"}
 });
 const admin = require("firebase-admin");
-const serviceAccount = require("./nt106-cce90-firebase-adminsdk-3urh7-54f9ad10a7.json");
+const serviceAccountPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+// const serviceAccount = require(serviceAccountPath);
+const serviceAccount = require(serviceAccountPath); 
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://nt106-cce90-default-rtdb.firebaseio.com"
-  });
+});
 
 const getLocalIPAddress = () => {
     const interfaces = os.networkInterfaces();
@@ -162,7 +166,7 @@ io.on("connection", (socket) => {
             await db.ref(`Rooms/${RoomID}/messages/${messageId}`).set(newMessage);
     
             console.log(`Message saved in room ${RoomID}:`, newMessage);
-    
+            console.log(`Phát sự kiện new-message đến phòng ${RoomID}:`, newMessage);
             // Phát tin nhắn đến tất cả các client trong phòng
             io.to(RoomID).emit("new-message", { id: messageId, ...newMessage });
         } catch (error) {
