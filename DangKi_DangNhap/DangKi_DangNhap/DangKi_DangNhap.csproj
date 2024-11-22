@@ -252,11 +252,29 @@
     <Compile Include="chatnhom.Designer.cs">
       <DependentUpon>chatnhom.cs</DependentUpon>
     </Compile>
+    <Compile Include="khoquiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="khoquiz.Designer.cs">
+      <DependentUpon>khoquiz.cs</DependentUpon>
+    </Compile>
     <Compile Include="khotailieu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="khotailieu.Designer.cs">
       <DependentUpon>khotailieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lichnhombtn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lichnhombtn.Designer.cs">
+      <DependentUpon>lichnhombtn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mahoafile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mahoafile.Designer.cs">
+      <DependentUpon>mahoafile.cs</DependentUpon>
     </Compile>
     <Compile Include="moivaonhombtn.cs">
       <SubType>Form</SubType>
@@ -290,6 +308,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="quizbtn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="quizbtn.Designer.cs">
+      <DependentUpon>quizbtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="RoomDetail.cs" />
     <Compile Include="signup.cs">
       <SubType>Form</SubType>
@@ -318,8 +342,17 @@
     <EmbeddedResource Include="chatnhom.resx">
       <DependentUpon>chatnhom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="khoquiz.resx">
+      <DependentUpon>khoquiz.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="khotailieu.resx">
       <DependentUpon>khotailieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lichnhombtn.resx">
+      <DependentUpon>lichnhombtn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mahoafile.resx">
+      <DependentUpon>mahoafile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="moivaonhombtn.resx">
       <DependentUpon>moivaonhombtn.cs</DependentUpon>
@@ -327,6 +360,18 @@
     <EmbeddedResource Include="NhomHoc_form.resx">
       <DependentUpon>NhomHoc_form.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="thongtinfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongtinfile.Designer.cs">
+      <DependentUpon>thongtinfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="thongtinfilebtn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="thongtinfilebtn.Designer.cs">
+      <DependentUpon>thongtinfilebtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="dashboard.resx">
       <DependentUpon>dashboard.cs</DependentUpon>
@@ -347,6 +392,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="quizbtn.resx">
+      <DependentUpon>quizbtn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="signup.resx">
       <DependentUpon>signup.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +406,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="thongbao_form.resx">
       <DependentUpon>thongbao_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thongtinfile.resx">
+      <DependentUpon>thongtinfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="thongtinfilebtn.resx">
+      <DependentUpon>thongtinfilebtn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
