@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NhomHoc_form));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblNhomHoc = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnThamGia = new Guna.UI2.WinForms.Guna2Button();
             this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
@@ -48,7 +49,6 @@
             this.btnNhomHoc = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
-            this.lblNhomHoc = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -73,6 +73,18 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(916, 764);
             this.guna2Panel1.TabIndex = 6;
+            // 
+            // lblNhomHoc
+            // 
+            this.lblNhomHoc.AutoSize = true;
+            this.lblNhomHoc.BackColor = System.Drawing.Color.Transparent;
+            this.lblNhomHoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
+            this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
+            this.lblNhomHoc.Name = "lblNhomHoc";
+            this.lblNhomHoc.Size = new System.Drawing.Size(114, 30);
+            this.lblNhomHoc.TabIndex = 1;
+            this.lblNhomHoc.Text = "Nhóm học";
             // 
             // guna2Panel3
             // 
@@ -101,6 +113,7 @@
             this.btnThamGia.Size = new System.Drawing.Size(134, 45);
             this.btnThamGia.TabIndex = 12;
             this.btnThamGia.Text = "Tham gia";
+            this.btnThamGia.Click += new System.EventHandler(this.btnThamGia_Click);
             // 
             // btnTaoNhom
             // 
@@ -119,6 +132,7 @@
             this.btnTaoNhom.Size = new System.Drawing.Size(134, 45);
             this.btnTaoNhom.TabIndex = 11;
             this.btnTaoNhom.Text = "Tạo nhóm";
+            this.btnTaoNhom.Click += new System.EventHandler(this.btnTaoNhom_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -150,7 +164,6 @@
             this.lblDanhSachNhom.Size = new System.Drawing.Size(173, 30);
             this.lblDanhSachNhom.TabIndex = 0;
             this.lblDanhSachNhom.Text = "Danh sách nhóm";
-            this.lblDanhSachNhom.Click += new System.EventHandler(this.label1_Click);
             // 
             // panelBackgr1
             // 
@@ -330,6 +343,7 @@
             this.btnNhomHoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnNhomHoc.TextOffset = new System.Drawing.Point(10, 0);
             this.btnNhomHoc.UseTransparentBackground = true;
+            this.btnNhomHoc.Click += new System.EventHandler(this.btnNhomHoc_Click);
             // 
             // btnThongBao
             // 
@@ -380,18 +394,7 @@
             this.btnTrangChu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnTrangChu.TextOffset = new System.Drawing.Point(10, 0);
             this.btnTrangChu.UseTransparentBackground = true;
-            // 
-            // lblNhomHoc
-            // 
-            this.lblNhomHoc.AutoSize = true;
-            this.lblNhomHoc.BackColor = System.Drawing.Color.Transparent;
-            this.lblNhomHoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
-            this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
-            this.lblNhomHoc.Name = "lblNhomHoc";
-            this.lblNhomHoc.Size = new System.Drawing.Size(114, 30);
-            this.lblNhomHoc.TabIndex = 1;
-            this.lblNhomHoc.Text = "Nhóm học";
+            this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
             // 
             // NhomHoc_form
             // 
@@ -404,6 +407,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NhomHoc_form";
             this.Text = "chat_form";
+            this.Load += new System.EventHandler(this.NhomHoc_form_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.guna2Panel3.ResumeLayout(false);

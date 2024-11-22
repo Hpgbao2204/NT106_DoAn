@@ -82,14 +82,6 @@ namespace DangKi_DangNhap
             loadBasicInfo();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            thongbao_form tb = new thongbao_form();
-            this.Hide();
-            tb.ShowDialog();
-            this.ShowDialog();
-        }
-
         private void btn_Close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -115,10 +107,18 @@ namespace DangKi_DangNhap
 
         private void btnNhomHoc_Click(object sender, EventArgs e)
         {
-            NhomHoc_form tb = new NhomHoc_form();
+            NhomHoc_form tb = new NhomHoc_form(currentUser);
             this.Hide();
+
             tb.ShowDialog();
-            this.ShowDialog();
+        }
+
+        private void btnThongBao_Click(object sender, EventArgs e)
+        {
+            thongbao_form tb = new thongbao_form();
+            this.Hide();
+
+            tb.ShowDialog();
         }
     }
 }
