@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DangKi_DangNhap
 {
@@ -34,6 +35,14 @@ namespace DangKi_DangNhap
         {
             get => _createdAt;
             set => _createdAt = value;
+        }
+
+        private List<string> _members;
+        [JsonProperty("Members")]
+        public List<string> Members
+        {
+            get => _members;
+            set => _members = value;
         }
     }
 }

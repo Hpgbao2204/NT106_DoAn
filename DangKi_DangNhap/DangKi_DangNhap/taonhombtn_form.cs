@@ -71,7 +71,13 @@ namespace DangKi_DangNhap
                     return;
                 }
 
-                await _clientSocket.EmitAsync("new-room-created", new { roomId = groupId, roomName = groupName, creator = userName });
+                await _clientSocket.EmitAsync("new-room-created", new
+                {
+                    roomId = groupId,
+                    roomName = groupName,
+                    creator = userName,
+                    members = new List<string> { userName } // Thêm creator vào danh sách members
+                });
 
                 MessageBox.Show($"Đã tạo phòng với ID: {groupId}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -91,16 +97,6 @@ namespace DangKi_DangNhap
         private void bt_esc_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void lblTenNhom_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtID_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

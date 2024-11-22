@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace DangKi_DangNhap
 {
-    public partial class lichnhom : Form
+    public partial class quizbtn : Form
     {
-        public lichnhom()
+        public quizbtn()
         {
             InitializeComponent();
+        }
+
+        private void guna2TextBox6_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

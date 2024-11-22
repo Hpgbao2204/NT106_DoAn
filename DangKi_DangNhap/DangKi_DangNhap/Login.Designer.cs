@@ -69,7 +69,6 @@
             this.pciBackground.Size = new System.Drawing.Size(1169, 761);
             this.pciBackground.TabIndex = 0;
             this.pciBackground.TabStop = false;
-            this.pciBackground.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             // 
             // picUIT
             // 
@@ -110,7 +109,6 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 2;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtPassword
             // 
@@ -231,7 +229,6 @@
             this.control_Close.Name = "control_Close";
             this.control_Close.Size = new System.Drawing.Size(35, 30);
             this.control_Close.TabIndex = 8;
-            this.control_Close.Click += new System.EventHandler(this.control_Close_Click);
             // 
             // control_Minimize
             // 
@@ -243,7 +240,6 @@
             this.control_Minimize.Name = "control_Minimize";
             this.control_Minimize.Size = new System.Drawing.Size(35, 30);
             this.control_Minimize.TabIndex = 9;
-            this.control_Minimize.Click += new System.EventHandler(this.control_Minimize_Click);
             // 
             // labelLogin
             // 

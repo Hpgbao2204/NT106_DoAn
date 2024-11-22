@@ -150,39 +150,25 @@ namespace DangKi_DangNhap
                     return;
                 }
 
-                // Lấy phòng từ Firebase
-                FirebaseResponse response = await client.GetAsync($"Rooms/{roomId}");
+                // Gửi yêu cầu tham gia nhóm tới server
+                await _clientSocket.EmitAsync("join-room", roomId, _currentUser.Username);
 
-                if (string.IsNullOrEmpty(response.Body) || response.Body == "null")
+                // Lắng nghe sự kiện "room-joined" từ server
+                _clientSocket.On("room-joined", (_roomID) =>
                 {
-                    MessageBox.Show("Không tìm thấy phòng với ID đã nhập.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    // Người dùng đã tham gia nhóm thành công
+                    MessageBox.Show($"Bạn đã tham gia nhóm {_roomID} thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Lấy thông tin phòng từ Firebase
-                RoomDetail room = response.ResultAs<RoomDetail>();
+                    // Gọi phương thức mở form
+                    OpenChatForm();
+                });
 
-                // Kiểm tra xem người dùng đã là thành viên của phòng chưa
-                //if (!string.IsNullOrEmpty(room.Members))
-                //{
-                //    var members = room.Members.Split(',');
-                //    if (members.Contains(_currentUser.Username))
-                //    {
-                //        MessageBox.Show("Bạn đã tham gia nhóm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //        // Gửi sự kiện qua Socket.IO
-                //        await _clientSocket.EmitAsync("join-room", roomId, _currentUser.Username);
 
-                //        this.Hide();
-
-                //        chatnhom GroupChat = new chatnhom();
-                //        GroupChat.ShowDialog();
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("Bạn chưa được người tạo nhóm thêm vào danh sách thành viên.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //        return; // Người dùng chưa được thêm vào nhóm
-                //    }
-                //}
+                // Lắng nghe sự kiện "error" nếu có lỗi
+                _clientSocket.On("error", (message) =>
+                {
+                    MessageBox.Show(message.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                });
             }
             catch (Exception ex)
             {
@@ -190,6 +176,21 @@ namespace DangKi_DangNhap
             }
         }
 
+        private void OpenChatForm()
+        {
+            if (this.InvokeRequired)
+            {
+                // Nếu đang ở một thread khác, cần gọi phương thức này trên UI thread
+                this.Invoke(new Action(OpenChatForm));
+            }
+            else
+            {
+                // Nếu đang ở UI thread, mở form
+                this.Hide();
+                chatnhom GroupChat = new chatnhom(txtIDNhom.Text, _currentUser, _clientSocket);
+                GroupChat.ShowDialog();
+            }
+        }
 
     }
 }
