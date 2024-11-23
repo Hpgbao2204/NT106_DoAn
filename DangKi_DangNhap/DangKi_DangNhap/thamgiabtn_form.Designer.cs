@@ -45,6 +45,7 @@
             this.btnThamGiaNhom = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
+            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -272,6 +273,16 @@
             this.bt_esc.Text = "Thoát";
             this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
             // 
+            // controlboxClose
+            // 
+            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
+            this.controlboxClose.IconColor = System.Drawing.Color.Black;
+            this.controlboxClose.Location = new System.Drawing.Point(633, 12);
+            this.controlboxClose.Name = "controlboxClose";
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
+            this.controlboxClose.TabIndex = 23;
+            // 
             // thamgiabtn_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +290,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(676, 372);
+            this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnThamGiaNhom);
             this.Controls.Add(this.guna2Panel1);
@@ -313,5 +325,6 @@
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private Guna.UI2.WinForms.Guna2Button bt_esc;
+        private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
     }
 }
