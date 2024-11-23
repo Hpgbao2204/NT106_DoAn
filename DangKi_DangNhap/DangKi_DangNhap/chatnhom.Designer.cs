@@ -294,18 +294,10 @@
             this.controlboxClose.BackColor = System.Drawing.Color.OldLace;
             this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
             this.controlboxClose.IconColor = System.Drawing.Color.Black;
-<<<<<<< HEAD
             this.controlboxClose.Location = new System.Drawing.Point(1078, 4);
             this.controlboxClose.Name = "controlboxClose";
             this.controlboxClose.Size = new System.Drawing.Size(31, 29);
             this.controlboxClose.TabIndex = 24;
-=======
-            this.controlboxClose.Location = new System.Drawing.Point(1620, 6);
-            this.controlboxClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.controlboxClose.Name = "controlboxClose";
-            this.controlboxClose.Size = new System.Drawing.Size(46, 45);
-            this.controlboxClose.TabIndex = 23;
->>>>>>> 1943ae0c1e7e964672bc41c40d089f1aeb96a5df
             // 
             // chatnhom
             // 
