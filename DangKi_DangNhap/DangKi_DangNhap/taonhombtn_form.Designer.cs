@@ -33,7 +33,6 @@
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTenNhom = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,7 +42,9 @@
             this.lblTenNhom = new System.Windows.Forms.Label();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
+            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -69,7 +70,8 @@
             this.guna2Panel1.Controls.Add(this.txtTenNhom);
             this.guna2Panel1.Controls.Add(this.guna2Panel3);
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Location = new System.Drawing.Point(28, 28);
+            this.guna2Panel1.Location = new System.Drawing.Point(42, 43);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(582, 228);
             this.guna2Panel1.TabIndex = 0;
@@ -254,12 +256,25 @@
             this.bt_esc.Text = "Thoát";
             this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
             // 
+            // controlboxClose
+            // 
+            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.FloralWhite;
+            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
+            this.controlboxClose.IconColor = System.Drawing.Color.Black;
+            this.controlboxClose.Location = new System.Drawing.Point(510, 8);
+            this.controlboxClose.Name = "controlboxClose";
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
+            this.controlboxClose.TabIndex = 24;
+            // 
             // taonhombtn_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(551, 303);
+            this.Controls.Add(this.controlboxClose);
             this.ClientSize = new System.Drawing.Size(663, 367);
             this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnTaoNhom);
@@ -289,6 +304,7 @@
         private System.Windows.Forms.Label lblD;
         private Guna.UI2.WinForms.Guna2TextBox txtTenNhom;
         private Guna.UI2.WinForms.Guna2TextBox txtID;
+        private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
         private Guna.UI2.WinForms.Guna2Button bt_esc;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;

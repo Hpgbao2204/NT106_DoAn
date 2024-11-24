@@ -17,7 +17,7 @@ namespace DangKi_DangNhap
             Application.EnableVisualStyles(); 
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new khotailieu());
-            Application.Run(new login());
+            Application.Run(new mahoafile());
         }
     }
 }
