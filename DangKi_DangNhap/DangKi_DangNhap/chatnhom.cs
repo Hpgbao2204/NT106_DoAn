@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace DangKi_DangNhap
 {
@@ -29,79 +31,63 @@ namespace DangKi_DangNhap
         {
             try
             {
-                // Yêu cầu server gửi lại danh sách thành viên của nhóm
-                _clientSocket.EmitAsync("get-members", _roomID);
+                // Gửi yêu cầu nhận danh sách thành viên
+                await _clientSocket.EmitAsync("get-members", _roomID);
 
-                // Lắng nghe sự kiện "members-list" từ server
-                _clientSocket.On("members-list", (SocketIOResponse members) =>
+                // Lắng nghe danh sách thành viên
+                _clientSocket.On("members-list", (SocketIOResponse response) =>
                 {
-                    // Lấy danh sách thành viên từ dữ liệu trả về
-                    var membersList = members.GetValue<List<string>>();
+                    var membersList = response.GetValue<List<string>>();
+                    UpdateMemberListUI(membersList);
+                });
 
-                    // Cập nhật giao diện với danh sách thành viên
-                    if (membersList != null && membersList.Count > 0)
+                // Tải lịch sử tin nhắn
+                await LoadChatHistory();
+
+                _clientSocket.On("new-message", (SocketIOResponse response) =>
+                {
+                    try
                     {
-                        groupboxDs.Invoke(new Action(() =>
+                        Console.WriteLine("Đã nhận được sự kiện 'new-message' từ server!");
+                        string raw = response.ToString();
+                        Console.WriteLine($"JSON thô: {raw}");
+
+                        // Dùng dynamic để nhận dữ liệu không xác định trước
+                        var newMessage = response.GetValue<NewMessage>();
+                        Console.WriteLine("New message received:");
+
+                        // Kiểm tra RoomID trước khi xử lý tin nhắn
+                        string roomId = newMessage.RoomID?.ToString(); // Chuyển RoomID sang string
+                        if (roomId != null && roomId == _roomID) // Kiểm tra RoomID
                         {
-                            // Clear các Label cũ nếu có
-                            groupboxDs.Controls.Clear();
-
-                            // Tạo các Label mới cho mỗi thành viên
-                            int yPosition = 50;  // Vị trí bắt đầu cho Label
-                            foreach (var member in membersList)
+                            // Tạo một đối tượng ChatMessage từ dynamic, chỉ lấy các thuộc tính cần thiết
+                            var message = new ChatMessage
                             {
-                                Label memberLabel = new Label
-                                {
-                                    Text = member,
-                                    Location = new Point(10, yPosition),
-                                    AutoSize = true
-                                };
-                                groupboxDs.Controls.Add(memberLabel);
-                                yPosition += 30;  // Dịch chuyển xuống dưới cho Label kế tiếp
-                            }
-                        }));
+                                Content = newMessage.Content,
+                                Sender = newMessage.Sender,
+                                Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
+                            };
+
+                            // Hiển thị tin nhắn lên giao diện
+                            AppendMessageToUI(message);
+                        }
+                        else
+                        {
+                            Console.WriteLine("RoomID không khớp, không hiển thị tin nhắn.");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Không có thành viên nào trong nhóm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Console.WriteLine($"Lỗi khi xử lý tin nhắn: {ex.Message}");
                     }
                 });
 
-                await _clientSocket.EmitAsync("get-messages", _roomID);
 
-                // Lắng nghe sự kiện tải lịch sử tin nhắn 
-                _clientSocket.On("message-history", (SocketIOResponse response) =>
+
+                // Lắng nghe lỗi
+                _clientSocket.On("error", (response) =>
                 {
-                    // Lấy danh sách tin nhắn từ server
-                    var historyList = response.GetValue<List<ChatMessage>>();
-
-                    // Hiển thị lịch sử tin nhắn
-                    if (historyList != null && historyList.Count > 0)
-                    {
-                        rtbChat.Invoke(new Action(() =>
-                        {
-                            rtbChat.Clear();
-                            foreach (var message in historyList)
-                            {
-                                rtbChat.AppendText($"{message.Sender}: {message.Content}\n");
-                            }
-                        }));
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không có tin nhắn nào trong nhóm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                });
-
-                // Lắng nghe tin nhắn mới
-                
-
-                await _clientSocket.EmitAsync("join-room", _roomID);
-
-                // Lắng nghe sự kiện lỗi
-                _clientSocket.On("error", (errorMessage) =>
-                {
-                    MessageBox.Show(errorMessage.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(response.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 });
             }
             catch (Exception ex)
@@ -110,21 +96,135 @@ namespace DangKi_DangNhap
             }
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Tải lịch sử chat từ server.
+        /// </summary>
+        private async Task LoadChatHistory()
         {
+            try
+            {
+                await _clientSocket.EmitAsync("get-messages", _roomID);
 
+                // Lắng nghe sự kiện tải lịch sử
+                _clientSocket.On("message-history", (SocketIOResponse response) =>
+                {
+                    try
+                    {
+                        string rawJson = response.ToString();
+                        Console.WriteLine($"JSON thô: {rawJson}");
+
+                        // Parse JSON lồng nhau
+                        var outerList = JsonSerializer.Deserialize<List<List<ChatMessage>>>(rawJson);
+
+                        if (outerList != null && outerList.Count > 0)
+                        {
+                            var historyList = outerList[0]; // Lấy mảng đầu tiên
+
+                            if (rtbChat.IsHandleCreated)
+                            {
+                                rtbChat.Invoke(new Action(() =>
+                                {
+                                    rtbChat.Clear();
+                                    foreach (var message in historyList)
+                                    {
+                                        AppendMessageToUI(message);
+                                    }
+                                }));
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không có dữ liệu tin nhắn hợp lệ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (JsonException ex)
+                    {
+                        MessageBox.Show($"Lỗi parse JSON: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải lịch sử tin nhắn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void rtbChat_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Cập nhật giao diện RichTextBox với tin nhắn mới.
+        /// </summary>
+        /// <param name="message">Đối tượng ChatMessage chứa nội dung tin nhắn.</param>
+        private void AppendMessageToUI(ChatMessage message)
         {
+            // Nếu Content là null hoặc empty, tránh thêm vào rtbChat
+            if (!string.IsNullOrEmpty(message.Content))
+            {
+                if (rtbChat.IsHandleCreated)
+                {
+                    rtbChat.Invoke(new Action(() =>
+                    {
+                        Console.WriteLine($"Adding message: {message.Sender}: {message.Content}");
+                        rtbChat.AppendText($"{message.Sender}: {message.Content}\n");
 
+                        // Tự động cuộn xuống cuối khi thêm tin nhắn
+                        rtbChat.ScrollToCaret();
+                    }));
+                }
+            }
+            else
+            {
+                if (rtbChat.IsHandleCreated)
+                {
+                    rtbChat.Invoke(new Action(() =>
+                    {
+                        Console.WriteLine($"Adding message: {message.Sender}: [No content]"); // Kiểm tra log
+                        rtbChat.AppendText($"{message.Sender}: [No Content]\n");
+
+                        // Tự động cuộn xuống cuối khi thêm tin nhắn
+                        rtbChat.ScrollToCaret();
+                    }));
+                }
+            }
         }
+
+        /// <summary>
+        /// Cập nhật danh sách thành viên trong giao diện.
+        /// </summary>
+        /// <param name="membersList">Danh sách thành viên.</param>
+        private void UpdateMemberListUI(List<string> membersList)
+        {
+            if (groupboxDs.IsHandleCreated) // Kiểm tra xem handle đã được tạo chưa
+            {
+                groupboxDs.Invoke(new Action(() =>
+                {
+                    groupboxDs.Controls.Clear();
+                    if (membersList != null && membersList.Count > 0)
+                    {
+                        int yPosition = 50;
+                        foreach (var member in membersList)
+                        {
+                            var memberLabel = new Label
+                            {
+                                Text = member,
+                                Location = new Point(10, yPosition),
+                                AutoSize = true
+                            };
+                            groupboxDs.Controls.Add(memberLabel);
+                            yPosition += 30;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không có thành viên nào trong nhóm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }));
+            }
+        }
+
 
         private async void btnDang_Click(object sender, EventArgs e)
         {
             try
             {
-                // Kiểm tra nội dung tin nhắn
                 string messageContent = txtChatbox.Text.Trim();
                 if (string.IsNullOrEmpty(messageContent))
                 {
@@ -132,40 +232,17 @@ namespace DangKi_DangNhap
                     return;
                 }
 
-                // Tạo đối tượng tin nhắn
                 var newMessage = new
                 {
                     RoomID = _roomID,
-                    Sender = _currentUser.Username, // Lấy tên người dùng hiện tại
+                    Sender = _currentUser.Username,
                     Content = messageContent,
-                    Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() // Thời gian gửi tin nhắn
+                    Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
                 };
 
-                if (string.IsNullOrEmpty(_roomID) || string.IsNullOrEmpty(_currentUser.Username))
-                {
-                    MessageBox.Show("Lỗi: Không thể gửi tin nhắn vì thiếu thông tin phòng hoặc người gửi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                Console.WriteLine($"Gửi tin nhắn: {System.Text.Json.JsonSerializer.Serialize(newMessage)}");
-
-                // Gửi tin nhắn đến server
                 await _clientSocket.EmitAsync("send-message", newMessage);
 
-                _clientSocket.On("new-message", (SocketIOResponse response) =>
-                {
-                    var newMessage_respone = response.GetValue<ChatMessage>();
-
-                    if (newMessage_respone != null)
-                    {
-                        rtbChat.Invoke(new Action(() =>
-                        {
-                            rtbChat.AppendText($"{newMessage_respone.Sender}: {newMessage_respone.Content}\n");
-                        }));
-                    }
-                });
-
-                // Xóa khung nhập sau khi gửi
+                // Xóa nội dung khung nhập sau khi gửi
                 txtChatbox.Clear();
             }
             catch (Exception ex)
@@ -176,10 +253,38 @@ namespace DangKi_DangNhap
     }
 }
 
+
 public class ChatMessage
 {
+    [JsonPropertyName("id")]
     public string Id { get; set; }
+
+    [JsonPropertyName("sender")]
     public string Sender { get; set; }
+
+    [JsonPropertyName("content")]
     public string Content { get; set; }
+
+    [JsonPropertyName("timestamp")]
     public long Timestamp { get; set; }
 }
+
+public class NewMessage
+{
+    [JsonPropertyName("RoomID")]
+    public string RoomID { get; set; }
+
+    [JsonPropertyName("id")]
+    public string Id { get; set; }
+
+    [JsonPropertyName("sender")]
+    public string Sender { get; set; }
+
+    [JsonPropertyName("content")]
+    public string Content { get; set; }
+
+    [JsonPropertyName("timestamp")]
+    public long Timestamp { get; set; }
+}
+
+

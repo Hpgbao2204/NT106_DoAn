@@ -44,11 +44,7 @@
             this.lblTenNguoiTao = new System.Windows.Forms.Label();
             this.btnThamGiaNhom = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-<<<<<<< HEAD
             this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
-=======
-            this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
->>>>>>> 51f254d2f2ba8e68e67f7f47915d98e4606e6e80
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -257,7 +253,6 @@
             this.guna2Elipse2.BorderRadius = 50;
             this.guna2Elipse2.TargetControl = this.guna2Panel1;
             // 
-<<<<<<< HEAD
             // controlboxClose
             // 
             this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -268,26 +263,6 @@
             this.controlboxClose.Name = "controlboxClose";
             this.controlboxClose.Size = new System.Drawing.Size(31, 29);
             this.controlboxClose.TabIndex = 25;
-=======
-            // bt_esc
-            // 
-            this.bt_esc.Animated = true;
-            this.bt_esc.BackColor = System.Drawing.Color.Transparent;
-            this.bt_esc.BorderRadius = 10;
-            this.bt_esc.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.bt_esc.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.bt_esc.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.bt_esc.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.bt_esc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.bt_esc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.bt_esc.ForeColor = System.Drawing.Color.White;
-            this.bt_esc.Location = new System.Drawing.Point(349, 299);
-            this.bt_esc.Name = "bt_esc";
-            this.bt_esc.Size = new System.Drawing.Size(163, 47);
-            this.bt_esc.TabIndex = 14;
-            this.bt_esc.Text = "Thoát";
-            this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
->>>>>>> 51f254d2f2ba8e68e67f7f47915d98e4606e6e80
             // 
             // thamgiabtn_form
             // 
@@ -296,11 +271,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(676, 372);
-<<<<<<< HEAD
             this.Controls.Add(this.controlboxClose);
-=======
-            this.Controls.Add(this.bt_esc);
->>>>>>> 51f254d2f2ba8e68e67f7f47915d98e4606e6e80
             this.Controls.Add(this.btnThamGiaNhom);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -333,10 +304,6 @@
         private Guna.UI2.WinForms.Guna2Button btnThamGiaNhom;
         private Guna.UI2.WinForms.Guna2Button btnTimKiem;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
-<<<<<<< HEAD
         private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
-=======
-        private Guna.UI2.WinForms.Guna2Button bt_esc;
->>>>>>> 51f254d2f2ba8e68e67f7f47915d98e4606e6e80
     }
 }
