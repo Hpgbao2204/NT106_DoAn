@@ -241,7 +241,7 @@
             this.btnThamGiaNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnThamGiaNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnThamGiaNhom.ForeColor = System.Drawing.Color.White;
-            this.btnThamGiaNhom.Location = new System.Drawing.Point(171, 299);
+            this.btnThamGiaNhom.Location = new System.Drawing.Point(258, 302);
             this.btnThamGiaNhom.Name = "btnThamGiaNhom";
             this.btnThamGiaNhom.Size = new System.Drawing.Size(163, 47);
             this.btnThamGiaNhom.TabIndex = 13;
