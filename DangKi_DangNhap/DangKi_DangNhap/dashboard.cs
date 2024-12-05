@@ -115,9 +115,8 @@ namespace DangKi_DangNhap
 
         private void btnThongBao_Click(object sender, EventArgs e)
         {
-            thongbao_form tb = new thongbao_form();
+            khotailieu tb = new khotailieu();
             this.Hide();
-
             tb.ShowDialog();
         }
     }

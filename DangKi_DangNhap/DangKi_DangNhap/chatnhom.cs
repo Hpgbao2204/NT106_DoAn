@@ -372,6 +372,12 @@ namespace DangKi_DangNhap
             }
         }
 
+        private void btnKhoTaiLieu_Click(object sender, EventArgs e)
+        {
+            khotailieu ktl = new khotailieu();
+            ktl.ShowDialog();
+            this.Hide();
+        }
     }
 }
 

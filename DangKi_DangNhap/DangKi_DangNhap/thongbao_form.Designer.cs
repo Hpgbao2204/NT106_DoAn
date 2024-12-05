@@ -42,12 +42,13 @@
             this.btnThongBao = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblNhomHoc = new System.Windows.Forms.Label();
             this.btnFileUpLoad = new Guna.UI2.WinForms.Guna2Button();
             this.btnTinNhan = new Guna.UI2.WinForms.Guna2Button();
             this.btnLichSapToi = new Guna.UI2.WinForms.Guna2Button();
             this.btnTatCa = new Guna.UI2.WinForms.Guna2Button();
             this.panelThongBao = new Guna.UI2.WinForms.Guna2Panel();
-            this.lblNhomHoc = new System.Windows.Forms.Label();
+            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.guna2Panel1.SuspendLayout();
@@ -291,6 +292,7 @@
             this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel1.Controls.Add(this.control_Close);
             this.guna2Panel1.Controls.Add(this.lblNhomHoc);
             this.guna2Panel1.Controls.Add(this.btnFileUpLoad);
             this.guna2Panel1.Controls.Add(this.btnTinNhan);
@@ -301,6 +303,18 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(916, 764);
             this.guna2Panel1.TabIndex = 4;
+            // 
+            // lblNhomHoc
+            // 
+            this.lblNhomHoc.AutoSize = true;
+            this.lblNhomHoc.BackColor = System.Drawing.Color.Transparent;
+            this.lblNhomHoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
+            this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
+            this.lblNhomHoc.Name = "lblNhomHoc";
+            this.lblNhomHoc.Size = new System.Drawing.Size(118, 30);
+            this.lblNhomHoc.TabIndex = 5;
+            this.lblNhomHoc.Text = "Thông báo";
             // 
             // btnFileUpLoad
             // 
@@ -385,17 +399,15 @@
             this.panelThongBao.Size = new System.Drawing.Size(847, 642);
             this.panelThongBao.TabIndex = 0;
             // 
-            // lblNhomHoc
+            // control_Close
             // 
-            this.lblNhomHoc.AutoSize = true;
-            this.lblNhomHoc.BackColor = System.Drawing.Color.Transparent;
-            this.lblNhomHoc.Font = new System.Drawing.Font("Segoe UI Semibold", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNhomHoc.ForeColor = System.Drawing.Color.White;
-            this.lblNhomHoc.Location = new System.Drawing.Point(29, 30);
-            this.lblNhomHoc.Name = "lblNhomHoc";
-            this.lblNhomHoc.Size = new System.Drawing.Size(118, 30);
-            this.lblNhomHoc.TabIndex = 5;
-            this.lblNhomHoc.Text = "Thông báo";
+            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Close.Location = new System.Drawing.Point(866, 12);
+            this.control_Close.Name = "control_Close";
+            this.control_Close.Size = new System.Drawing.Size(35, 30);
+            this.control_Close.TabIndex = 29;
             // 
             // thongbao_form
             // 
@@ -435,5 +447,6 @@
         private Guna.UI2.WinForms.Guna2Button btnLichSapToi;
         private Guna.UI2.WinForms.Guna2Button btnTatCa;
         private System.Windows.Forms.Label lblNhomHoc;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Close;
     }
 }
