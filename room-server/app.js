@@ -196,4 +196,94 @@ io.on("connection", (socket) => {
             socket.emit("error", "Error fetching messages");
         }
     });
+
+    socket.on("leave-room", async (messageData) => {
+        try {
+            const { RoomID, Sender, Content, Timestamp } = messageData;
+
+            // Kiểm tra dữ liệu đầu vào
+            if (!RoomID || !Sender || !Content) {
+                console.error("Invalid message data received:", messageData);
+                socket.emit("error", "Invalid message data");
+                return;
+            }
+
+            // Tạo ID tin nhắn ngẫu nhiên
+            const messageId = db.ref(`Rooms/${RoomID}/messages`).push().key;
+
+            // Lưu tin nhắn vào Firebase
+            const newMessage = {
+                sender: Sender,
+                content: Content,
+                timestamp: Timestamp
+            };
+
+            await db.ref(`Rooms/${RoomID}/messages/${messageId}`).set(newMessage);
+
+            console.log(`Message saved in room ${RoomID}:`, newMessage);
+
+            // Lấy thông tin phòng từ Firebase
+            const roomRef = db.ref(`Rooms/${RoomID}`);
+            const roomSnapshot = await roomRef.once("value");
+            const roomData = roomSnapshot.val();
+
+            // Kiểm tra và loại bỏ thành viên khỏi danh sách Members
+            if (roomData?.Members && roomData.Members.includes(Sender)) {
+                const updatedMembers = roomData.Members.filter(member => member !== Sender);
+
+                await roomRef.update({ Members: updatedMembers });
+
+                console.log(`User ${Sender} has left room ${RoomID}`);
+            } else {
+                console.log(`User ${Sender} is not a member of room ${RoomID}`);
+                socket.emit("error", "You are not a member of this room");
+                return;
+            }
+
+            // Phát sự kiện thông báo tin nhắn mới đến các client
+            console.log(`Broadcasting new-message event to room ${RoomID}:`, newMessage);
+            io.emit("new-message", { RoomID, ...newMessage });
+
+        } catch (error) {
+            console.error("Error while handling leave-room event:", error);
+            socket.emit("error", "Error while handling leave-room event");
+        }
+    });
+
+    socket.on("delete-room", async (data) => {
+        const { RoomID, Username } = data;
+
+        if (!RoomID || !Username) {
+            console.error("Invalid data for deleting room");
+            socket.emit("error", "Invalid data");
+            return;
+        }
+
+        try {
+            const roomRef = db.ref(`Rooms/${RoomID}`);
+            const roomSnapshot = await roomRef.once("value");
+            const roomData = roomSnapshot.val();
+
+            if (!roomData) {
+                console.error("Room not found");
+                socket.emit("error", "Room not found");
+                return;
+            }
+
+            // Kiểm tra nếu người dùng là creator
+            if (roomData.Creator === Username) {
+                await roomRef.remove();
+                console.log(`Room ${RoomID} deleted by ${Username}`);
+                io.emit("room-deleted", { RoomID });
+            } else {
+                console.error("User is not the creator of the room");
+                socket.emit("error", "You are not authorized to delete this room");
+            }
+        } catch (error) {
+            console.error("Error while deleting room:", error);
+            socket.emit("error", "An error occurred while deleting the room");
+        }
+    });
+
+
 });

@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using static Google.Apis.Requests.BatchRequest;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
+using JsonException = System.Text.Json.JsonException;
+
 
 namespace DangKi_DangNhap
 {
@@ -82,7 +87,53 @@ namespace DangKi_DangNhap
                     }
                 });
 
+                _clientSocket.On("room-deleted", (data) =>
+                {
+                    try
+                    {
+                        // Chuyển dữ liệu thô thành JSON để xử lý
+                        string raw = data.ToString();
+                        Console.WriteLine($"JSON thô: {raw}");
 
+                        // Giải mã JSON thành một mảng đối tượng
+                        var parsedData = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(raw);
+
+                        // Lấy phần tử đầu tiên của mảng
+                        if (parsedData != null && parsedData.Count > 0 && parsedData[0].ContainsKey("RoomID"))
+                        {
+                            string roomIdDeleted = parsedData[0]["RoomID"];
+                            Console.WriteLine($"RoomID bị xóa: {roomIdDeleted}");
+
+                            // Kiểm tra nếu RoomID trùng với phòng hiện tại
+                            if (roomIdDeleted == _roomID)
+                            {
+                                // Hiển thị thông báo và đóng form
+                                MessageBox.Show("Phòng đã bị xóa bởi người quản trị.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // Đóng form hiện tại
+                                if (this.InvokeRequired)
+                                {
+                                    this.Invoke(new Action(() =>
+                                    {
+                                        this.Close();
+                                    }));
+                                }
+                                else
+                                {
+                                    this.Close();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Dữ liệu không hợp lệ hoặc không chứa RoomID.");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Lỗi khi xử lý dữ liệu JSON: {ex.Message}");
+                    }
+                });
 
                 // Lắng nghe lỗi
                 _clientSocket.On("error", (response) =>
@@ -251,6 +302,7 @@ namespace DangKi_DangNhap
             }
         }
 
+<<<<<<< HEAD
         private void btnKhoTaiLieu_Click(object sender, EventArgs e)
         {
             // Tạo một instance của form khotailieu
@@ -270,6 +322,78 @@ namespace DangKi_DangNhap
             ktl.Show();
 
         }
+=======
+        private async void btnRoiNhom_Click(object sender, EventArgs e)
+        {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn rời nhóm không?", // Nội dung thông báo
+                "Xác nhận",                             // Tiêu đề
+                MessageBoxButtons.YesNo,                // Các nút lựa chọn
+                MessageBoxIcon.Question                 // Biểu tượng
+            );
+
+            // Kiểm tra lựa chọn của người dùng
+            if (result == DialogResult.Yes)
+            {
+                if (_clientSocket != null && _clientSocket.Connected)
+                {
+                    string messageContent = $"Người dùng {_currentUser.Username} đã rời khỏi nhóm.";
+
+                    var newMessage = new
+                    {
+                        RoomID = _roomID,
+                        Sender = _currentUser.Username,
+                        Content = messageContent,
+                        Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
+                    };
+
+                    // Gửi sự kiện rời nhóm tới server
+                    await _clientSocket.EmitAsync("leave-room", newMessage);
+
+                    MessageBox.Show("Bạn đã rời nhóm.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Close(); // đóng Form chat nhóm
+                }
+                else
+                {
+                    MessageBox.Show("Không thể kết nối đến server.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                // Người dùng chọn "No"
+                return;
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // Hiển thị hộp thoại xác nhận
+            DialogResult result = MessageBox.Show(
+                "Bạn có chắc chắn muốn xóa nhóm không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                // Gửi yêu cầu xóa nhóm đến server
+                var roomId = _roomID; // Thay thế bằng ID của nhóm cần xóa
+                var username = _currentUser.Username; // Thay thế bằng tên người dùng hiện tại
+
+                _clientSocket.EmitAsync("delete-room", new
+                {
+                    RoomID = roomId,
+                    Username = username
+                });
+
+                Console.WriteLine("Đang gửi yêu cầu xóa nhóm...");
+            }
+        }
+
+>>>>>>> dc2581c552819acb3d861de0fa94d95884a8c227
     }
 }
 

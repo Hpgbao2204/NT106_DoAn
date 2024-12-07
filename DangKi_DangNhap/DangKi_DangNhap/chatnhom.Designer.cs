@@ -166,6 +166,7 @@
             this.btnXoa.Size = new System.Drawing.Size(101, 68);
             this.btnXoa.TabIndex = 18;
             this.btnXoa.Text = "Xóa nhóm";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnRoiNhom
             // 
@@ -184,6 +185,7 @@
             this.btnRoiNhom.Size = new System.Drawing.Size(101, 68);
             this.btnRoiNhom.TabIndex = 17;
             this.btnRoiNhom.Text = "Rời nhóm";
+            this.btnRoiNhom.Click += new System.EventHandler(this.btnRoiNhom_Click);
             // 
             // btnThem
             // 
