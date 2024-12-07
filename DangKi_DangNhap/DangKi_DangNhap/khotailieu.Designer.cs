@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(khotailieu));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.rtbKhotailieu = new System.Windows.Forms.RichTextBox();
             this.btnMoFile = new Guna.UI2.WinForms.Guna2Button();
             this.btnMaHoaFile = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -43,6 +42,7 @@
             this.lblDuongDan = new System.Windows.Forms.Label();
             this.txtTenFile = new Guna.UI2.WinForms.Guna2TextBox();
             this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -51,16 +51,6 @@
             // 
             this.guna2Elipse1.BorderRadius = 20;
             this.guna2Elipse1.TargetControl = this;
-            // 
-            // rtbKhotailieu
-            // 
-            this.rtbKhotailieu.BackColor = System.Drawing.Color.OldLace;
-            this.rtbKhotailieu.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtbKhotailieu.Location = new System.Drawing.Point(39, 42);
-            this.rtbKhotailieu.Name = "rtbKhotailieu";
-            this.rtbKhotailieu.Size = new System.Drawing.Size(1055, 483);
-            this.rtbKhotailieu.TabIndex = 0;
-            this.rtbKhotailieu.Text = "";
             // 
             // btnMoFile
             // 
@@ -78,7 +68,8 @@
             this.btnMoFile.Name = "btnMoFile";
             this.btnMoFile.Size = new System.Drawing.Size(168, 47);
             this.btnMoFile.TabIndex = 15;
-            this.btnMoFile.Text = "Mở FIle";
+            this.btnMoFile.Text = "Mở và tải lên";
+            this.btnMoFile.Click += new System.EventHandler(this.btnMoFile_Click);
             // 
             // btnMaHoaFile
             // 
@@ -97,6 +88,7 @@
             this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
             this.btnMaHoaFile.TabIndex = 16;
             this.btnMaHoaFile.Text = "Mã hóa File";
+            this.btnMaHoaFile.Visible = false;
             // 
             // guna2TextBox1
             // 
@@ -156,7 +148,8 @@
             this.btnDang.Name = "btnDang";
             this.btnDang.Size = new System.Drawing.Size(114, 61);
             this.btnDang.TabIndex = 19;
-            this.btnDang.Text = "Đăng";
+            this.btnDang.Text = "Tải xuống";
+            this.btnDang.Click += new System.EventHandler(this.btnDang_Click);
             // 
             // txtPatch
             // 
@@ -217,6 +210,7 @@
             this.txtTenFile.SelectedText = "";
             this.txtTenFile.Size = new System.Drawing.Size(749, 42);
             this.txtTenFile.TabIndex = 21;
+            this.txtTenFile.TextChanged += new System.EventHandler(this.txtTenFile_TextChanged);
             // 
             // controlboxClose
             // 
@@ -229,13 +223,24 @@
             this.controlboxClose.Size = new System.Drawing.Size(31, 29);
             this.controlboxClose.TabIndex = 24;
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(12, 50);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1107, 481);
+            this.listView1.TabIndex = 23;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
             // khotailieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1128, 725);
+            this.ClientSize = new System.Drawing.Size(1131, 725);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.txtTenFile);
             this.Controls.Add(this.guna2Panel2);
@@ -245,7 +250,6 @@
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.btnMaHoaFile);
             this.Controls.Add(this.btnMoFile);
-            this.Controls.Add(this.rtbKhotailieu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "khotailieu";
             this.Text = "khotailieu";
@@ -260,7 +264,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private System.Windows.Forms.RichTextBox rtbKhotailieu;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button btnMaHoaFile;
         private Guna.UI2.WinForms.Guna2Button btnMoFile;
@@ -272,5 +275,6 @@
         private System.Windows.Forms.Label lblDuongDan;
         private Guna.UI2.WinForms.Guna2TextBox txtTenFile;
         private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
+        private System.Windows.Forms.ListView listView1;
     }
 }

@@ -237,6 +237,7 @@
             this.btnKhoTaiLieu.Size = new System.Drawing.Size(260, 47);
             this.btnKhoTaiLieu.TabIndex = 16;
             this.btnKhoTaiLieu.Text = "Kho tài liệu";
+            this.btnKhoTaiLieu.Click += new System.EventHandler(this.btnKhoTaiLieu_Click);
             // 
             // btnQuiz
             // 

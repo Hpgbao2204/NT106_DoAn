@@ -250,6 +250,26 @@ namespace DangKi_DangNhap
                 MessageBox.Show($"Lỗi khi gửi tin nhắn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnKhoTaiLieu_Click(object sender, EventArgs e)
+        {
+            // Tạo một instance của form khotailieu
+            khotailieu ktl = new khotailieu();
+
+            // Ẩn form hiện tại
+            this.Hide();
+
+            // Đăng ký sự kiện khi form khotailieu đóng
+            ktl.FormClosed += (s, args) =>
+            {
+                // Hiện lại form hiện tại
+                this.Show();
+            };
+
+            // Mở form khotailieu
+            ktl.Show();
+
+        }
     }
 }
 
