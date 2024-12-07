@@ -302,6 +302,27 @@ namespace DangKi_DangNhap
             }
         }
 
+<<<<<<< HEAD
+        private void btnKhoTaiLieu_Click(object sender, EventArgs e)
+        {
+            // Tạo một instance của form khotailieu
+            khotailieu ktl = new khotailieu();
+
+            // Ẩn form hiện tại
+            this.Hide();
+
+            // Đăng ký sự kiện khi form khotailieu đóng
+            ktl.FormClosed += (s, args) =>
+            {
+                // Hiện lại form hiện tại
+                this.Show();
+            };
+
+            // Mở form khotailieu
+            ktl.Show();
+
+        }
+=======
         private async void btnRoiNhom_Click(object sender, EventArgs e)
         {
             // Hiển thị hộp thoại xác nhận
@@ -372,6 +393,7 @@ namespace DangKi_DangNhap
             }
         }
 
+>>>>>>> dc2581c552819acb3d861de0fa94d95884a8c227
     }
 }
 
