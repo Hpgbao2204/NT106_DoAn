@@ -305,7 +305,7 @@ namespace DangKi_DangNhap
         private void btnKhoTaiLieu_Click(object sender, EventArgs e)
         {
             // Tạo một instance của form khotailieu
-            khotailieu ktl = new khotailieu();
+            khotailieu ktl = new khotailieu(_roomID);
 
             // Ẩn form hiện tại
             this.Hide();
