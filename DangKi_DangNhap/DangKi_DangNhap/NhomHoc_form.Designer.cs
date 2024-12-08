@@ -397,7 +397,6 @@
             this.btnTrangChu.TextOffset = new System.Drawing.Point(10, 0);
             this.btnTrangChu.UseTransparentBackground = true;
             this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
-            // 
             // control_Close
             // 
             this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));

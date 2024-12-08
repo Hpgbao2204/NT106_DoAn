@@ -224,7 +224,6 @@ namespace DangKi_DangNhap
         {
 
         }
-
         //private void txtPatch_TextChanged(object sender, EventArgs e)
         //{
 
@@ -288,6 +287,50 @@ namespace DangKi_DangNhap
                                 MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
+        private async void btnDang_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                // Get the selected item
+                var selectedItem = listView1.SelectedItems[0];
+                string fileName = selectedItem.SubItems[0].Text;
+
+                // Generate the download URL
+                string bucketName = "nt106-cce90.appspot.com"; // Replace with your bucket name
+                string downloadUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o/{Uri.EscapeDataString(fileName)}?alt=media";
+
+                // Prompt user to select location to save the file
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.FileName = fileName;
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string localFilePath = saveFileDialog.FileName;
+
+                        try
+                        {
+                            // Download the file from Firebase Storage
+                            using (HttpClient client = new HttpClient())
+                            {
+                                HttpResponseMessage response = await client.GetAsync(downloadUrl);
+
+                                if (response.IsSuccessStatusCode)
+                                {
+                                    byte[] fileBytes = await response.Content.ReadAsByteArrayAsync();
+                                    File.WriteAllBytes(localFilePath, fileBytes);
+
+                                    MessageBox.Show("File đã được tải xuống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show($"Có lỗi xảy ra: {response.StatusCode}\n{await response.Content.ReadAsStringAsync()}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -296,7 +339,5 @@ namespace DangKi_DangNhap
                 MessageBox.Show("Vui lòng chọn một file từ danh sách trước khi tải xuống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
     }
 }

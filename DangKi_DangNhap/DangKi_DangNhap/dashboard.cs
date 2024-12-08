@@ -112,10 +112,5 @@ namespace DangKi_DangNhap
 
             tb.ShowDialog();
         }
-
-        private void btnThongBao_Click(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
