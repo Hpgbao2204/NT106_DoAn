@@ -1,4 +1,6 @@
-﻿namespace DangKi_DangNhap
+﻿using System;
+
+namespace DangKi_DangNhap
 {
     partial class khotailieu
     {
@@ -69,7 +71,7 @@
             this.btnMoFile.Size = new System.Drawing.Size(168, 47);
             this.btnMoFile.TabIndex = 15;
             this.btnMoFile.Text = "Tải lên";
-            this.btnMoFile.Click += new System.EventHandler(this.btnMoFile_Click_1);
+            this.btnMoFile.Click += new System.EventHandler(this.btnMoFile_Click);
             // 
             // btnMaHoaFile
             // 
@@ -88,6 +90,7 @@
             this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
             this.btnMaHoaFile.TabIndex = 16;
             this.btnMaHoaFile.Text = "Mã hóa File";
+            this.btnMaHoaFile.Click += new System.EventHandler(this.btnMaHoaFile_Click);
             // 
             // guna2TextBox1
             // 
@@ -168,6 +171,7 @@
             this.txtPatch.SelectedText = "";
             this.txtPatch.Size = new System.Drawing.Size(749, 42);
             this.txtPatch.TabIndex = 20;
+            this.txtPatch.TextChanged += new System.EventHandler(this.txtPatch_TextChanged);
             // 
             // guna2Panel2
             // 
@@ -209,6 +213,7 @@
             this.txtTenFile.SelectedText = "";
             this.txtTenFile.Size = new System.Drawing.Size(749, 42);
             this.txtTenFile.TabIndex = 21;
+            this.txtTenFile.TextChanged += new System.EventHandler(this.txtTenFile_TextChanged);
             // 
             // controlboxClose
             // 
@@ -224,9 +229,9 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(30, 23);
+            this.listView1.Location = new System.Drawing.Point(12, 40);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1021, 492);
+            this.listView1.Size = new System.Drawing.Size(1072, 479);
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -256,6 +261,16 @@
             this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void txtPatch_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnMaHoaFile_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

@@ -14,6 +14,7 @@ using static Google.Apis.Requests.BatchRequest;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using JsonException = System.Text.Json.JsonException;
+using Microsoft.VisualBasic.ApplicationServices;
 
 
 namespace DangKi_DangNhap
@@ -374,7 +375,7 @@ namespace DangKi_DangNhap
 
         private void btnKhoTaiLieu_Click(object sender, EventArgs e)
         {
-            khotailieu ktl = new khotailieu();
+            khotailieu ktl = new khotailieu(_roomID);
             ktl.ShowDialog();
             this.Hide();
         }
