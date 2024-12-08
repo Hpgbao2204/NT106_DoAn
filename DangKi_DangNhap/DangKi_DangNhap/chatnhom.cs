@@ -14,6 +14,7 @@ using static Google.Apis.Requests.BatchRequest;
 using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using JsonException = System.Text.Json.JsonException;
+using Microsoft.VisualBasic.ApplicationServices;
 
 
 namespace DangKi_DangNhap
@@ -301,8 +302,6 @@ namespace DangKi_DangNhap
                 MessageBox.Show($"Lỗi khi gửi tin nhắn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-<<<<<<< HEAD
         private void btnKhoTaiLieu_Click(object sender, EventArgs e)
         {
             // Tạo một instance của form khotailieu
@@ -322,7 +321,6 @@ namespace DangKi_DangNhap
             ktl.Show();
 
         }
-=======
         private async void btnRoiNhom_Click(object sender, EventArgs e)
         {
             // Hiển thị hộp thoại xác nhận
@@ -392,8 +390,6 @@ namespace DangKi_DangNhap
                 Console.WriteLine("Đang gửi yêu cầu xóa nhóm...");
             }
         }
-
->>>>>>> dc2581c552819acb3d861de0fa94d95884a8c227
     }
 }
 

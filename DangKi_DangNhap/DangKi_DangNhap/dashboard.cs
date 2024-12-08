@@ -112,29 +112,5 @@ namespace DangKi_DangNhap
 
             tb.ShowDialog();
         }
-
-        private void btnThongBao_Click(object sender, EventArgs e)
-        {
-            /*thongbao_form tb = new thongbao_form();
-            this.Hide();
-
-            tb.ShowDialog();*/
-            // Tạo một instance của form khotailieu
-            khotailieu ktl = new khotailieu();
-
-            // Ẩn form hiện tại
-            this.Hide();
-
-            // Đăng ký sự kiện khi form khotailieu đóng
-            ktl.FormClosed += (s, args) =>
-            {
-                // Hiện lại form hiện tại
-                this.Show();
-            };
-
-            // Mở form khotailieu
-            ktl.Show();
-
-        }
     }
 }

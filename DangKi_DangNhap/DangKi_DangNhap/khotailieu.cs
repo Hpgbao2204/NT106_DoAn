@@ -10,14 +10,17 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Firebase.Storage;
 using Newtonsoft.Json;
 
 namespace DangKi_DangNhap
 {
     public partial class khotailieu : Form
     {
-        public khotailieu()
+        private string groupID;
+        public khotailieu(string roomID)
         {
+            this.groupID = roomID;
             InitializeComponent();
             InitializeListView(); // Initialize ListView when the form is created
             this.Load += khotailieu_Load; // Handle form load event to fetch and display files
@@ -104,7 +107,7 @@ namespace DangKi_DangNhap
             // Tạo OpenFileDialog để chọn file
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
-                Filter = "Text files (*.txt)|*.txt|PDF files (*.pdf)|*.pdf",
+                Filter = "PDF files (*.pdf)|*.pdf|Word documents (*.doc;*.docx)|*.doc;*.docx|Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png",
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -221,7 +224,69 @@ namespace DangKi_DangNhap
         {
 
         }
+        //private void txtPatch_TextChanged(object sender, EventArgs e)
+        //{
 
+        //}
+
+        //private void btnMaHoaFile_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
+        private async void btnDang_Click(object sender, EventArgs e)
+        {
+            // Kiểm tra xem có file nào được chọn không
+            if (listView1.SelectedItems.Count > 0)
+            {
+                var selectedItem = listView1.SelectedItems[0];
+                string fileName = selectedItem.SubItems[0].Text;
+
+                // Hiển thị hộp thoại xác nhận
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn tải xuống file '{fileName}' không?",
+                                                            "Xác nhận",
+                                                            MessageBoxButtons.YesNo,
+                                                            MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    using (var saveDialog = new SaveFileDialog())
+                    {
+                        // Cấu hình SaveFileDialog
+                        saveDialog.FileName = fileName;
+                        saveDialog.Filter = "PDF files (*.pdf)|*.pdf|Word documents (*.doc;*.docx)|*.doc;*.docx|Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+
+                        if (saveDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string savePath = saveDialog.FileName;
+
+                            try
+                            {
+                                string bucketName = "nt106-cce90.appspot.com"; // Tên bucket Firebase
+                                string downloadUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o/{Uri.EscapeDataString(fileName)}?alt=media";
+
+                                // Tải file từ URL và lưu vào đường dẫn đã chọn
+                                using (HttpClient client = new HttpClient())
+                                {
+                                    var response = await client.GetAsync(downloadUrl);
+                                    if (response.IsSuccessStatusCode)
+                                    {
+                                        byte[] fileBytes = await response.Content.ReadAsByteArrayAsync();
+                                        File.WriteAllBytes(savePath, fileBytes);
+
+                                        MessageBox.Show("Tải xuống thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show($"Lỗi tải file: {response.StatusCode}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
         private async void btnDang_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
@@ -271,9 +336,8 @@ namespace DangKi_DangNhap
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn một file từ danh sách để tải xuống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một file từ danh sách trước khi tải xuống.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
     }
 }

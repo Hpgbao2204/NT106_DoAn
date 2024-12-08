@@ -48,7 +48,7 @@
             this.btnLichSapToi = new Guna.UI2.WinForms.Guna2Button();
             this.btnTatCa = new Guna.UI2.WinForms.Guna2Button();
             this.panelThongBao = new Guna.UI2.WinForms.Guna2Panel();
-            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.panelBackgr1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.guna2Panel1.SuspendLayout();
@@ -292,7 +292,7 @@
             this.guna2Panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Panel1.BackgroundImage")));
             this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel1.Controls.Add(this.controlboxClose);
+            this.guna2Panel1.Controls.Add(this.control_Close);
             this.guna2Panel1.Controls.Add(this.lblNhomHoc);
             this.guna2Panel1.Controls.Add(this.btnFileUpLoad);
             this.guna2Panel1.Controls.Add(this.btnTinNhan);
@@ -399,15 +399,15 @@
             this.panelThongBao.Size = new System.Drawing.Size(847, 642);
             this.panelThongBao.TabIndex = 0;
             // 
-            // controlboxClose
+            // control_Close
             // 
-            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
-            this.controlboxClose.IconColor = System.Drawing.Color.Black;
-            this.controlboxClose.Location = new System.Drawing.Point(870, 12);
-            this.controlboxClose.Name = "controlboxClose";
-            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
-            this.controlboxClose.TabIndex = 23;
+            this.control_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.control_Close.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(222)))), ((int)(((byte)(153)))));
+            this.control_Close.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.control_Close.Location = new System.Drawing.Point(866, 12);
+            this.control_Close.Name = "control_Close";
+            this.control_Close.Size = new System.Drawing.Size(35, 30);
+            this.control_Close.TabIndex = 29;
             // 
             // thongbao_form
             // 
@@ -447,6 +447,6 @@
         private Guna.UI2.WinForms.Guna2Button btnLichSapToi;
         private Guna.UI2.WinForms.Guna2Button btnTatCa;
         private System.Windows.Forms.Label lblNhomHoc;
-        private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
+        private Guna.UI2.WinForms.Guna2ControlBox control_Close;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DangKi_DangNhap
+﻿using System;
+
+namespace DangKi_DangNhap
 {
     partial class khotailieu
     {
@@ -68,7 +70,7 @@
             this.btnMoFile.Name = "btnMoFile";
             this.btnMoFile.Size = new System.Drawing.Size(168, 47);
             this.btnMoFile.TabIndex = 15;
-            this.btnMoFile.Text = "Mở và tải lên";
+            this.btnMoFile.Text = "Tải lên";
             this.btnMoFile.Click += new System.EventHandler(this.btnMoFile_Click);
             // 
             // btnMaHoaFile
@@ -226,12 +228,11 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 50);
+            this.listView1.Location = new System.Drawing.Point(12, 40);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1107, 481);
-            this.listView1.TabIndex = 23;
+            this.listView1.Size = new System.Drawing.Size(1072, 479);
+            this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // khotailieu
             // 
@@ -239,7 +240,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1131, 725);
+            this.ClientSize = new System.Drawing.Size(1128, 725);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.txtTenFile);
@@ -259,6 +260,16 @@
             this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
+        }
+
+        private void txtPatch_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void btnMaHoaFile_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
