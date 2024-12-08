@@ -252,6 +252,18 @@
     <Compile Include="chatnhom.Designer.cs">
       <DependentUpon>chatnhom.cs</DependentUpon>
     </Compile>
+    <Compile Include="choose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="choose.Designer.cs">
+      <DependentUpon>choose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Eventform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eventform.Designer.cs">
+      <DependentUpon>Eventform.cs</DependentUpon>
+    </Compile>
     <Compile Include="khoquiz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +275,18 @@
     </Compile>
     <Compile Include="khotailieu.Designer.cs">
       <DependentUpon>khotailieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="lamquiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lamquiz.Designer.cs">
+      <DependentUpon>lamquiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="laplich_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="laplich_form.Designer.cs">
+      <DependentUpon>laplich_form.cs</DependentUpon>
     </Compile>
     <Compile Include="lichnhombtn.cs">
       <SubType>Form</SubType>
@@ -342,11 +366,23 @@
     <EmbeddedResource Include="chatnhom.resx">
       <DependentUpon>chatnhom.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="choose.resx">
+      <DependentUpon>choose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Eventform.resx">
+      <DependentUpon>Eventform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="khoquiz.resx">
       <DependentUpon>khoquiz.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="khotailieu.resx">
       <DependentUpon>khotailieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lamquiz.resx">
+      <DependentUpon>lamquiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="laplich_form.resx">
+      <DependentUpon>laplich_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="lichnhombtn.resx">
       <DependentUpon>lichnhombtn.cs</DependentUpon>

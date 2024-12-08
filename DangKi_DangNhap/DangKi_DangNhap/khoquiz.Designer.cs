@@ -35,6 +35,7 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.linklblDefault = new System.Windows.Forms.LinkLabel();
             this.lblKhoQuiz = new System.Windows.Forms.Label();
+            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +81,17 @@
             this.lblKhoQuiz.TabIndex = 21;
             this.lblKhoQuiz.Text = "Kho Quiz";
             // 
+            // controlboxClose
+            // 
+            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.FloralWhite;
+            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
+            this.controlboxClose.IconColor = System.Drawing.Color.Black;
+            this.controlboxClose.Location = new System.Drawing.Point(957, 9);
+            this.controlboxClose.Name = "controlboxClose";
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
+            this.controlboxClose.TabIndex = 26;
+            // 
             // khoquiz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -87,11 +99,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1000, 634);
+            this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.lblKhoQuiz);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "khoquiz";
-            this.Text = "khoquiz";
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.LinkLabel linklblDefault;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
         private System.Windows.Forms.Label lblKhoQuiz;
+        private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
     }
 }

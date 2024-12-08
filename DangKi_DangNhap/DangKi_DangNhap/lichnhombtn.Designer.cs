@@ -39,6 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.SuspendLayout();
             // 
             // guna2Elipse1
@@ -140,12 +141,24 @@
             this.label8.TabIndex = 7;
             this.label8.Text = "SATURDAY";
             // 
+            // controlboxClose
+            // 
+            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.OldLace;
+            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
+            this.controlboxClose.IconColor = System.Drawing.Color.Black;
+            this.controlboxClose.Location = new System.Drawing.Point(1103, 12);
+            this.controlboxClose.Name = "controlboxClose";
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
+            this.controlboxClose.TabIndex = 25;
+            // 
             // lichnhombtn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.OldLace;
             this.ClientSize = new System.Drawing.Size(1146, 653);
+            this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -177,5 +190,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
     }
 }
