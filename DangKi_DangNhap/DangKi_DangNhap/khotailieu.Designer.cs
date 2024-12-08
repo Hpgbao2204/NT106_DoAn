@@ -90,7 +90,6 @@ namespace DangKi_DangNhap
             this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
             this.btnMaHoaFile.TabIndex = 16;
             this.btnMaHoaFile.Text = "Mã hóa File";
-            this.btnMaHoaFile.Click += new System.EventHandler(this.btnMaHoaFile_Click);
             // 
             // guna2TextBox1
             // 
@@ -171,7 +170,6 @@ namespace DangKi_DangNhap
             this.txtPatch.SelectedText = "";
             this.txtPatch.Size = new System.Drawing.Size(749, 42);
             this.txtPatch.TabIndex = 20;
-            this.txtPatch.TextChanged += new System.EventHandler(this.txtPatch_TextChanged);
             // 
             // guna2Panel2
             // 

@@ -225,6 +225,16 @@ namespace DangKi_DangNhap
 
         }
 
+        //private void txtPatch_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void btnMaHoaFile_Click(object sender, EventArgs e)
+        //{
+
+        //}
+
         private async void btnDang_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem có file nào được chọn không
