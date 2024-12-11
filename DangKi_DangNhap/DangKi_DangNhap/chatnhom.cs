@@ -305,20 +305,21 @@ namespace DangKi_DangNhap
         private void btnKhoTaiLieu_Click(object sender, EventArgs e)
         {
             // Tạo một instance của form khotailieu
-            khotailieu ktl = new khotailieu(_roomID);
+            khotailieu ktl = new khotailieu(_roomID)
+            {
+                TopMost = true
+            };
 
             // Ẩn form hiện tại
             this.Hide();
-
+            // Mở form khotailieu
+            ktl.Show();
             // Đăng ký sự kiện khi form khotailieu đóng
             ktl.FormClosed += (s, args) =>
             {
                 // Hiện lại form hiện tại
                 this.Show();
             };
-
-            // Mở form khotailieu
-            ktl.Show();
 
         }
         private async void btnRoiNhom_Click(object sender, EventArgs e)

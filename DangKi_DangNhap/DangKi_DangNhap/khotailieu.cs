@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Firebase.Storage;
 using Newtonsoft.Json;
+using DocumentFormat.OpenXml.Packaging;
+
 
 namespace DangKi_DangNhap
 {
@@ -28,19 +30,8 @@ namespace DangKi_DangNhap
 
         private async void khotailieu_Load(object sender, EventArgs e)
         {
-            // Fetch files from Firebase Storage
-            var files = await GetFilesFromFirebaseStorage();
+            LoadFilesForGroup();
 
-            // Populate the ListView
-            foreach (var file in files)
-            {
-                AddFileToListView(
-                    file.TryGetValue("name", out var name) ? name?.ToString() : "Unknown",
-                    Path.GetExtension(name?.ToString()).TrimStart('.'),
-                    file.TryGetValue("updated", out var updated) ? DateTime.Parse(updated.ToString()) : DateTime.MinValue,
-                    file.TryGetValue("size", out var size) ? long.Parse(size.ToString()) : 0L
-                );
-            }
         }
 
         private async Task<List<Dictionary<string, object>>> GetFilesFromFirebaseStorage()
@@ -49,7 +40,8 @@ namespace DangKi_DangNhap
             var storageClient = new HttpClient();
             var fileList = new List<Dictionary<string, object>>();
 
-            string listFilesUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o?alt=media";
+            string listFilesUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o?prefix=nhom-{groupID}/";
+
             HttpResponseMessage response = await storageClient.GetAsync(listFilesUrl);
 
             if (response.IsSuccessStatusCode)
@@ -107,7 +99,9 @@ namespace DangKi_DangNhap
             // Tạo OpenFileDialog để chọn file
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
+                Title = "Chọn 1 file để mở",
                 Filter = "PDF files (*.pdf)|*.pdf|Word documents (*.doc;*.docx)|*.doc;*.docx|Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png",
+                Multiselect = false // Không cho phép chọn nhiều tệp
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -138,6 +132,27 @@ namespace DangKi_DangNhap
                 }
             }
         }
+        private async void LoadFilesForGroup()
+        {
+            try
+            {
+                var files = await GetFilesFromFirebaseStorage();
+
+                foreach (var file in files)
+                {
+                    AddFileToListView(
+                        file.TryGetValue("name", out var name) ? name?.ToString() : "Unknown",
+                        Path.GetExtension(name?.ToString()).TrimStart('.'),
+                        file.TryGetValue("updated", out var updated) ? DateTime.Parse(updated.ToString()) : DateTime.MinValue,
+                        file.TryGetValue("size", out var size) ? long.Parse(size.ToString()) : 0L
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading files: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private async Task<string> UploadFileToFirebaseWithProgress(string filePath)
         {
@@ -145,7 +160,7 @@ namespace DangKi_DangNhap
             try
             {
                 string bucketName = "nt106-cce90.appspot.com"; // Thay bằng tên bucket Firebase của bạn
-                string fileName = Path.GetFileName(filePath);  // Tên file
+                string fileName = $"nhom-{groupID}/{Path.GetFileName(filePath)}";   // Tên file
                 string storageUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o?uploadType=media&name={fileName}";
 
                 // Đọc file dưới dạng byte
