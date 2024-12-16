@@ -13,12 +13,18 @@ using System.Windows.Forms;
 using Firebase.Storage;
 using Newtonsoft.Json;
 using DocumentFormat.OpenXml.Packaging;
+using FireSharp.Response;
+using FireSharp;
+using FireSharp.Config;
+using FireSharp.Interfaces;
+using System.Diagnostics;
 
 
 namespace DangKi_DangNhap
 {
     public partial class khotailieu : Form
     {
+        public IFirebaseClient firebaseClient;
         private string groupID;
         public khotailieu(string roomID)
         {
@@ -26,6 +32,14 @@ namespace DangKi_DangNhap
             InitializeComponent();
             InitializeListView(); // Initialize ListView when the form is created
             this.Load += khotailieu_Load; // Handle form load event to fetch and display files
+            IFirebaseConfig config = new FirebaseConfig
+            {
+                AuthSecret = "Thf1EHNiaoAUD1hL1NO8NlozBmCdB23d1CLAAcBv",
+                BasePath = "https://nt106-cce90-default-rtdb.firebaseio.com/"
+            };
+
+            // Khởi tạo FirebaseClient
+            firebaseClient = new FireSharp.FirebaseClient(config);
         }
 
         private async void khotailieu_Load(object sender, EventArgs e)
@@ -33,6 +47,7 @@ namespace DangKi_DangNhap
             LoadFilesForGroup();
 
         }
+ 
 
         private async Task<List<Dictionary<string, object>>> GetFilesFromFirebaseStorage()
         {
@@ -201,7 +216,17 @@ namespace DangKi_DangNhap
 
             return downloadUrl;
         }
-
+        private string FormatFileSize(long sizeInBytes)
+        {
+            if (sizeInBytes < 1024)
+                return $"{sizeInBytes} B";
+            else if (sizeInBytes < 1024 * 1024)
+                return $"{sizeInBytes / 1024.0:F2} KB";
+            else if (sizeInBytes < 1024 * 1024 * 1024)
+                return $"{sizeInBytes / (1024.0 * 1024):F2} MB";
+            else
+                return $"{sizeInBytes / (1024.0 * 1024 * 1024):F2} GB";
+        }
         private void InitializeListView()
         {
             // Set ListView properties
@@ -217,17 +242,19 @@ namespace DangKi_DangNhap
 
         private void AddFileToListView(string fileName, string fileType, DateTime uploadDate, long fileSize)
         {
+            string formattedSize = FormatFileSize(fileSize);
             // Create a new ListViewItem
             var listViewItem = new ListViewItem(new[]
             {
                 fileName,
                 fileType,
                 uploadDate.ToString("dd/MM/yyyy HH:mm:ss"),
-                fileSize.ToString()
+                formattedSize       
             });
 
             // Add the item to ListView
-            listView1.Items.Add(listViewItem);
+            listView1.Items.Add(listViewItem); 
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,5 +333,61 @@ namespace DangKi_DangNhap
                 }
             }
         }
+
+        private async  void btnDeletefile_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                var selectedItem = listView1.SelectedItems[0];
+                string fileName = selectedItem.SubItems[0].Text;
+
+                // Prompt the user to confirm file deletion
+                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa file '{fileName}' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        // Construct the file path in Firebase Storage (replace groupID if needed)
+                        string storageFilePath = $"nhom-{groupID}/{fileName}";
+
+                        // Delete file from Firebase Storage
+                        string storageUrl = $"https://firebasestorage.googleapis.com/v0/b/nt106-cce90.appspot.com/o/{Uri.EscapeDataString(storageFilePath)}";
+                        using (HttpClient client = new HttpClient())
+                        {
+                            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, storageUrl);
+                            HttpResponseMessage response = await client.SendAsync(request);
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                // Successfully deleted the file from storage, now delete the metadata from Firebase Realtime Database
+                                FirebaseResponse databaseResponse = await firebaseClient.DeleteAsync($"files/{groupID}/{fileName}");
+
+                                if (databaseResponse.StatusCode == System.Net.HttpStatusCode.OK)
+                                {
+                                    MessageBox.Show("Xóa file thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    listView1.Items.Remove(selectedItem); // Remove the file from the ListView
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Lỗi khi xóa metadata của file từ Firebase Database.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Lỗi khi xóa file từ Firebase Storage.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+
+        }
+      
     }
 }

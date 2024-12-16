@@ -45,6 +45,7 @@ namespace DangKi_DangNhap
             this.txtTenFile = new Guna.UI2.WinForms.Guna2TextBox();
             this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.btnDeletefile = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,7 @@ namespace DangKi_DangNhap
             this.btnMoFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnMoFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnMoFile.ForeColor = System.Drawing.Color.White;
-            this.btnMoFile.Location = new System.Drawing.Point(333, 548);
+            this.btnMoFile.Location = new System.Drawing.Point(201, 548);
             this.btnMoFile.Name = "btnMoFile";
             this.btnMoFile.Size = new System.Drawing.Size(168, 47);
             this.btnMoFile.TabIndex = 15;
@@ -85,7 +86,7 @@ namespace DangKi_DangNhap
             this.btnMaHoaFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnMaHoaFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnMaHoaFile.ForeColor = System.Drawing.Color.White;
-            this.btnMaHoaFile.Location = new System.Drawing.Point(627, 548);
+            this.btnMaHoaFile.Location = new System.Drawing.Point(636, 548);
             this.btnMaHoaFile.Name = "btnMaHoaFile";
             this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
             this.btnMaHoaFile.TabIndex = 16;
@@ -234,6 +235,25 @@ namespace DangKi_DangNhap
             this.listView1.TabIndex = 25;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
+            // btnDeletefile
+            // 
+            this.btnDeletefile.Animated = true;
+            this.btnDeletefile.BackColor = System.Drawing.Color.Transparent;
+            this.btnDeletefile.BorderRadius = 10;
+            this.btnDeletefile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnDeletefile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnDeletefile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnDeletefile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnDeletefile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.btnDeletefile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnDeletefile.ForeColor = System.Drawing.Color.White;
+            this.btnDeletefile.Location = new System.Drawing.Point(422, 548);
+            this.btnDeletefile.Name = "btnDeletefile";
+            this.btnDeletefile.Size = new System.Drawing.Size(168, 47);
+            this.btnDeletefile.TabIndex = 26;
+            this.btnDeletefile.Text = "Xóa file";
+            this.btnDeletefile.Click += new System.EventHandler(this.btnDeletefile_Click);
+            // 
             // khotailieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +261,7 @@ namespace DangKi_DangNhap
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1128, 725);
+            this.Controls.Add(this.btnDeletefile);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.txtTenFile);
@@ -287,5 +308,6 @@ namespace DangKi_DangNhap
         private Guna.UI2.WinForms.Guna2TextBox txtTenFile;
         private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
         private System.Windows.Forms.ListView listView1;
+        private Guna.UI2.WinForms.Guna2Button btnDeletefile;
     }
 }
