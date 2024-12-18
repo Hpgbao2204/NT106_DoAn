@@ -39,12 +39,9 @@
             this.lblDs = new System.Windows.Forms.Label();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.btnRoiNhom = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.groupboxDs = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.btnKhoTaiLieu = new Guna.UI2.WinForms.Guna2Button();
-            this.btnQuiz = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLichNhom = new Guna.UI2.WinForms.Guna2Button();
             this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +84,7 @@
             this.txtChatbox.SelectedText = "";
             this.txtChatbox.Size = new System.Drawing.Size(471, 47);
             this.txtChatbox.TabIndex = 1;
+            this.txtChatbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChatbox_KeyDown);
             // 
             // btnDang
             // 
@@ -131,7 +129,6 @@
             this.guna2Panel1.Controls.Add(this.lblDs);
             this.guna2Panel1.Controls.Add(this.btnXoa);
             this.guna2Panel1.Controls.Add(this.btnRoiNhom);
-            this.guna2Panel1.Controls.Add(this.btnThem);
             this.guna2Panel1.Controls.Add(this.groupboxDs);
             this.guna2Panel1.Location = new System.Drawing.Point(708, 36);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -161,7 +158,7 @@
             this.btnXoa.FillColor = System.Drawing.Color.Red;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(264, 393);
+            this.btnXoa.Location = new System.Drawing.Point(201, 389);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(101, 68);
             this.btnXoa.TabIndex = 18;
@@ -180,30 +177,12 @@
             this.btnRoiNhom.FillColor = System.Drawing.Color.Orange;
             this.btnRoiNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnRoiNhom.ForeColor = System.Drawing.Color.White;
-            this.btnRoiNhom.Location = new System.Drawing.Point(143, 393);
+            this.btnRoiNhom.Location = new System.Drawing.Point(80, 389);
             this.btnRoiNhom.Name = "btnRoiNhom";
             this.btnRoiNhom.Size = new System.Drawing.Size(101, 68);
             this.btnRoiNhom.TabIndex = 17;
             this.btnRoiNhom.Text = "Rời nhóm";
             this.btnRoiNhom.Click += new System.EventHandler(this.btnRoiNhom_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Animated = true;
-            this.btnThem.BackColor = System.Drawing.Color.Transparent;
-            this.btnThem.BorderRadius = 10;
-            this.btnThem.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThem.FillColor = System.Drawing.Color.LimeGreen;
-            this.btnThem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnThem.ForeColor = System.Drawing.Color.White;
-            this.btnThem.Location = new System.Drawing.Point(22, 393);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(101, 68);
-            this.btnThem.TabIndex = 16;
-            this.btnThem.Text = "Thêm";
             // 
             // groupboxDs
             // 
@@ -234,48 +213,12 @@
             this.btnKhoTaiLieu.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnKhoTaiLieu.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnKhoTaiLieu.ForeColor = System.Drawing.Color.White;
-            this.btnKhoTaiLieu.Location = new System.Drawing.Point(779, 521);
+            this.btnKhoTaiLieu.Location = new System.Drawing.Point(774, 558);
             this.btnKhoTaiLieu.Name = "btnKhoTaiLieu";
             this.btnKhoTaiLieu.Size = new System.Drawing.Size(260, 47);
             this.btnKhoTaiLieu.TabIndex = 16;
             this.btnKhoTaiLieu.Text = "Kho tài liệu";
             this.btnKhoTaiLieu.Click += new System.EventHandler(this.btnKhoTaiLieu_Click);
-            // 
-            // btnQuiz
-            // 
-            this.btnQuiz.Animated = true;
-            this.btnQuiz.BackColor = System.Drawing.Color.Transparent;
-            this.btnQuiz.BorderRadius = 10;
-            this.btnQuiz.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnQuiz.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnQuiz.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnQuiz.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnQuiz.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.btnQuiz.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnQuiz.ForeColor = System.Drawing.Color.White;
-            this.btnQuiz.Location = new System.Drawing.Point(779, 582);
-            this.btnQuiz.Name = "btnQuiz";
-            this.btnQuiz.Size = new System.Drawing.Size(260, 47);
-            this.btnQuiz.TabIndex = 17;
-            this.btnQuiz.Text = "Quiz";
-            // 
-            // btnLichNhom
-            // 
-            this.btnLichNhom.Animated = true;
-            this.btnLichNhom.BackColor = System.Drawing.Color.Transparent;
-            this.btnLichNhom.BorderRadius = 10;
-            this.btnLichNhom.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLichNhom.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLichNhom.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLichNhom.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLichNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.btnLichNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnLichNhom.ForeColor = System.Drawing.Color.White;
-            this.btnLichNhom.Location = new System.Drawing.Point(779, 643);
-            this.btnLichNhom.Name = "btnLichNhom";
-            this.btnLichNhom.Size = new System.Drawing.Size(260, 47);
-            this.btnLichNhom.TabIndex = 18;
-            this.btnLichNhom.Text = "Lịch nhóm";
             // 
             // controlboxClose
             // 
@@ -296,8 +239,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1121, 715);
             this.Controls.Add(this.controlboxClose);
-            this.Controls.Add(this.btnLichNhom);
-            this.Controls.Add(this.btnQuiz);
             this.Controls.Add(this.btnKhoTaiLieu);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.btnIcon);
@@ -324,12 +265,9 @@
         private Guna.UI2.WinForms.Guna2Button btnDang;
         private Guna.UI2.WinForms.Guna2GroupBox groupboxDs;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
-        private Guna.UI2.WinForms.Guna2Button btnLichNhom;
-        private Guna.UI2.WinForms.Guna2Button btnQuiz;
         private Guna.UI2.WinForms.Guna2Button btnKhoTaiLieu;
         private Guna.UI2.WinForms.Guna2Button btnXoa;
         private Guna.UI2.WinForms.Guna2Button btnRoiNhom;
-        private Guna.UI2.WinForms.Guna2Button btnThem;
         private System.Windows.Forms.Label lblDs;
         private Guna.UI2.WinForms.Guna2ControlBox controlboxClose;
     }

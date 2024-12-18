@@ -390,6 +390,20 @@ namespace DangKi_DangNhap
                 Console.WriteLine("Đang gửi yêu cầu xóa nhóm...");
             }
         }
+
+        private void txtChatbox_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Kiểm tra nếu phím Enter được nhấn
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Gọi phương thức xử lý gửi tin nhắn
+                btnDang_Click(sender, e);
+
+                // Đánh dấu sự kiện là đã xử lý để ngăn các điều khiển khác xử lý lại
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }
 

@@ -89,8 +89,9 @@ namespace DangKi_DangNhap
             this.btnMaHoaFile.Name = "btnMaHoaFile";
             this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
             this.btnMaHoaFile.TabIndex = 16;
-            this.btnMaHoaFile.Text = "Mã hóa File";
+            this.btnMaHoaFile.Text = "Xóa file";
             this.btnMaHoaFile.Visible = false;
+            this.btnMaHoaFile.Click += new System.EventHandler(this.btnDeletefile_Click);
             // 
             // guna2TextBox1
             // 
