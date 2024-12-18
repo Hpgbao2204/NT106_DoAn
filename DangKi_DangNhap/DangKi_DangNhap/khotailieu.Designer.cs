@@ -33,12 +33,11 @@ namespace DangKi_DangNhap
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(khotailieu));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.btnMoFile = new Guna.UI2.WinForms.Guna2Button();
-            this.btnMaHoaFile = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTaiLenFile = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblTenFile = new System.Windows.Forms.Label();
-            this.btnDang = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTaiXuong = new Guna.UI2.WinForms.Guna2Button();
             this.txtPatch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.lblDuongDan = new System.Windows.Forms.Label();
@@ -55,43 +54,24 @@ namespace DangKi_DangNhap
             this.guna2Elipse1.BorderRadius = 20;
             this.guna2Elipse1.TargetControl = this;
             // 
-            // btnMoFile
+            // btnTaiLenFile
             // 
-            this.btnMoFile.Animated = true;
-            this.btnMoFile.BackColor = System.Drawing.Color.Transparent;
-            this.btnMoFile.BorderRadius = 10;
-            this.btnMoFile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMoFile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMoFile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMoFile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMoFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.btnMoFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnMoFile.ForeColor = System.Drawing.Color.White;
-            this.btnMoFile.Location = new System.Drawing.Point(201, 548);
-            this.btnMoFile.Name = "btnMoFile";
-            this.btnMoFile.Size = new System.Drawing.Size(168, 47);
-            this.btnMoFile.TabIndex = 15;
-            this.btnMoFile.Text = "Tải lên";
-            this.btnMoFile.Click += new System.EventHandler(this.btnMoFile_Click);
-            // 
-            // btnMaHoaFile
-            // 
-            this.btnMaHoaFile.Animated = true;
-            this.btnMaHoaFile.BackColor = System.Drawing.Color.Transparent;
-            this.btnMaHoaFile.BorderRadius = 10;
-            this.btnMaHoaFile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnMaHoaFile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnMaHoaFile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnMaHoaFile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnMaHoaFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.btnMaHoaFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnMaHoaFile.ForeColor = System.Drawing.Color.White;
-            this.btnMaHoaFile.Location = new System.Drawing.Point(636, 548);
-            this.btnMaHoaFile.Name = "btnMaHoaFile";
-            this.btnMaHoaFile.Size = new System.Drawing.Size(168, 47);
-            this.btnMaHoaFile.TabIndex = 16;
-            this.btnMaHoaFile.Text = "Mã hóa File";
-            this.btnMaHoaFile.Visible = false;
+            this.btnTaiLenFile.Animated = true;
+            this.btnTaiLenFile.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaiLenFile.BorderRadius = 10;
+            this.btnTaiLenFile.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaiLenFile.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaiLenFile.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTaiLenFile.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTaiLenFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.btnTaiLenFile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnTaiLenFile.ForeColor = System.Drawing.Color.White;
+            this.btnTaiLenFile.Location = new System.Drawing.Point(348, 543);
+            this.btnTaiLenFile.Name = "btnTaiLenFile";
+            this.btnTaiLenFile.Size = new System.Drawing.Size(168, 47);
+            this.btnTaiLenFile.TabIndex = 15;
+            this.btnTaiLenFile.Text = "Tải lên";
+            this.btnTaiLenFile.Click += new System.EventHandler(this.btnTaiLenFile_Click);
             // 
             // guna2TextBox1
             // 
@@ -135,24 +115,24 @@ namespace DangKi_DangNhap
             this.lblTenFile.TabIndex = 19;
             this.lblTenFile.Text = "Tên file";
             // 
-            // btnDang
+            // btnTaiXuong
             // 
-            this.btnDang.Animated = true;
-            this.btnDang.BackColor = System.Drawing.Color.Transparent;
-            this.btnDang.BorderRadius = 10;
-            this.btnDang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDang.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
-            this.btnDang.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnDang.ForeColor = System.Drawing.Color.White;
-            this.btnDang.Location = new System.Drawing.Point(937, 636);
-            this.btnDang.Name = "btnDang";
-            this.btnDang.Size = new System.Drawing.Size(114, 61);
-            this.btnDang.TabIndex = 19;
-            this.btnDang.Text = "Tải xuống";
-            this.btnDang.Click += new System.EventHandler(this.btnDang_Click);
+            this.btnTaiXuong.Animated = true;
+            this.btnTaiXuong.BackColor = System.Drawing.Color.Transparent;
+            this.btnTaiXuong.BorderRadius = 10;
+            this.btnTaiXuong.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaiXuong.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTaiXuong.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTaiXuong.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTaiXuong.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
+            this.btnTaiXuong.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnTaiXuong.ForeColor = System.Drawing.Color.White;
+            this.btnTaiXuong.Location = new System.Drawing.Point(937, 636);
+            this.btnTaiXuong.Name = "btnTaiXuong";
+            this.btnTaiXuong.Size = new System.Drawing.Size(114, 61);
+            this.btnTaiXuong.TabIndex = 19;
+            this.btnTaiXuong.Text = "Tải xuống";
+            this.btnTaiXuong.Click += new System.EventHandler(this.btnTaiXuong_Click);
             // 
             // txtPatch
             // 
@@ -213,7 +193,6 @@ namespace DangKi_DangNhap
             this.txtTenFile.SelectedText = "";
             this.txtTenFile.Size = new System.Drawing.Size(749, 42);
             this.txtTenFile.TabIndex = 21;
-            this.txtTenFile.TextChanged += new System.EventHandler(this.txtTenFile_TextChanged);
             // 
             // controlboxClose
             // 
@@ -247,7 +226,7 @@ namespace DangKi_DangNhap
             this.btnDeletefile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnDeletefile.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnDeletefile.ForeColor = System.Drawing.Color.White;
-            this.btnDeletefile.Location = new System.Drawing.Point(422, 548);
+            this.btnDeletefile.Location = new System.Drawing.Point(569, 543);
             this.btnDeletefile.Name = "btnDeletefile";
             this.btnDeletefile.Size = new System.Drawing.Size(168, 47);
             this.btnDeletefile.TabIndex = 26;
@@ -267,11 +246,10 @@ namespace DangKi_DangNhap
             this.Controls.Add(this.txtTenFile);
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.txtPatch);
-            this.Controls.Add(this.btnDang);
+            this.Controls.Add(this.btnTaiXuong);
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2TextBox1);
-            this.Controls.Add(this.btnMaHoaFile);
-            this.Controls.Add(this.btnMoFile);
+            this.Controls.Add(this.btnTaiLenFile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "khotailieu";
             this.Text = "khotailieu";
@@ -297,12 +275,11 @@ namespace DangKi_DangNhap
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2Button btnMaHoaFile;
-        private Guna.UI2.WinForms.Guna2Button btnMoFile;
+        private Guna.UI2.WinForms.Guna2Button btnTaiLenFile;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private System.Windows.Forms.Label lblTenFile;
         private Guna.UI2.WinForms.Guna2TextBox txtPatch;
-        private Guna.UI2.WinForms.Guna2Button btnDang;
+        private Guna.UI2.WinForms.Guna2Button btnTaiXuong;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label lblDuongDan;
         private Guna.UI2.WinForms.Guna2TextBox txtTenFile;
