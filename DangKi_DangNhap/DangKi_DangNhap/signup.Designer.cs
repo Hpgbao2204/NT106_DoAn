@@ -398,8 +398,9 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(274, 183);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(3, 2);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(0, 0);
             this.guna2HtmlLabel1.TabIndex = 28;
+            this.guna2HtmlLabel1.Text = null;
             // 
             // lbl_status
             // 

@@ -40,12 +40,14 @@
             this.btnVerify = new Guna.UI2.WinForms.Guna2Button();
             this.txtCodeEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnCreateAccount = new Guna.UI2.WinForms.Guna2Button();
             this.labelForgorpassword = new System.Windows.Forms.Label();
             this.control_Minimize = new Guna.UI2.WinForms.Guna2ControlBox();
             this.control_Close = new Guna.UI2.WinForms.Guna2ControlBox();
             this.ptb_eye_new_pass = new Guna.UI2.WinForms.Guna2PictureBox();
             this.ptb_eye_re_pass = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.lbl_request_status = new System.Windows.Forms.Label();
+            this.btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picUIT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_eye_new_pass)).BeginInit();
@@ -111,7 +113,6 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(292, 40);
             this.txtUsername.TabIndex = 5;
-            this.txtUsername.Visible = false;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // txtNewPass
@@ -241,30 +242,6 @@
             this.txtEmail.TabIndex = 21;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
-            // btnCreateAccount
-            // 
-            this.btnCreateAccount.Animated = true;
-            this.btnCreateAccount.BackColor = System.Drawing.Color.Transparent;
-            this.btnCreateAccount.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
-            this.btnCreateAccount.BorderRadius = 10;
-            this.btnCreateAccount.BorderThickness = 1;
-            this.btnCreateAccount.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnCreateAccount.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnCreateAccount.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnCreateAccount.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnCreateAccount.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
-            this.btnCreateAccount.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnCreateAccount.ForeColor = System.Drawing.Color.White;
-            this.btnCreateAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnCreateAccount.Image")));
-            this.btnCreateAccount.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.btnCreateAccount.ImageOffset = new System.Drawing.Point(5, 0);
-            this.btnCreateAccount.Location = new System.Drawing.Point(91, 533);
-            this.btnCreateAccount.Name = "btnCreateAccount";
-            this.btnCreateAccount.Size = new System.Drawing.Size(188, 59);
-            this.btnCreateAccount.TabIndex = 24;
-            this.btnCreateAccount.Text = "Confirm";
-            this.btnCreateAccount.UseTransparentBackground = true;
-            // 
             // labelForgorpassword
             // 
             this.labelForgorpassword.AutoSize = true;
@@ -327,18 +304,67 @@
             this.ptb_eye_re_pass.UseTransparentBackground = true;
             this.ptb_eye_re_pass.Click += new System.EventHandler(this.ptb_eye_confirm_re_pass_Click);
             // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(245)))), ((int)(((byte)(232)))));
+            this.lbl_status.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status.Location = new System.Drawing.Point(40, 478);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(38, 13);
+            this.lbl_status.TabIndex = 30;
+            this.lbl_status.Text = "Status";
+            // 
+            // lbl_request_status
+            // 
+            this.lbl_request_status.AutoSize = true;
+            this.lbl_request_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(245)))), ((int)(((byte)(232)))));
+            this.lbl_request_status.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_request_status.Location = new System.Drawing.Point(29, 554);
+            this.lbl_request_status.Name = "lbl_request_status";
+            this.lbl_request_status.Size = new System.Drawing.Size(137, 17);
+            this.lbl_request_status.TabIndex = 31;
+            this.lbl_request_status.Text = "Create account status";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Animated = true;
+            this.btnConfirm.BackColor = System.Drawing.Color.Transparent;
+            this.btnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.btnConfirm.BorderRadius = 10;
+            this.btnConfirm.BorderThickness = 1;
+            this.btnConfirm.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnConfirm.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnConfirm.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnConfirm.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnConfirm.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(182)))));
+            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.Image = ((System.Drawing.Image)(resources.GetObject("btnConfirm.Image")));
+            this.btnConfirm.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnConfirm.ImageOffset = new System.Drawing.Point(5, 0);
+            this.btnConfirm.Location = new System.Drawing.Point(91, 533);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(188, 59);
+            this.btnConfirm.TabIndex = 24;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseTransparentBackground = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnCreateAccount_Click);
+            // 
             // forgopassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1169, 761);
+            this.Controls.Add(this.btnVerify);
+            this.Controls.Add(this.lbl_status);
+            this.Controls.Add(this.btnConfirm);
+            this.Controls.Add(this.lbl_request_status);
             this.Controls.Add(this.ptb_eye_re_pass);
             this.Controls.Add(this.ptb_eye_new_pass);
             this.Controls.Add(this.control_Minimize);
             this.Controls.Add(this.control_Close);
             this.Controls.Add(this.labelForgorpassword);
-            this.Controls.Add(this.btnCreateAccount);
-            this.Controls.Add(this.btnVerify);
             this.Controls.Add(this.txtCodeEmail);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtRePass);
@@ -371,11 +397,13 @@
         private Guna.UI2.WinForms.Guna2Button btnVerify;
         private Guna.UI2.WinForms.Guna2TextBox txtCodeEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
-        private Guna.UI2.WinForms.Guna2Button btnCreateAccount;
         private System.Windows.Forms.Label labelForgorpassword;
         private Guna.UI2.WinForms.Guna2ControlBox control_Minimize;
         private Guna.UI2.WinForms.Guna2ControlBox control_Close;
         private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_re_pass;
         private Guna.UI2.WinForms.Guna2PictureBox ptb_eye_new_pass;
+        private System.Windows.Forms.Label lbl_status;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
+        private System.Windows.Forms.Label lbl_request_status;
     }
 }
