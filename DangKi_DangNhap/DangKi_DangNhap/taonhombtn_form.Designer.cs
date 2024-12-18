@@ -34,7 +34,6 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.txtID = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTenNhom = new Guna.UI2.WinForms.Guna2TextBox();
@@ -46,8 +45,6 @@
             this.btnTaoNhom = new Guna.UI2.WinForms.Guna2Button();
             this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.bt_esc = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
-            this.controlboxClose = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -233,12 +230,24 @@
             this.btnTaoNhom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.btnTaoNhom.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTaoNhom.ForeColor = System.Drawing.Color.White;
-            this.btnTaoNhom.Location = new System.Drawing.Point(143, 274);
+            this.btnTaoNhom.Location = new System.Drawing.Point(195, 291);
             this.btnTaoNhom.Name = "btnTaoNhom";
             this.btnTaoNhom.Size = new System.Drawing.Size(134, 47);
             this.btnTaoNhom.TabIndex = 12;
             this.btnTaoNhom.Text = "Tạo nhóm";
             this.btnTaoNhom.Click += new System.EventHandler(this.btnTaoNhom_Click);
+            // 
+            // controlboxClose
+            // 
+            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlboxClose.BackColor = System.Drawing.Color.FloralWhite;
+            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
+            this.controlboxClose.IconColor = System.Drawing.Color.Black;
+            this.controlboxClose.Location = new System.Drawing.Point(620, 12);
+            this.controlboxClose.Name = "controlboxClose";
+            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
+            this.controlboxClose.TabIndex = 24;
+            this.controlboxClose.Click += new System.EventHandler(this.controlboxClose_Click);
             // 
             // bt_esc
             // 
@@ -252,24 +261,12 @@
             this.bt_esc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(112)))), ((int)(((byte)(156)))));
             this.bt_esc.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold);
             this.bt_esc.ForeColor = System.Drawing.Color.White;
-            this.bt_esc.Location = new System.Drawing.Point(320, 274);
+            this.bt_esc.Location = new System.Drawing.Point(372, 291);
             this.bt_esc.Name = "bt_esc";
             this.bt_esc.Size = new System.Drawing.Size(134, 47);
             this.bt_esc.TabIndex = 13;
             this.bt_esc.Text = "Thoát";
             this.bt_esc.Click += new System.EventHandler(this.bt_esc_Click);
-            // 
-            // controlboxClose
-            // 
-            this.controlboxClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.controlboxClose.BackColor = System.Drawing.Color.FloralWhite;
-            this.controlboxClose.FillColor = System.Drawing.Color.Transparent;
-            this.controlboxClose.IconColor = System.Drawing.Color.Black;
-            this.controlboxClose.Location = new System.Drawing.Point(510, 8);
-            this.controlboxClose.Name = "controlboxClose";
-            this.controlboxClose.Size = new System.Drawing.Size(31, 29);
-            this.controlboxClose.TabIndex = 24;
-
             // 
             // taonhombtn_form
             // 
@@ -277,9 +274,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(551, 303);
-            this.Controls.Add(this.controlboxClose);
             this.ClientSize = new System.Drawing.Size(663, 367);
+            this.Controls.Add(this.controlboxClose);
             this.Controls.Add(this.bt_esc);
             this.Controls.Add(this.btnTaoNhom);
             this.Controls.Add(this.guna2Panel1);
