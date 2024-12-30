@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 using JsonException = System.Text.Json.JsonException;
 using Microsoft.VisualBasic.ApplicationServices;
+using DocumentFormat.OpenXml.Drawing.Spreadsheet;
 
 
 namespace DangKi_DangNhap
@@ -24,6 +25,7 @@ namespace DangKi_DangNhap
         private Users _currentUser;
         private SocketIOClient.SocketIO _clientSocket;
         private string _roomID;
+        private string key => $"GROUP_{_roomID}_SECRETKEY";
         public chatnhom(string roomID, Users User, SocketIOClient.SocketIO socket)
         {
             InitializeComponent();
@@ -210,6 +212,8 @@ namespace DangKi_DangNhap
             // Nếu Content là null hoặc empty, tránh thêm vào rtbChat
             if (!string.IsNullOrEmpty(message.Content))
             {
+                message.Content = VigenereDecrypt(message.Content, key);
+
                 if (rtbChat.IsHandleCreated)
                 {
                     rtbChat.Invoke(new Action(() =>
@@ -283,6 +287,8 @@ namespace DangKi_DangNhap
                     MessageBox.Show("Vui lòng nhập nội dung tin nhắn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+
+                messageContent = VigenereEncrypt(messageContent, key);
 
                 var newMessage = new
                 {
@@ -404,6 +410,74 @@ namespace DangKi_DangNhap
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+
+        static string GetAlphaKey(string key)
+        {
+            // Filter out non-alphabetic characters and convert to uppercase
+            return new string(key.Where(char.IsLetter).Select(char.ToUpper).ToArray());
+        }
+
+        static string VigenereEncrypt(string text, string key)
+        {
+            string alphaKey = GetAlphaKey(key);
+            StringBuilder result = new StringBuilder();
+            int keyIndex = 0;
+
+            foreach (char c in text)
+            {
+                if (char.IsLetter(c))
+                {
+                    char baseChar = char.IsUpper(c) ? 'A' : 'a';
+                    int textOffset = c - baseChar;
+
+                    char keyChar = alphaKey[keyIndex % alphaKey.Length];
+                    int keyOffset = keyChar - 'A';
+
+                    int encryptedOffset = (textOffset + keyOffset) % 26;
+                    char encryptedChar = (char)(encryptedOffset + baseChar);
+
+                    result.Append(encryptedChar);
+                    keyIndex++;
+                }
+                else
+                {
+                    result.Append(c);
+                }
+            }
+
+            return result.ToString();
+        }
+
+        static string VigenereDecrypt(string text, string key)
+        {
+            string alphaKey = GetAlphaKey(key);
+            StringBuilder result = new StringBuilder();
+            int keyIndex = 0;
+
+            foreach (char c in text)
+            {
+                if (char.IsLetter(c))
+                {
+                    char baseChar = char.IsUpper(c) ? 'A' : 'a';
+                    int textOffset = c - baseChar;
+
+                    char keyChar = alphaKey[keyIndex % alphaKey.Length];
+                    int keyOffset = keyChar - 'A';
+
+                    int decryptedOffset = (textOffset - keyOffset + 26) % 26;
+                    char decryptedChar = (char)(decryptedOffset + baseChar);
+
+                    result.Append(decryptedChar);
+                    keyIndex++;
+                }
+                else
+                {
+                    result.Append(c);
+                }
+            }
+
+            return result.ToString();
         }
     }
 }
