@@ -16,6 +16,7 @@ using SocketIOClient; // Đảm bảo bạn đã thêm dòng này
 using Quobject.SocketIoClientDotNet.Client;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
+using System.Threading;
 
 namespace DangKi_DangNhap
 {
@@ -75,17 +76,34 @@ namespace DangKi_DangNhap
             clientSocket.ConnectAsync();
         }
 
-        private void InitializeSocketIOForLAN()
+        private async void InitializeSocketIOForLAN()
         {
             clientSocket = new SocketIOClient.SocketIO("http://192.168.1.221:3000"); // thay bằng địa chỉ IPv4 của máy host
-                                                                                     // (nếu máy host có sử dụng các dịch vụ mạng khác như VPN hoặc đang host các server như MDaemon thì nên tắt chúng đi)
 
-            clientSocket.OnConnected += async (sender, e) =>
+            using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10)))
             {
-                MessageBox.Show("Connected to Socket.IO server");
-            };
-            clientSocket.ConnectAsync();
+                try
+                {
+                    // Lắng nghe sự kiện khi kết nối thành công
+                    clientSocket.OnConnected += async (sender, e) =>
+                    {
+                        MessageBox.Show("Connected to Socket.IO server");
+                    };
+
+                    // Kết nối tới server với thời gian chờ
+                    await clientSocket.ConnectAsync(cts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    MessageBox.Show("Không thể kết nối với server trong thời gian quy định (10 giây).", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi kết nối: {ex.Message}", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
 
         private async Task LoadRooms()
         {
