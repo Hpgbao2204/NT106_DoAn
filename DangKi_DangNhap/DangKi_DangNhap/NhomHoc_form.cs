@@ -30,10 +30,29 @@ namespace DangKi_DangNhap
         public NhomHoc_form(Users currentUser)
         {
             InitializeComponent();
-            InitializeSocketIO();
+
+            // Hiển thị MessageBox để người dùng chọn môi trường
+            DialogResult result = MessageBox.Show(
+                "Bạn muốn sử dụng server trong môi trường LAN hay WAN?\n" +
+                "Nhấn Yes để chọn LAN.\nNhấn No để chọn WAN.",
+                "Chọn môi trường server",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                InitializeSocketIOForLAN();
+            }
+            else
+            {
+                InitializeSocketIO();
+            }
+
             InitializeFirebase();
             _currentUser = currentUser;
         }
+
 
         private void InitializeFirebase()
         {
@@ -49,6 +68,18 @@ namespace DangKi_DangNhap
         private void InitializeSocketIO()
         {
             clientSocket = new SocketIOClient.SocketIO("https://render-doan-nt106-server.onrender.com");
+            clientSocket.OnConnected += async (sender, e) =>
+            {
+                MessageBox.Show("Connected to Socket.IO server");
+            };
+            clientSocket.ConnectAsync();
+        }
+
+        private void InitializeSocketIOForLAN()
+        {
+            clientSocket = new SocketIOClient.SocketIO("http://192.168.1.221:3000"); // thay bằng địa chỉ IPv4 của máy host
+                                                                                     // (nếu máy host có sử dụng các dịch vụ mạng khác như VPN hoặc đang host các server như MDaemon thì nên tắt chúng đi)
+
             clientSocket.OnConnected += async (sender, e) =>
             {
                 MessageBox.Show("Connected to Socket.IO server");
