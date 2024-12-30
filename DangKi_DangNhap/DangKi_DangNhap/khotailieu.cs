@@ -109,7 +109,7 @@ namespace DangKi_DangNhap
             return fileMetadata;
         }
 
-        private async void btnMoFile_Click(object sender, EventArgs e)
+        private async void btnTaiLenFile_Click(object sender, EventArgs e)
         {
             // Tạo OpenFileDialog để chọn file
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -138,7 +138,7 @@ namespace DangKi_DangNhap
                     MessageBox.Show("Upload thành công!");
 
                     // Hiển thị chi tiết file trong ListView
-                    AddFileToListView(fileName, fileType, uploadTime, fileSize);
+                    AddFileToListView($"nhom-{groupID}/{fileName}", fileType, uploadTime, fileSize);
                 }
                 catch (Exception ex)
                 {
@@ -257,26 +257,7 @@ namespace DangKi_DangNhap
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Handle ListView selection changes if needed
-        }
-
-        private void txtTenFile_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        //private void txtPatch_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void btnMaHoaFile_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        private async void btnDang_Click(object sender, EventArgs e)
+        private async void btnTaiXuong_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem có file nào được chọn không
             if (listView1.SelectedItems.Count > 0)
@@ -334,25 +315,27 @@ namespace DangKi_DangNhap
             }
         }
 
-        private async  void btnDeletefile_Click(object sender, EventArgs e)
+        private async void btnDeletefile_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count > 0)
             {
                 var selectedItem = listView1.SelectedItems[0];
                 string fileName = selectedItem.SubItems[0].Text;
 
-                // Prompt the user to confirm file deletion
-                DialogResult dialogResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa file '{fileName}' không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn xóa file '{fileName}' không?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
-                        // Construct the file path in Firebase Storage (replace groupID if needed)
-                        string storageFilePath = $"nhom-{groupID}/{fileName}";
+                        string bucketName = "nt106-cce90.appspot.com";
+                        string storageUrl = $"https://firebasestorage.googleapis.com/v0/b/{bucketName}/o/{Uri.EscapeDataString(fileName)}?alt=media";
 
-                        // Delete file from Firebase Storage
-                        string storageUrl = $"https://firebasestorage.googleapis.com/v0/b/nt106-cce90.appspot.com/o/{Uri.EscapeDataString(storageFilePath)}";
                         using (HttpClient client = new HttpClient())
                         {
                             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, storageUrl);
@@ -360,22 +343,13 @@ namespace DangKi_DangNhap
 
                             if (response.IsSuccessStatusCode)
                             {
-                                // Successfully deleted the file from storage, now delete the metadata from Firebase Realtime Database
-                                FirebaseResponse databaseResponse = await firebaseClient.DeleteAsync($"files/{groupID}/{fileName}");
-
-                                if (databaseResponse.StatusCode == System.Net.HttpStatusCode.OK)
-                                {
-                                    MessageBox.Show("Xóa file thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    listView1.Items.Remove(selectedItem); // Remove the file from the ListView
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Lỗi khi xóa metadata của file từ Firebase Database.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
+                                MessageBox.Show("Xóa file thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                listView1.Items.Remove(selectedItem);
                             }
                             else
                             {
-                                MessageBox.Show("Lỗi khi xóa file từ Firebase Storage.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                string errorContent = await response.Content.ReadAsStringAsync();
+                                MessageBox.Show($"Lỗi xóa file: {response.StatusCode}\n{errorContent}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -385,9 +359,7 @@ namespace DangKi_DangNhap
                     }
                 }
             }
-
-
         }
-      
+
     }
 }
