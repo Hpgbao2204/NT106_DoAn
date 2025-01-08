@@ -14,6 +14,7 @@ const { io: clientIo } = require("socket.io-client");
 const servers = [
     "https://render-doan-nt106-server.onrender.com",
     "https://nt106-doan.onrender.com"
+    "https://nt106-doan-1.onrender.com"
 ];
 
 let currentServerIndex = 0;
