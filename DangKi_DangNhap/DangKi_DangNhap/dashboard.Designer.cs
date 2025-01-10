@@ -194,6 +194,7 @@
             this.btnLogOut.Size = new System.Drawing.Size(165, 45);
             this.btnLogOut.TabIndex = 8;
             this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // btnDanhGia
             // 
@@ -595,9 +596,10 @@
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(9, 9);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 20);
+            this.label16.Size = new System.Drawing.Size(109, 20);
             this.label16.TabIndex = 11;
-            this.label16.Text = "Top gay";
+            this.label16.Text = "Top hoạt động";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // guna2Panel12
             // 
