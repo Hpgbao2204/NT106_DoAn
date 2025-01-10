@@ -68,7 +68,7 @@ namespace DangKi_DangNhap
 
         private void InitializeSocketIO()
         {
-            clientSocket = new SocketIOClient.SocketIO("https://render-doan-nt106-server.onrender.com");
+            clientSocket = new SocketIOClient.SocketIO("http://localhost:4000");
             clientSocket.OnConnected += async (sender, e) =>
             {
                 MessageBox.Show("Connected to Socket.IO server");
