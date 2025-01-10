@@ -32,10 +32,23 @@ io.on("connection", (proxyClientSocket) => {
     console.log("Client connected to Proxy Server:", proxyClientSocket.id);
 
     const targetServer = getNextServer();
-    console.log(`Forwarding to server: ${targetServer}`);
 
     const mainServerSocket = clientIo(targetServer, {
         transports: ['websocket', 'polling'],
+        timeout: 60000, // Tăng timeout lên 60s
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000
+    });
+
+    console.log(`Attempting to connect to ${targetServer}`);
+
+    mainServerSocket.on('connect', () => {
+        console.log(`Successfully connected to ${targetServer}`);
+    });
+
+    mainServerSocket.on('connect_error', (error) => {
+        console.error(`Failed to connect to ${targetServer}:`, error.message);
     });
 
     // Theo dõi join-room event để quản lý rooms ở proxy
