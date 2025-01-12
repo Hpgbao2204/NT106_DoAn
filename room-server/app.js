@@ -2,8 +2,18 @@
 require('dotenv').config();
 const os = require("os");
 const io = require("socket.io")(3000, {
-    cors: { origin: "*"}
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["*"],
+        credentials: true
+    },
+    transports: ['websocket', 'polling'], // Hỗ trợ cả WebSocket và polling
+    allowEIO3: true, // Cho phép Engine.IO phiên bản 3
+    pingTimeout: 60000, // Tăng timeout
+    pingInterval: 25000 // Tăng interval
 });
+
 const admin = require("firebase-admin");
 const serviceAccountPath = process.env.GOOGLE_APPLICATION_CREDENTIALS;
 // const serviceAccount = require(serviceAccountPath);

@@ -16,6 +16,7 @@ using SocketIOClient; // Đảm bảo bạn đã thêm dòng này
 using Quobject.SocketIoClientDotNet.Client;
 using Newtonsoft.Json.Linq;
 using System.Text.Json;
+using System.Threading;
 
 namespace DangKi_DangNhap
 {
@@ -30,10 +31,29 @@ namespace DangKi_DangNhap
         public NhomHoc_form(Users currentUser)
         {
             InitializeComponent();
-            InitializeSocketIO();
+
+            // Hiển thị MessageBox để người dùng chọn môi trường
+            DialogResult result = MessageBox.Show(
+                "Bạn muốn sử dụng server trong môi trường LAN hay WAN?\n" +
+                "Nhấn Yes để chọn LAN.\nNhấn No để chọn WAN.",
+                "Chọn môi trường server",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                InitializeSocketIOForLAN();
+            }
+            else
+            {
+                InitializeSocketIO();
+            }
+
             InitializeFirebase();
             _currentUser = currentUser;
         }
+
 
         private void InitializeFirebase()
         {
@@ -48,12 +68,40 @@ namespace DangKi_DangNhap
 
         private void InitializeSocketIO()
         {
-            clientSocket = new SocketIOClient.SocketIO("https://render-doan-nt106-server.onrender.com");
+            clientSocket = new SocketIOClient.SocketIO("http://localhost:4000");
             clientSocket.OnConnected += async (sender, e) =>
             {
                 MessageBox.Show("Connected to Socket.IO server");
             };
             clientSocket.ConnectAsync();
+        }
+
+        private async void InitializeSocketIOForLAN()
+        {
+            clientSocket = new SocketIOClient.SocketIO("http://192.168.1.221:3000"); // thay bằng địa chỉ IPv4 của máy host , lay dia chi ip cua may lam server de host 
+
+            using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(10)))
+            {
+                try
+                {
+                    // Lắng nghe sự kiện khi kết nối thành công
+                    clientSocket.OnConnected += async (sender, e) =>
+                    {
+                        MessageBox.Show("Connected to Socket.IO server");
+                    };
+
+                    // Kết nối tới server với thời gian chờ
+                    await clientSocket.ConnectAsync(cts.Token);
+                }
+                catch (OperationCanceledException)
+                {
+                    MessageBox.Show("Không thể kết nối với server trong thời gian quy định (10 giây).", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Đã xảy ra lỗi khi kết nối: {ex.Message}", "Lỗi kết nối", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private async Task LoadRooms()

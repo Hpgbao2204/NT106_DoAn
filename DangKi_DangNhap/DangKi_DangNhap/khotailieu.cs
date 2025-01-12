@@ -18,6 +18,7 @@ using FireSharp;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using System.Diagnostics;
+using System.Threading;
 
 
 namespace DangKi_DangNhap
@@ -111,42 +112,38 @@ namespace DangKi_DangNhap
 
         private async void btnTaiLenFile_Click(object sender, EventArgs e)
         {
-            // Tạo OpenFileDialog để chọn file
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Title = "Chọn 1 file để mở",
                 Filter = "PDF files (*.pdf)|*.pdf|Word documents (*.doc;*.docx)|*.doc;*.docx|Image files (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png",
-                Multiselect = false // Không cho phép chọn nhiều tệp
+                Multiselect = false
             };
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;
                 string fileName = Path.GetFileName(filePath);
-                string fileType = Path.GetExtension(filePath).TrimStart('.');
-                DateTime uploadTime = DateTime.Now;
-                long fileSize = new FileInfo(filePath).Length;
-                txtTenFile.Text = fileName; // Giả sử bạn đã thêm TextBox tên txtTenFile
-                txtPatch.Text = filePath; // Giả sử bạn đã thêm TextBox tên txtDuongDan
+                txtTenFile.Text = fileName;
+                txtPatch.Text = filePath;
 
-                try
+                Thread uploadThread = new Thread(async () =>
                 {
-                    // Upload file lên Firebase và cập nhật progress
-                    string downloadUrl = await UploadFileToFirebaseWithProgress(filePath);
+                    try
+                    {
+                        string downloadUrl = await UploadFileToFirebaseWithProgress(filePath);
+                        MessageBox.Show("Upload thành công!");
+                        AddFileToListView($"nhom-{groupID}/{fileName}", Path.GetExtension(filePath), DateTime.Now, new FileInfo(filePath).Length);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
 
-                    // Thông báo thành công
-                    MessageBox.Show("Upload thành công!");
-
-                    // Hiển thị chi tiết file trong ListView
-                    AddFileToListView($"nhom-{groupID}/{fileName}", fileType, uploadTime, fileSize);
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý lỗi
-                    MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                uploadThread.Start();
             }
         }
+
         private async void LoadFilesForGroup()
         {
             try
