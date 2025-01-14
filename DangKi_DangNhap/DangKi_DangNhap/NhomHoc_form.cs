@@ -68,7 +68,7 @@ namespace DangKi_DangNhap
 
         private void InitializeSocketIO()
         {
-            clientSocket = new SocketIOClient.SocketIO("https://proxy-nt106-doan.onrender.com"); // Kết nối tới proxy
+            clientSocket = new SocketIOClient.SocketIO("http://localhost:4000"); // Kết nối tới proxy
             clientSocket.OnConnected += async (sender, e) =>
             {
                 MessageBox.Show("Connected to Socket.IO server");

@@ -343,7 +343,7 @@ namespace DangKi_DangNhap
             {
                 if (_clientSocket != null && _clientSocket.Connected)
                 {
-                    string messageContent = $"Người dùng {_currentUser.Username} đã rời khỏi nhóm.";
+                    string messageContent = $"Nguoi dung {_currentUser.Username} da roi nhom.";
 
                     var newMessage = new
                     {
