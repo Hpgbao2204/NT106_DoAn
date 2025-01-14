@@ -73,6 +73,14 @@ namespace DangKi_DangNhap
             {
                 MessageBox.Show("Connected to Socket.IO server");
             };
+
+            // Lắng nghe lỗi
+            clientSocket.On("error", (response) =>
+            {
+                MessageBox.Show(response.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            });
+
             clientSocket.ConnectAsync();
         }
 
@@ -89,6 +97,13 @@ namespace DangKi_DangNhap
                     {
                         MessageBox.Show("Connected to Socket.IO server");
                     };
+
+                    // Lắng nghe lỗi
+                    clientSocket.On("error", (response) =>
+                    {
+                        MessageBox.Show(response.ToString(), "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    });
 
                     // Kết nối tới server với thời gian chờ
                     await clientSocket.ConnectAsync(cts.Token);

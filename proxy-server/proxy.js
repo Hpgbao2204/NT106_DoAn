@@ -12,18 +12,27 @@ const io = require("socket.io")(4000, {
 const { io: clientIo } = require("socket.io-client");
 
 const servers = [
-    "https://render-doan-nt106-server.onrender.com",
-    "https://nt106-doan.onrender.com",
-    "https://nt106-doan-1.onrender.com"
+    { url: "https://render-doan-nt106-server.onrender.com", maxWeight: 5, currentWeight: 0 },
+    { url: "https://nt106-doan.onrender.com", maxWeight: 3, currentWeight: 0 },
+    { url: "https://nt106-doan-1.onrender.com", maxWeight: 2, currentWeight: 0 },
 ];
 
 let currentServerIndex = 0;
 
 const getNextServer = () => {
-    const server = servers[currentServerIndex];
-    currentServerIndex = (currentServerIndex + 1) % servers.length;
-    return server;
+    let initialIndex = currentServerIndex;
+    do {
+        const server = servers[currentServerIndex];
+        currentServerIndex = (currentServerIndex + 1) % servers.length;
+        if (server.currentWeight < server.maxWeight) {
+            return server;
+        }
+    } while (currentServerIndex !== initialIndex);
+
+    // Nếu tất cả server đều đủ tải, trả về null
+    return null;
 };
+
 
 // Lưu trữ thông tin về room và các clients trong room đó
 const rooms = new Map(); // Map<roomId, Set<socketId>>
@@ -33,7 +42,17 @@ io.on("connection", (proxyClientSocket) => {
 
     const targetServer = getNextServer();
 
-    const mainServerSocket = clientIo(targetServer, {
+    if (!targetServer) {
+        console.log("All servers are at full capacity. Rejecting connection.");
+        proxyClientSocket.emit("error", "All servers are at full capacity. Please try again later.");
+        proxyClientSocket.disconnect();
+        return;
+    }
+
+    // Tăng trọng số hiện tại của server được chọn
+    targetServer.currentWeight++;
+
+    const mainServerSocket = clientIo(targetServer.url, {
         transports: ['websocket', 'polling'],
         timeout: 60000, // Tăng timeout lên 60s
         reconnection: true,
@@ -41,14 +60,14 @@ io.on("connection", (proxyClientSocket) => {
         reconnectionDelay: 1000
     });
 
-    console.log(`Attempting to connect to ${targetServer}`);
+    console.log(`Attempting to connect to ${targetServer.url}`);
 
     mainServerSocket.on('connect', () => {
-        console.log(`Successfully connected to ${targetServer}`);
+        console.log(`Successfully connected to ${targetServer.url}`);
     });
 
     mainServerSocket.on('connect_error', (error) => {
-        console.error(`Failed to connect to ${targetServer}:`, error.message);
+        console.error(`Failed to connect to ${targetServer.url}:`, error.message);
     });
 
     // Theo dõi join-room event để quản lý rooms ở proxy
@@ -66,7 +85,7 @@ io.on("connection", (proxyClientSocket) => {
 
     // Chuyển tiếp tất cả sự kiện từ Proxy Client → Main Server
     proxyClientSocket.onAny((event, ...args) => {
-        console.log(`Forwarding event "${event}" to Server: ${targetServer}`, args);
+        console.log(`Forwarding event "${event}" to Server: ${targetServer.url}`, args);
         mainServerSocket.emit(event, ...args);
     });
 
@@ -102,6 +121,9 @@ io.on("connection", (proxyClientSocket) => {
                 rooms.delete(roomId);
             }
         });
+        // Giảm trọng số hiện tại của server
+        targetServer.currentWeight--;
+
         mainServerSocket.disconnect();
     });
 
@@ -113,6 +135,12 @@ io.on("connection", (proxyClientSocket) => {
 
 // Debug: In trạng thái rooms định kỳ
 setInterval(() => {
+    console.log('Current server states:', servers.map(server => ({
+        url: server.url,
+        currentWeight: server.currentWeight,
+        maxWeight: server.maxWeight
+    })));
+
     console.log('Current rooms state:',
         Array.from(rooms.entries()).map(([roomId, clients]) => ({
             roomId,
